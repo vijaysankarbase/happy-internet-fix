@@ -5,15 +5,6 @@ import ActionButton from "@/components/ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { Sparkles, Heart, Search, LogOut } from "lucide-react";
 
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
 
 const IntroScreen: React.FC = () => {
   const { isPositive, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
