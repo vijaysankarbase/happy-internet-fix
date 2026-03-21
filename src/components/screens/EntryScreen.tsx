@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { Wifi, X, Minus, Plus } from "lucide-react";
+import { Wifi, X } from "lucide-react";
 import type { Sentiment } from "@/types/diagnostic";
 
 const EntryScreen: React.FC = () => {
