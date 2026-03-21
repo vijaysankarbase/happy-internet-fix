@@ -7,10 +7,10 @@ import type { Sentiment } from "@/types/diagnostic";
 const EntryScreen: React.FC = () => {
   const { setSentiment, setCurrentState } = useDiagnostic();
 
-  const options: { sentiment: Sentiment; icon: React.ReactNode; label: string }[] = [
-    { sentiment: "negative", icon: <Minus className="w-6 h-6" />, label: "−" },
-    { sentiment: "neutral", icon: <><Plus className="w-4 h-4" /><Minus className="w-4 h-4" /></>, label: "±" },
-    { sentiment: "positive", icon: <Plus className="w-6 h-6" />, label: "+" },
+  const options: { sentiment: Sentiment; emoji: string }[] = [
+    { sentiment: "negative", emoji: "😡" },
+    { sentiment: "neutral", emoji: "😐" },
+    { sentiment: "positive", emoji: "😊" },
   ];
 
   const handleSelect = (s: Sentiment) => {
