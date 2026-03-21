@@ -6,7 +6,10 @@ export type TabId = "start" | "bills" | "support" | "account";
 export type ScreenState =
   | "entry"
   | "intro"
+  | "pre_scan"
+  | "retest_warning"
   | "scanning"
+  | "scan_done"
   | "modem_offline"
   | "network_incident"
   | "all_clear"

@@ -9,6 +9,9 @@ import SupportTab from "@/components/tabs/SupportTab";
 import AccountTab from "@/components/tabs/AccountTab";
 import IntroScreen from "@/components/screens/IntroScreen";
 import ScanningScreen from "@/components/screens/ScanningScreen";
+import PreScanScreen from "@/components/screens/PreScanScreen";
+import RetestWarningScreen from "@/components/screens/RetestWarningScreen";
+import ScanDoneScreen from "@/components/screens/ScanDoneScreen";
 import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
 import NetworkIncidentScreen from "@/components/screens/NetworkIncidentScreen";
 import AllClearScreen from "@/components/screens/AllClearScreen";
@@ -30,8 +33,14 @@ const DiagnosticFlow: React.FC = () => {
     switch (currentState) {
       case "intro":
         return <IntroScreen key="intro" />;
+      case "pre_scan":
+        return <PreScanScreen key="prescan" />;
+      case "retest_warning":
+        return <RetestWarningScreen key="retest" />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
+      case "scan_done":
+        return <ScanDoneScreen key="scandone" />;
       case "modem_offline":
         return <ModemOfflineScreen key="modem" />;
       case "network_incident":

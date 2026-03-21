@@ -3,41 +3,14 @@ import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
 import ActionButton from "@/components/ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import { Sparkles, Heart, Search, LogOut } from "lucide-react";
-import type { DiagnosticResult } from "@/types/diagnostic";
 
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
 
 const IntroScreen: React.FC = () => {
-  const { isPositive, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
+  const { isPositive, setCurrentState } = useDiagnostic();
 
   const handleStartDiagnosis = () => {
-    const apiResponse: DiagnosticResult = {
-      modem: { inService: panelInputs.modemInService },
-      network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
-      },
-      qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-
-    setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
+    setCurrentState("pre_scan");
   };
 
   if (isPositive) {
