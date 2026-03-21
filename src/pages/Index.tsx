@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
-import { fetchDiagnosticData, evaluateDiagnostic } from "@/lib/diagnosticEngine";
+import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import DebugInfo from "@/components/DebugInfo";
 import EntryScreen from "@/components/screens/EntryScreen";
@@ -19,19 +19,16 @@ import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
 const DiagnosticFlow: React.FC = () => {
   const { currentState, setCurrentState, setDiagnosticResult, setQoeSelected } = useDiagnostic();
 
-  const startScan = useCallback(async () => {
-    setCurrentState("scanning");
-    const result = await fetchDiagnosticData();
-    setDiagnosticResult(result);
-    const { state, qoeSelected } = evaluateDiagnostic(result);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
-  }, [setCurrentState, setDiagnosticResult, setQoeSelected]);
+  const handleEntryComplete = useCallback(() => {
+    // After sentiment selection, go to a ready state (entry stays but sentiment is set)
+    // User should use the Diagnostic Panel to run diagnosis
+    setCurrentState("all_clear");
+  }, [setCurrentState]);
 
   const renderScreen = () => {
     switch (currentState) {
       case "entry":
-        return <EntryScreen key="entry" onComplete={startScan} />;
+        return <EntryScreen key="entry" onComplete={handleEntryComplete} />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
       case "modem_offline":
@@ -64,7 +61,7 @@ const DiagnosticFlow: React.FC = () => {
       case "wifi_flow":
         return <WifiFlowScreen key="wifi" />;
       default:
-        return <EntryScreen key="entry-default" onComplete={startScan} />;
+        return <EntryScreen key="entry-default" onComplete={handleEntryComplete} />;
     }
   };
 
