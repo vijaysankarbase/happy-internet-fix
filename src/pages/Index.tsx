@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
-import { fetchDiagnosticData, evaluateDiagnostic } from "@/lib/diagnosticEngine";
+import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import DebugInfo from "@/components/DebugInfo";
 import EntryScreen from "@/components/screens/EntryScreen";
