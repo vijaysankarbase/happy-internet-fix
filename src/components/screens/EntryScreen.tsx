@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
-import ActionButton from "@/components/ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
+import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import { Smile, Meh, Frown } from "lucide-react";
-import type { Sentiment } from "@/types/diagnostic";
+import type { Sentiment, DiagnosticResult } from "@/types/diagnostic";
+
+const PRIORITY_MAP: Record<string, number> = {
+  filter_hp47: 0.0,
+  filter_tof: 0.0,
+  dropcable: 1.1,
+  dice: 1.2,
+  modem_deregs: 2.1,
+  broken_hardware_modem: 2.2,
+  coverage: 3.5,
+};
 
 const EntryScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
-  const { setSentiment, entryPoint } = useDiagnostic();
+  const { setSentiment, entryPoint, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
 
   useEffect(() => {
     if (entryPoint === "support") {
@@ -27,13 +37,32 @@ const EntryScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
 
   const handleSelect = (s: Sentiment) => {
     setSentiment(s);
-    onComplete();
+
+    // Build API response from panel inputs and run diagnosis
+    const apiResponse: DiagnosticResult = {
+      modem: { inService: panelInputs.modemInService },
+      network: {
+        incident: { active: panelInputs.incidentActive },
+        change: { active: panelInputs.changeActive },
+        problem: { active: panelInputs.problemActive },
+      },
+      qoe: panelInputs.selectedQoe.map((type) => ({
+        type,
+        priority: PRIORITY_MAP[type] ?? 99,
+      })),
+    };
+
+    setDiagnosticResult(apiResponse);
+    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
+    setQoeSelected(qoeSelected);
+    setCurrentState(state);
   };
 
   return (
     <ScreenShell
       title="How's your internet experience?"
       subtitle="This helps us tailor our support to you."
+      hideClose
     >
       <div className="flex flex-col gap-3">
         {options.map((opt, i) => (
