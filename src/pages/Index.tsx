@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import DebugInfo from "@/components/DebugInfo";
+import EntryScreen from "@/components/screens/EntryScreen";
 import EntryScreen from "@/components/screens/EntryScreen";
 import ScanningScreen from "@/components/screens/ScanningScreen";
 import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
