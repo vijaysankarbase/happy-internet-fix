@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
-import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, QoEItem, DiagnosticResult } from "@/types/diagnostic";
+import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult } from "@/types/diagnostic";
 
 export interface PanelInputs {
   modemInService: boolean;
@@ -13,6 +13,7 @@ interface DiagnosticContextType extends AppState {
   setSentiment: (s: Sentiment) => void;
   setEntryPoint: (e: EntryPoint) => void;
   setCurrentState: (s: ScreenState) => void;
+  setCurrentTab: (t: TabId) => void;
   setDiagnosticResult: (r: DiagnosticResult) => void;
   setQoeSelected: (q: QoEItem | null) => void;
   isPositive: boolean;
@@ -34,6 +35,7 @@ const initialState: AppState = {
   sentiment: "neutral",
   entryPoint: "elt",
   currentState: "entry",
+  currentTab: "start",
   qoeSelected: null,
   diagnosticResult: null,
 };
@@ -67,6 +69,10 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setState((s) => ({ ...s, currentState }));
   }, []);
 
+  const setCurrentTab = useCallback((currentTab: TabId) => {
+    setState((s) => ({ ...s, currentTab }));
+  }, []);
+
   const setDiagnosticResult = useCallback((diagnosticResult: DiagnosticResult) => {
     setState((s) => ({ ...s, diagnosticResult }));
   }, []);
@@ -87,6 +93,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setSentiment,
         setEntryPoint,
         setCurrentState,
+        setCurrentTab,
         setDiagnosticResult,
         setQoeSelected,
         isPositive: state.experienceMode === "positive",
