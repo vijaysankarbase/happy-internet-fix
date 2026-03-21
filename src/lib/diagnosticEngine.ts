@@ -74,7 +74,10 @@ export const evaluateDiagnostic = (
     dropcable: "qoe_dropcable",
     coverage: "qoe_coverage",
     filter: "qoe_filter",
+    filter_hp47: "qoe_filter_hp47",
+    filter_tof: "qoe_filter_tof",
     dice: "qoe_dice",
+    broken_hardware_modem: "qoe_broken_hardware_modem",
   };
 
   return {
