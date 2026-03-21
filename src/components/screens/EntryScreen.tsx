@@ -1,16 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { Wifi, X, Minus, Plus } from "lucide-react";
+import { Wifi, X } from "lucide-react";
 import type { Sentiment } from "@/types/diagnostic";
 
 const EntryScreen: React.FC = () => {
   const { setSentiment, setCurrentState } = useDiagnostic();
 
-  const options: { sentiment: Sentiment; icon: React.ReactNode; label: string }[] = [
-    { sentiment: "negative", icon: <Minus className="w-6 h-6" />, label: "−" },
-    { sentiment: "neutral", icon: <><Plus className="w-4 h-4" /><Minus className="w-4 h-4" /></>, label: "±" },
-    { sentiment: "positive", icon: <Plus className="w-6 h-6" />, label: "+" },
+  const options: { sentiment: Sentiment; emoji: string }[] = [
+    { sentiment: "negative", emoji: "😡" },
+    { sentiment: "neutral", emoji: "😐" },
+    { sentiment: "positive", emoji: "😊" },
   ];
 
   const handleSelect = (s: Sentiment) => {
@@ -84,10 +84,10 @@ const EntryScreen: React.FC = () => {
               transition={{ delay: 0.5 + i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               whileTap={{ scale: 0.93 }}
               onClick={() => handleSelect(opt.sentiment)}
-              className="w-14 h-14 rounded-full border-2 border-border bg-background flex items-center justify-center text-foreground font-bold text-xl hover:bg-secondary hover:border-primary/30 transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-14 h-14 rounded-full border-2 border-border bg-background flex items-center justify-center text-3xl hover:bg-secondary hover:border-primary/30 transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={opt.sentiment}
             >
-              {opt.label}
+              {opt.emoji}
             </motion.button>
           ))}
         </motion.div>
