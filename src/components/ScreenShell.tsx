@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ArrowLeft } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 
 interface ScreenShellProps {
@@ -9,10 +9,11 @@ interface ScreenShellProps {
   title?: string;
   subtitle?: string;
   hideClose?: boolean;
+  hideBack?: boolean;
 }
 
-const ScreenShell: React.FC<ScreenShellProps> = ({ children, icon, title, subtitle, hideClose }) => {
-  const { setCurrentState } = useDiagnostic();
+const ScreenShell: React.FC<ScreenShellProps> = ({ children, icon, title, subtitle, hideClose, hideBack }) => {
+  const { setCurrentState, goBack } = useDiagnostic();
 
   return (
     <motion.div
@@ -22,15 +23,31 @@ const ScreenShell: React.FC<ScreenShellProps> = ({ children, icon, title, subtit
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="relative flex flex-col items-center px-6 py-10 max-w-md mx-auto min-h-[80vh] justify-center text-center"
     >
-      {!hideClose && (
-        <button
-          onClick={() => setCurrentState("entry")}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors active:scale-95"
-          aria-label="Close"
-        >
-          <X className="w-5 h-5" />
-        </button>
-      )}
+      {/* Top bar with back + close */}
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+        {!hideBack ? (
+          <button
+            onClick={goBack}
+            className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors active:scale-95"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+        ) : (
+          <div />
+        )}
+        {!hideClose ? (
+          <button
+            onClick={() => setCurrentState("entry")}
+            className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors active:scale-95"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        ) : (
+          <div />
+        )}
+      </div>
       {icon && (
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
