@@ -7,7 +7,7 @@ import { Sparkles, Heart, Search, LogOut } from "lucide-react";
 
 
 const IntroScreen: React.FC = () => {
-  const { isPositive, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
+  const { isPositive, setCurrentState } = useDiagnostic();
 
   const handleStartDiagnosis = () => {
     setCurrentState("pre_scan");
