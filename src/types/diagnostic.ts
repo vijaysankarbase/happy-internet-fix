@@ -1,6 +1,7 @@
 export type ExperienceMode = "positive" | "negative";
 export type Sentiment = "positive" | "neutral" | "negative";
 export type EntryPoint = "elt" | "product" | "support";
+export type TabId = "start" | "bills" | "support" | "account";
 
 export type ScreenState =
   | "entry"
@@ -21,7 +22,8 @@ export type ScreenState =
   | "misalignment"
   | "support"
   | "success"
-  | "wifi_flow";
+  | "wifi_flow"
+  | "product_detail";
 
 export interface QoEItem {
   type: string;
@@ -46,6 +48,7 @@ export interface AppState {
   sentiment: Sentiment;
   entryPoint: EntryPoint;
   currentState: ScreenState;
+  currentTab: TabId;
   qoeSelected: QoEItem | null;
   diagnosticResult: DiagnosticResult | null;
 }

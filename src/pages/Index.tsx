@@ -1,9 +1,12 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
-import DiagnosticPanel from "@/components/DiagnosticPanel";
+import BottomNav from "@/components/BottomNav";
 import DebugInfo from "@/components/DebugInfo";
-import EntryScreen from "@/components/screens/EntryScreen";
+import StartTab from "@/components/tabs/StartTab";
+import BillsTab from "@/components/tabs/BillsTab";
+import SupportTab from "@/components/tabs/SupportTab";
+import AccountTab from "@/components/tabs/AccountTab";
 import IntroScreen from "@/components/screens/IntroScreen";
 import ScanningScreen from "@/components/screens/ScanningScreen";
 import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
@@ -15,14 +18,16 @@ import MisalignmentScreen from "@/components/screens/MisalignmentScreen";
 import SupportScreen from "@/components/screens/SupportScreen";
 import SuccessScreen from "@/components/screens/SuccessScreen";
 import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
+import ProductDetailScreen from "@/components/screens/ProductDetailScreen";
 
 const DiagnosticFlow: React.FC = () => {
-  const { currentState } = useDiagnostic();
+  const { currentState, currentTab } = useDiagnostic();
 
-  const renderScreen = () => {
+  // If we're in a diagnostic flow (not entry), show the flow screens
+  const inDiagnosticFlow = currentState !== "entry" && currentState !== "product_detail";
+
+  const renderDiagnosticScreen = () => {
     switch (currentState) {
-      case "entry":
-        return <EntryScreen key="entry" />;
       case "intro":
         return <IntroScreen key="intro" />;
       case "scanning":
@@ -57,19 +62,55 @@ const DiagnosticFlow: React.FC = () => {
       case "wifi_flow":
         return <WifiFlowScreen key="wifi" />;
       default:
-        return <EntryScreen key="entry-default" />;
+        return null;
+    }
+  };
+
+  const renderProductDetail = () => {
+    if (currentState === "product_detail") {
+      return <ProductDetailScreen key="product_detail" />;
+    }
+    return null;
+  };
+
+  const renderTab = () => {
+    switch (currentTab) {
+      case "start":
+        return <StartTab key="start-tab" />;
+      case "bills":
+        return <BillsTab key="bills-tab" />;
+      case "support":
+        return <SupportTab key="support-tab" />;
+      case "account":
+        return <AccountTab key="account-tab" />;
+      default:
+        return <StartTab key="start-tab-default" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-background pb-8">
-      <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b border-border px-6 py-4">
-        <h2 className="text-lg font-bold text-foreground tracking-tight">My Internet Scan</h2>
-      </header>
-      <DiagnosticPanel />
+    <div className="min-h-screen bg-background pb-14">
       <AnimatePresence mode="wait">
-        {renderScreen()}
+        {inDiagnosticFlow ? (
+          <div key="diagnostic-flow" className="min-h-screen bg-background">
+            <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b border-border px-6 py-4">
+              <h2 className="text-lg font-bold text-foreground tracking-tight">My Internet Scan</h2>
+            </header>
+            <AnimatePresence mode="wait">
+              {renderDiagnosticScreen()}
+            </AnimatePresence>
+          </div>
+        ) : currentState === "product_detail" ? (
+          <div key="product-detail" className="min-h-screen bg-background pt-4">
+            {renderProductDetail()}
+          </div>
+        ) : (
+          <div key="tab-content">
+            {renderTab()}
+          </div>
+        )}
       </AnimatePresence>
+      {!inDiagnosticFlow && <BottomNav />}
       <DebugInfo />
     </div>
   );
