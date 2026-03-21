@@ -152,4 +152,20 @@ const QoETechnicianScreen: React.FC = () => {
   );
 };
 
-export { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen };
+const QoEBrokenHardwareScreen: React.FC = () => {
+  const { isPositive, setCurrentState } = useDiagnostic();
+
+  return (
+    <ScreenShell
+      icon={<div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center"><Wrench className="w-8 h-8 text-destructive" /></div>}
+      title="Modem replacement needed"
+      subtitle={isPositive ? "We've detected a hardware issue with your modem that requires a replacement." : "Your modem needs to be replaced."}
+    >
+      <div className="flex flex-col gap-3">
+        <ActionButton onClick={() => setCurrentState("support")}>Schedule replacement</ActionButton>
+      </div>
+    </ScreenShell>
+  );
+};
+
+export { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen, QoEBrokenHardwareScreen };
