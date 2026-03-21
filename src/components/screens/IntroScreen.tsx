@@ -21,23 +21,7 @@ const IntroScreen: React.FC = () => {
   const { isPositive, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
 
   const handleStartDiagnosis = () => {
-    const apiResponse: DiagnosticResult = {
-      modem: { inService: panelInputs.modemInService },
-      network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
-      },
-      qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-
-    setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
+    setCurrentState("pre_scan");
   };
 
   if (isPositive) {
