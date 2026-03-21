@@ -31,7 +31,6 @@ const ScreenShell: React.FC<ScreenShellProps> = ({ children, icon, title, subtit
           <X className="w-5 h-5" />
         </button>
       )}
-    >
       {icon && (
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
