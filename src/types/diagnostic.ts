@@ -4,6 +4,7 @@ export type EntryPoint = "elt" | "product" | "support";
 
 export type ScreenState =
   | "entry"
+  | "intro"
   | "scanning"
   | "modem_offline"
   | "network_incident"

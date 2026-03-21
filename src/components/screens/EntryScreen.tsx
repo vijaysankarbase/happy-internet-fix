@@ -1,33 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import { Smile, Meh, Frown } from "lucide-react";
-import type { Sentiment, DiagnosticResult } from "@/types/diagnostic";
+import type { Sentiment } from "@/types/diagnostic";
 
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
-
-const EntryScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
-  const { setSentiment, entryPoint, panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
-
-  useEffect(() => {
-    if (entryPoint === "support") {
-      onComplete();
-    }
-  }, [entryPoint, onComplete]);
-
-  if (entryPoint === "support") {
-    return null;
-  }
+const EntryScreen: React.FC = () => {
+  const { setSentiment, setCurrentState } = useDiagnostic();
 
   const options: { sentiment: Sentiment; icon: React.ReactNode; label: string; color: string }[] = [
     { sentiment: "positive", icon: <Smile className="w-8 h-8" />, label: "Things are okay", color: "bg-success/10 text-success hover:bg-success/20 border-success/20" },
@@ -37,25 +16,7 @@ const EntryScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
 
   const handleSelect = (s: Sentiment) => {
     setSentiment(s);
-
-    // Build API response from panel inputs and run diagnosis
-    const apiResponse: DiagnosticResult = {
-      modem: { inService: panelInputs.modemInService },
-      network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
-      },
-      qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-
-    setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
+    setCurrentState("intro");
   };
 
   return (
