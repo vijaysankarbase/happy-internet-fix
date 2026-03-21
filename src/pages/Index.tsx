@@ -1,16 +1,83 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useCallback } from "react";
+import { AnimatePresence } from "framer-motion";
+import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
+import { fetchDiagnosticData, evaluateDiagnostic } from "@/lib/diagnosticEngine";
+import EntryScreen from "@/components/screens/EntryScreen";
+import ScanningScreen from "@/components/screens/ScanningScreen";
+import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
+import NetworkIncidentScreen from "@/components/screens/NetworkIncidentScreen";
+import AllClearScreen from "@/components/screens/AllClearScreen";
+import ClarificationScreen from "@/components/screens/ClarificationScreen";
+import { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen } from "@/components/screens/QoEScreens";
+import MisalignmentScreen from "@/components/screens/MisalignmentScreen";
+import SupportScreen from "@/components/screens/SupportScreen";
+import SuccessScreen from "@/components/screens/SuccessScreen";
+import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const DiagnosticFlow: React.FC = () => {
+  const { currentState, setCurrentState, setDiagnosticResult, setQoeSelected } = useDiagnostic();
+
+  const startScan = useCallback(async () => {
+    setCurrentState("scanning");
+    const result = await fetchDiagnosticData();
+    setDiagnosticResult(result);
+    const { state, qoeSelected } = evaluateDiagnostic(result);
+    setQoeSelected(qoeSelected);
+    setCurrentState(state);
+  }, [setCurrentState, setDiagnosticResult, setQoeSelected]);
+
+  const renderScreen = () => {
+    switch (currentState) {
+      case "entry":
+        return <EntryScreen key="entry" onComplete={startScan} />;
+      case "scanning":
+        return <ScanningScreen key="scanning" />;
+      case "modem_offline":
+        return <ModemOfflineScreen key="modem" />;
+      case "network_incident":
+        return <NetworkIncidentScreen key="incident" />;
+      case "all_clear":
+        return <AllClearScreen key="clear" />;
+      case "clarification":
+        return <ClarificationScreen key="clarification" />;
+      case "qoe_modem_deregs":
+        return <QoEModemDeregsScreen key="deregs" />;
+      case "qoe_dropcable":
+        return <QoEDropcableScreen key="dropcable" />;
+      case "qoe_coverage":
+        return <QoECoverageScreen key="coverage" />;
+      case "qoe_filter":
+      case "qoe_dice":
+        return <QoETechnicianScreen key="tech" />;
+      case "misalignment":
+        return <MisalignmentScreen key="misalign" />;
+      case "support":
+        return <SupportScreen key="support" />;
+      case "success":
+        return <SuccessScreen key="success" />;
+      case "wifi_flow":
+        return <WifiFlowScreen key="wifi" />;
+      default:
+        return <EntryScreen key="entry-default" onComplete={startScan} />;
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b border-border px-6 py-4">
+        <h2 className="text-lg font-bold text-foreground tracking-tight">My Internet Scan</h2>
+      </header>
+      <AnimatePresence mode="wait">
+        {renderScreen()}
+      </AnimatePresence>
     </div>
   );
 };
 
-const Index = PlaceholderIndex;
+const Index: React.FC = () => (
+  <DiagnosticProvider>
+    <DiagnosticFlow />
+  </DiagnosticProvider>
+);
 
 export default Index;
