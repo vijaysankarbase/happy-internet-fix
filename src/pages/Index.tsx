@@ -56,7 +56,7 @@ const DiagnosticFlow: React.FC = () => {
       case "wifi_flow":
         return <WifiFlowScreen key="wifi" />;
       default:
-        return <EntryScreen key="entry-default" onComplete={handleEntryComplete} />;
+        return <EntryScreen key="entry-default" onComplete={noop} />;
     }
   };
 
