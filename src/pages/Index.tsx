@@ -33,8 +33,14 @@ const DiagnosticFlow: React.FC = () => {
     switch (currentState) {
       case "intro":
         return <IntroScreen key="intro" />;
+      case "pre_scan":
+        return <PreScanScreen key="prescan" />;
+      case "retest_warning":
+        return <RetestWarningScreen key="retest" />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
+      case "scan_done":
+        return <ScanDoneScreen key="scandone" />;
       case "modem_offline":
         return <ModemOfflineScreen key="modem" />;
       case "network_incident":
