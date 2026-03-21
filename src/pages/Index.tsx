@@ -4,7 +4,6 @@ import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import DebugInfo from "@/components/DebugInfo";
 import EntryScreen from "@/components/screens/EntryScreen";
-import EntryScreen from "@/components/screens/EntryScreen";
 import ScanningScreen from "@/components/screens/ScanningScreen";
 import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
 import NetworkIncidentScreen from "@/components/screens/NetworkIncidentScreen";
@@ -17,18 +16,14 @@ import SuccessScreen from "@/components/screens/SuccessScreen";
 import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
 
 const DiagnosticFlow: React.FC = () => {
-  const { currentState, setCurrentState, setDiagnosticResult, setQoeSelected } = useDiagnostic();
+  const { currentState } = useDiagnostic();
 
-  const handleEntryComplete = useCallback(() => {
-    // After sentiment selection, go to a ready state (entry stays but sentiment is set)
-    // User should use the Diagnostic Panel to run diagnosis
-    setCurrentState("all_clear");
-  }, [setCurrentState]);
+  const noop = () => {};
 
   const renderScreen = () => {
     switch (currentState) {
       case "entry":
-        return <EntryScreen key="entry" onComplete={handleEntryComplete} />;
+        return <EntryScreen key="entry" onComplete={noop} />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
       case "modem_offline":
