@@ -3,9 +3,7 @@ import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
 import ActionButton from "@/components/ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import { Sparkles, Heart, Search, LogOut } from "lucide-react";
-import type { DiagnosticResult } from "@/types/diagnostic";
 
 const PRIORITY_MAP: Record<string, number> = {
   filter_hp47: 0.0,
