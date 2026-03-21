@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useRef } from "react";
 import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult } from "@/types/diagnostic";
 
 export interface PanelInputs {
@@ -18,6 +18,8 @@ interface DiagnosticContextType extends AppState {
   setQoeSelected: (q: QoEItem | null) => void;
   isPositive: boolean;
   reset: () => void;
+  goBack: () => void;
+  canGoBack: boolean;
   panelInputs: PanelInputs;
   setPanelInputs: React.Dispatch<React.SetStateAction<PanelInputs>>;
 }
@@ -51,6 +53,7 @@ export const useDiagnostic = () => {
 export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialState);
   const [panelInputs, setPanelInputs] = useState<PanelInputs>(initialPanelInputs);
+  const historyRef = useRef<ScreenState[]>([]);
 
   const setSentiment = useCallback((sentiment: Sentiment) => {
     const experienceMode: ExperienceMode = sentiment === "positive" ? "positive" : "negative";
@@ -66,7 +69,28 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, []);
 
   const setCurrentState = useCallback((currentState: ScreenState) => {
-    setState((s) => ({ ...s, currentState }));
+    setState((s) => {
+      // Push previous state to history (don't push "entry" as it's the home)
+      if (s.currentState !== "entry") {
+        historyRef.current = [...historyRef.current, s.currentState];
+      }
+      // If navigating to entry, clear history
+      if (currentState === "entry") {
+        historyRef.current = [];
+      }
+      return { ...s, currentState };
+    });
+  }, []);
+
+  const goBack = useCallback(() => {
+    const history = historyRef.current;
+    if (history.length === 0) {
+      setState((s) => ({ ...s, currentState: "entry" }));
+      return;
+    }
+    const previousState = history[history.length - 1];
+    historyRef.current = history.slice(0, -1);
+    setState((s) => ({ ...s, currentState: previousState }));
   }, []);
 
   const setCurrentTab = useCallback((currentTab: TabId) => {
@@ -84,6 +108,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const reset = useCallback(() => {
     setState(initialState);
     setPanelInputs(initialPanelInputs);
+    historyRef.current = [];
   }, []);
 
   return (
@@ -98,6 +123,8 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setQoeSelected,
         isPositive: state.experienceMode === "positive",
         reset,
+        goBack,
+        canGoBack: historyRef.current.length > 0,
         panelInputs,
         setPanelInputs,
       }}
