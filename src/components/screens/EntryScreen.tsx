@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import ScreenShell from "./ScreenShell";
-import ActionButton from "./ActionButton";
+import ScreenShell from "@/components/ScreenShell";
+import ActionButton from "@/components/ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { Smile, Meh, Frown } from "lucide-react";
 import type { Sentiment } from "@/types/diagnostic";
@@ -9,11 +9,13 @@ import type { Sentiment } from "@/types/diagnostic";
 const EntryScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const { setSentiment, entryPoint } = useDiagnostic();
 
-  if (entryPoint === "support") {
-    // Auto-skip for support entry
-    React.useEffect(() => {
+  useEffect(() => {
+    if (entryPoint === "support") {
       onComplete();
-    }, []);
+    }
+  }, [entryPoint, onComplete]);
+
+  if (entryPoint === "support") {
     return null;
   }
 
