@@ -84,10 +84,10 @@ const EntryScreen: React.FC = () => {
               transition={{ delay: 0.5 + i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               whileTap={{ scale: 0.93 }}
               onClick={() => handleSelect(opt.sentiment)}
-              className="w-14 h-14 rounded-full border-2 border-border bg-background flex items-center justify-center text-foreground font-bold text-xl hover:bg-secondary hover:border-primary/30 transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-14 h-14 rounded-full border-2 border-border bg-background flex items-center justify-center text-3xl hover:bg-secondary hover:border-primary/30 transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={opt.sentiment}
             >
-              {opt.label}
+              {opt.emoji}
             </motion.button>
           ))}
         </motion.div>
