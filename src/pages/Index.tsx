@@ -19,14 +19,11 @@ import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
 const DiagnosticFlow: React.FC = () => {
   const { currentState, setCurrentState, setDiagnosticResult, setQoeSelected } = useDiagnostic();
 
-  const startScan = useCallback(async () => {
-    setCurrentState("scanning");
-    const result = await fetchDiagnosticData();
-    setDiagnosticResult(result);
-    const { state, qoeSelected } = evaluateDiagnostic(result);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
-  }, [setCurrentState, setDiagnosticResult, setQoeSelected]);
+  const handleEntryComplete = useCallback(() => {
+    // After sentiment selection, go to a ready state (entry stays but sentiment is set)
+    // User should use the Diagnostic Panel to run diagnosis
+    setCurrentState("all_clear");
+  }, [setCurrentState]);
 
   const renderScreen = () => {
     switch (currentState) {
