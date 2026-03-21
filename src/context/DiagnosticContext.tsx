@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, QoEItem, DiagnosticResult } from "@/types/diagnostic";
 
+export interface PanelInputs {
+  modemInService: boolean;
+  incidentActive: boolean;
+  changeActive: boolean;
+  problemActive: boolean;
+  selectedQoe: string[];
+}
+
 interface DiagnosticContextType extends AppState {
   setSentiment: (s: Sentiment) => void;
   setEntryPoint: (e: EntryPoint) => void;
@@ -9,7 +17,17 @@ interface DiagnosticContextType extends AppState {
   setQoeSelected: (q: QoEItem | null) => void;
   isPositive: boolean;
   reset: () => void;
+  panelInputs: PanelInputs;
+  setPanelInputs: React.Dispatch<React.SetStateAction<PanelInputs>>;
 }
+
+const initialPanelInputs: PanelInputs = {
+  modemInService: true,
+  incidentActive: false,
+  changeActive: false,
+  problemActive: false,
+  selectedQoe: [],
+};
 
 const initialState: AppState = {
   experienceMode: "positive",
@@ -30,6 +48,7 @@ export const useDiagnostic = () => {
 
 export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialState);
+  const [panelInputs, setPanelInputs] = useState<PanelInputs>(initialPanelInputs);
 
   const setSentiment = useCallback((sentiment: Sentiment) => {
     const experienceMode: ExperienceMode = sentiment === "positive" ? "positive" : "negative";
@@ -56,7 +75,10 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setState((s) => ({ ...s, qoeSelected }));
   }, []);
 
-  const reset = useCallback(() => setState(initialState), []);
+  const reset = useCallback(() => {
+    setState(initialState);
+    setPanelInputs(initialPanelInputs);
+  }, []);
 
   return (
     <DiagnosticContext.Provider
@@ -69,6 +91,8 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setQoeSelected,
         isPositive: state.experienceMode === "positive",
         reset,
+        panelInputs,
+        setPanelInputs,
       }}
     >
       {children}

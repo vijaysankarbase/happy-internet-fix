@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
-import type { DiagnosticResult } from "@/types/diagnostic";
 
 const QOE_TYPES = [
   { value: "filter_hp47", label: "filter_hp47" },
@@ -18,51 +15,17 @@ const QOE_TYPES = [
   { value: "coverage", label: "coverage" },
 ] as const;
 
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
-
 const DiagnosticPanel: React.FC = () => {
-  const { setCurrentState, setDiagnosticResult, setQoeSelected } = useDiagnostic();
+  const { panelInputs, setPanelInputs } = useDiagnostic();
   const [open, setOpen] = useState(false);
 
-  const [modemInService, setModemInService] = useState(true);
-  const [incidentActive, setIncidentActive] = useState(false);
-  const [changeActive, setChangeActive] = useState(false);
-  const [problemActive, setProblemActive] = useState(false);
-  const [selectedQoe, setSelectedQoe] = useState<string[]>([]);
-
   const toggleQoe = (type: string) => {
-    setSelectedQoe((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
-  };
-
-  const handleRun = () => {
-    const apiResponse: DiagnosticResult = {
-      modem: { inService: modemInService },
-      network: {
-        incident: { active: incidentActive },
-        change: { active: changeActive },
-        problem: { active: problemActive },
-      },
-      qoe: selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-
-    setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
-    setOpen(false);
+    setPanelInputs((prev) => ({
+      ...prev,
+      selectedQoe: prev.selectedQoe.includes(type)
+        ? prev.selectedQoe.filter((t) => t !== type)
+        : [...prev.selectedQoe, type],
+    }));
   };
 
   return (
@@ -81,8 +44,8 @@ const DiagnosticPanel: React.FC = () => {
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-foreground">modem.inService</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{modemInService ? "Online" : "Offline"}</span>
-              <Switch checked={modemInService} onCheckedChange={setModemInService} />
+              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? "Online" : "Offline"}</span>
+              <Switch checked={panelInputs.modemInService} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemInService: v }))} />
             </div>
           </div>
 
@@ -90,13 +53,16 @@ const DiagnosticPanel: React.FC = () => {
           <div className="space-y-2.5">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Network</p>
             {[
-              { label: "incident.active", value: incidentActive, set: setIncidentActive },
-              { label: "change.active", value: changeActive, set: setChangeActive },
-              { label: "problem.active", value: problemActive, set: setProblemActive },
+              { label: "incident.active", key: "incidentActive" as const },
+              { label: "change.active", key: "changeActive" as const },
+              { label: "problem.active", key: "problemActive" as const },
             ].map((item) => (
               <div key={item.label} className="flex items-center justify-between">
                 <span className="text-sm text-foreground">{item.label}</span>
-                <Switch checked={item.value} onCheckedChange={item.set} />
+                <Switch
+                  checked={panelInputs[item.key]}
+                  onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, [item.key]: v }))}
+                />
               </div>
             ))}
           </div>
@@ -111,7 +77,7 @@ const DiagnosticPanel: React.FC = () => {
                   className="flex items-center gap-2 p-2 rounded-lg border border-border bg-background cursor-pointer hover:bg-secondary/50 transition-colors"
                 >
                   <Checkbox
-                    checked={selectedQoe.includes(qoe.value)}
+                    checked={panelInputs.selectedQoe.includes(qoe.value)}
                     onCheckedChange={() => toggleQoe(qoe.value)}
                   />
                   <span className="text-xs font-medium text-foreground">{qoe.label}</span>
@@ -120,9 +86,7 @@ const DiagnosticPanel: React.FC = () => {
             </div>
           </div>
 
-          <Button onClick={handleRun} className="w-full">
-            Run Diagnosis
-          </Button>
+          <p className="text-xs text-muted-foreground text-center">Select a sentiment below to run diagnosis</p>
         </div>
       </CollapsibleContent>
     </Collapsible>
