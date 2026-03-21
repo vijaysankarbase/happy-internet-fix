@@ -28,7 +28,7 @@ const DiagnosticFlow: React.FC = () => {
   const renderScreen = () => {
     switch (currentState) {
       case "entry":
-        return <EntryScreen key="entry" onComplete={startScan} />;
+        return <EntryScreen key="entry" onComplete={handleEntryComplete} />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
       case "modem_offline":
