@@ -4,6 +4,7 @@ import { DiagnosticProvider, useDiagnostic } from "@/context/DiagnosticContext";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import DebugInfo from "@/components/DebugInfo";
 import EntryScreen from "@/components/screens/EntryScreen";
+import IntroScreen from "@/components/screens/IntroScreen";
 import ScanningScreen from "@/components/screens/ScanningScreen";
 import ModemOfflineScreen from "@/components/screens/ModemOfflineScreen";
 import NetworkIncidentScreen from "@/components/screens/NetworkIncidentScreen";
@@ -18,12 +19,12 @@ import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
 const DiagnosticFlow: React.FC = () => {
   const { currentState } = useDiagnostic();
 
-  const noop = () => {};
-
   const renderScreen = () => {
     switch (currentState) {
       case "entry":
-        return <EntryScreen key="entry" onComplete={noop} />;
+        return <EntryScreen key="entry" />;
+      case "intro":
+        return <IntroScreen key="intro" />;
       case "scanning":
         return <ScanningScreen key="scanning" />;
       case "modem_offline":
