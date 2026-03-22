@@ -11,7 +11,14 @@
     "yourProducts": "Vos Produits",
     "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB utilisés",
-    "quickActions": "Actions Rapides"
+    "quickActions": "Actions Rapides",
+    "addProducts": "Ajouter des produits",
+    "addMobile": "Ajouter ou activer un mobile",
+    "addInternet": "Ajouter un abonnement Internet",
+    "addTV": "Ajouter un abonnement TV",
+    "moreThings": "Plus de choses que vous pouvez faire",
+    "topUp": "Recharger pour quelqu'un d'autre",
+    "inactive": "Inactif"
   },
   "bills": {
     "title": "Factures",

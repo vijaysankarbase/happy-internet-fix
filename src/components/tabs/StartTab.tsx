@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Wifi, ChevronRight } from "lucide-react";
+import { Wifi, ChevronRight, Smartphone, Globe, Tv, Gift } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { Progress } from "@/components/ui/progress";
 import ServiceMomentCard from "@/components/ServiceMomentCard";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import { useTranslation } from "react-i18next";
+
+const InactiveRow: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, label }) => {
+  const [showToast, setShowToast] = useState(false);
+  const { t } = useTranslation();
+
+  const handleClick = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 1500);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={handleClick}
+        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-secondary/40 transition-colors active:scale-[0.98] text-left"
+      >
+        <div className="w-9 h-9 rounded-full bg-muted/60 flex items-center justify-center shrink-0 text-muted-foreground">
+          {icon}
+        </div>
+        <span className="text-sm text-muted-foreground">{label}</span>
+        <ChevronRight className="w-4 h-4 text-muted-foreground/50 shrink-0 ml-auto" />
+      </button>
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-foreground text-background text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg z-10"
+          >
+            {t("start.inactive")}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const StartTab: React.FC = () => {
   const { setCurrentState, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
@@ -63,6 +101,32 @@ const StartTab: React.FC = () => {
           </div>
           <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
         </button>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="space-y-3"
+      >
+        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t("start.addProducts")}</h2>
+        <div className="bg-card rounded-xl border border-border overflow-hidden divide-y divide-border">
+          <InactiveRow icon={<Smartphone className="w-4 h-4" />} label={t("start.addMobile")} />
+          <InactiveRow icon={<Globe className="w-4 h-4" />} label={t("start.addInternet")} />
+          <InactiveRow icon={<Tv className="w-4 h-4" />} label={t("start.addTV")} />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="space-y-3"
+      >
+        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t("start.moreThings")}</h2>
+        <div className="bg-card rounded-xl border border-border overflow-hidden">
+          <InactiveRow icon={<Gift className="w-4 h-4" />} label={t("start.topUp")} />
+        </div>
       </motion.div>
     </div>
   );
