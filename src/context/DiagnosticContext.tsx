@@ -134,6 +134,8 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         canGoBack: historyRef.current.length > 0,
         panelInputs,
         setPanelInputs,
+        serviceMomentDismissed,
+        dismissServiceMoment: () => setServiceMomentDismissed(true),
       }}
     >
       {children}
