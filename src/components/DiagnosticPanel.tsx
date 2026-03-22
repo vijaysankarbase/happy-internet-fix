@@ -130,7 +130,7 @@ const DiagnosticPanel: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-xs text-muted-foreground text-center">{t("diagnosticPanel.selectSentiment")}</p>
+          <p className="text-xs text-muted-foreground text-center">Select a sentiment below to run diagnosis</p>
         </div>
       </CollapsibleContent>
     </Collapsible>
