@@ -26,7 +26,7 @@ const StartTab: React.FC = () => {
 
       {/* Service Moment Card */}
       <AnimatePresence>
-        {!serviceMomentDismissed && (
+        {showCard && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}

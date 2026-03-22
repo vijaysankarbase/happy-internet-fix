@@ -40,6 +40,15 @@ const DiagnosticPanel: React.FC = () => {
       </CollapsibleTrigger>
       <CollapsibleContent>
         <div className="px-4 py-4 bg-card border-b border-border space-y-4">
+          {/* ELT */}
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-foreground">ELT (Service Moment)</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? "On" : "Off"}</span>
+              <Switch checked={panelInputs.eltEnabled} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, eltEnabled: v }))} />
+            </div>
+          </div>
+
           {/* Modem */}
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-foreground">modem.inService</span>
