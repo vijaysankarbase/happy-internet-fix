@@ -58,6 +58,7 @@ export const useDiagnostic = () => {
 export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialState);
   const [panelInputs, setPanelInputs] = useState<PanelInputs>(initialPanelInputs);
+  const [serviceMomentDismissed, setServiceMomentDismissed] = useState(false);
   const historyRef = useRef<ScreenState[]>([]);
 
   const setSentiment = useCallback((sentiment: Sentiment) => {
