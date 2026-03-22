@@ -10,6 +10,7 @@ export interface PanelInputs {
 }
 
 interface DiagnosticContextType extends AppState {
+  previousState: ScreenState | null;
   setSentiment: (s: Sentiment) => void;
   setEntryPoint: (e: EntryPoint) => void;
   setCurrentState: (s: ScreenState) => void;
