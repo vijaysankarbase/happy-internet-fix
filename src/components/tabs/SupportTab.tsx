@@ -86,7 +86,7 @@ const SupportTab: React.FC = () => {
         </div>
         <div className="px-5 pb-5">
           <ActionButton onClick={handleStartScan} icon={<Search className="w-5 h-5" />}>
-            Start my internet scan
+            Issue with your WiFi?
           </ActionButton>
         </div>
       </motion.div>
