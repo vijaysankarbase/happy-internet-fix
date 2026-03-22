@@ -224,60 +224,7 @@ const QoEDropcableScreen: React.FC = () => {
   );
 };
 
-/* ─── Coverage ─── */
-const QoECoverageScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [phase, setPhase] = useState<"confirm" | "tips" | "verify">("confirm");
-
-  if (phase === "verify") {
-    return (
-      <ScreenShell title="Did repositioning help?">
-        <div className="flex flex-col gap-3">
-          <ActionButton onClick={() => setCurrentState("success")} icon={<CheckCircle2 className="w-5 h-5" />}>Yes, much better!</ActionButton>
-          <ActionButton variant="outline" onClick={() => setCurrentState("support")}>No, I need more help</ActionButton>
-        </div>
-      </ScreenShell>
-    );
-  }
-
-  if (phase === "tips") {
-    const tips = [
-      "Move your router to a central, elevated location",
-      "Keep it away from walls, microwaves, and other electronics",
-      "Consider a WiFi booster for hard-to-reach areas",
-    ];
-    return (
-      <ScreenShell
-        icon={<div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center"><MapPin className="w-8 h-8 text-primary" /></div>}
-        title="Coverage tips"
-        subtitle="Here are some things that can improve your WiFi coverage:"
-      >
-        <div className="flex flex-col gap-3 mb-6 text-left">
-          {tips.map((tip, i) => (
-            <div key={i} className="p-4 rounded-xl bg-card border border-border flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center shrink-0">{i + 1}</span>
-              <p className="text-foreground text-sm">{tip}</p>
-            </div>
-          ))}
-        </div>
-        <ActionButton onClick={() => setPhase("verify")}>I've tried these</ActionButton>
-      </ScreenShell>
-    );
-  }
-
-  return (
-    <ScreenShell
-      icon={<div className="w-16 h-16 rounded-full bg-warning/10 flex items-center justify-center"><MapPin className="w-8 h-8 text-warning" /></div>}
-      title="WiFi coverage issues detected"
-      subtitle="Does this match what you're experiencing — weak signal in parts of your home?"
-    >
-      <div className="flex flex-col gap-3">
-        <ActionButton onClick={() => setPhase("tips")}>Yes, that sounds right</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("support")}>No, my issue is different</ActionButton>
-      </div>
-    </ScreenShell>
-  );
-};
+/* ─── Coverage — now in QoECoverageFlow.tsx ─── */
 
 /* ─── Technician (filter / dice) ─── */
 const QoETechnicianScreen: React.FC = () => {
@@ -337,4 +284,4 @@ const QoEBrokenHardwareScreen: React.FC = () => {
   );
 };
 
-export { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen, QoEBrokenHardwareScreen };
+export { QoEModemDeregsScreen, QoEDropcableScreen, QoETechnicianScreen, QoEBrokenHardwareScreen };

@@ -17,6 +17,7 @@ export type ScreenState =
   | "qoe_modem_deregs"
   | "qoe_dropcable"
   | "qoe_coverage"
+  | "qoe_coverage_booster"
   | "qoe_filter"
   | "qoe_filter_hp47"
   | "qoe_filter_tof"
