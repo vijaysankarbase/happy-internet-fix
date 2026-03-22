@@ -310,7 +310,7 @@
     },
     "brokenHardware": {
       "causeTitle": "Poor or no connectivity",
-      "causeSubtitle": "We detect that you have poor or no connectivity. The most probable cause is a defective modem.",
+      "causeSubtitle": "We detect you may have poor or no connectivity. The most probable cause is a defective modem.",
       "resolutionTitle": "Modem replacement needed",
       "resolutionSubtitle": "Your modem needs to be replaced. Please contact our support team to arrange a replacement.",
       "scheduleReplacement": "Schedule replacement"
