@@ -28,6 +28,7 @@ interface DiagnosticContextType extends AppState {
 
 const initialPanelInputs: PanelInputs = {
   modemInService: true,
+  modemWifiOn: true,
   incidentActive: false,
   changeActive: false,
   problemActive: false,

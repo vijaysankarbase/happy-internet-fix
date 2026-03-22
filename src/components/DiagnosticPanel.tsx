@@ -48,6 +48,13 @@ const DiagnosticPanel: React.FC = () => {
               <Switch checked={panelInputs.modemInService} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemInService: v }))} />
             </div>
           </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-foreground">modem.wifiOn</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">{panelInputs.modemWifiOn ? "On" : "Off"}</span>
+              <Switch checked={panelInputs.modemWifiOn} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemWifiOn: v }))} />
+            </div>
+          </div>
 
           {/* Network toggles */}
           <div className="space-y-2.5">
