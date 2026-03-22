@@ -100,7 +100,7 @@ const ModemRebootDrawer: React.FC<{
           <DrawerFooter className="px-6 pb-6 flex flex-col gap-3">
             <ActionButton onClick={handleStart} icon={<RotateCcw className="w-5 h-5" />}>Start</ActionButton>
             <DrawerClose asChild>
-              <ActionButton variant="outline">Back</ActionButton>
+              <ActionButton variant="outline" onClick={() => {}}>Back</ActionButton>
             </DrawerClose>
           </DrawerFooter>
         )}
