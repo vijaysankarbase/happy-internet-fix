@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useCallback, useRef } from 
 import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult } from "@/types/diagnostic";
 
 export interface PanelInputs {
+  eltEnabled: boolean;
   modemInService: boolean;
   modemWifiOn: boolean;
   incidentActive: boolean;
