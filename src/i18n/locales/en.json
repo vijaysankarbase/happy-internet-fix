@@ -334,11 +334,11 @@
       },
       "filter_hp47": {
         "label": "Technical issue",
-        "description": "A specific filter component (HP47) has been flagged. A technician visit is required to inspect and replace it."
+        "description": "A technician visit is needed to inspect and replace a filter that protects your internet connection from interference by household electronics or nearby radio transmitters."
       },
       "filter_tof": {
         "label": "Technical issue",
-        "description": "A filter issue (TOF) has been detected in your line. This needs an on-site technician to resolve."
+        "description": "A technician visit is needed to inspect and replace a filter that protects your internet connection from interference by household electronics or nearby radio transmitters."
       },
       "dice": {
         "label": "Technical issue",

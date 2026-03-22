@@ -334,11 +334,11 @@
       },
       "filter_hp47": {
         "label": "Problème technique",
-        "description": "Un composant filtre spécifique (HP47) a été signalé. Une visite de technicien est nécessaire pour l'inspecter et le remplacer."
+        "description": "La visite d'un technicien est nécessaire pour inspecter et remplacer un filtre qui protège votre connexion internet contre les interférences des appareils ménagers ou des émetteurs radio à proximité."
       },
       "filter_tof": {
         "label": "Problème technique",
-        "description": "Un problème de filtre (TOF) a été détecté dans votre ligne. Cela nécessite un technicien sur place pour résoudre."
+        "description": "La visite d'un technicien est nécessaire pour inspecter et remplacer un filtre qui protège votre connexion internet contre les interférences des appareils ménagers ou des émetteurs radio à proximité."
       },
       "dice": {
         "label": "Problème technique",
