@@ -62,8 +62,9 @@ const buildPrompt = (sentiment: string, qoeType: string | undefined, isModemOffl
 };
 
 const ChatFlowScreen: React.FC = () => {
-  const { setCurrentState, sentiment, qoeSelected } = useDiagnostic();
-  const PROMPT_TEXT = buildPrompt(sentiment, qoeSelected?.type);
+  const { setCurrentState, sentiment, qoeSelected, diagnosticResult } = useDiagnostic();
+  const isModemOffline = diagnosticResult ? !diagnosticResult.modem.inService : false;
+  const PROMPT_TEXT = buildPrompt(sentiment, qoeSelected?.type, isModemOffline);
   const [limitationSeen, setLimitationSeen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
