@@ -334,11 +334,11 @@
       },
       "filter_hp47": {
         "label": "Technisch probleem",
-        "description": "Een specifiek filtercomponent (HP47) is gemarkeerd. Een technicus bezoek is nodig om het te inspecteren en te vervangen."
+        "description": "Er is een technicusbezoek nodig om een filter te controleren en te vervangen dat je internetverbinding beschermt tegen storing van huishoudelijke apparaten of nabijgelegen radiozenders."
       },
       "filter_tof": {
         "label": "Technisch probleem",
-        "description": "Een filterprobleem (TOF) is gedetecteerd in je lijn. Dit heeft een technicus ter plaatse nodig om op te lossen."
+        "description": "Er is een technicusbezoek nodig om een filter te controleren en te vervangen dat je internetverbinding beschermt tegen storing van huishoudelijke apparaten of nabijgelegen radiozenders."
       },
       "dice": {
         "label": "Technisch probleem",
