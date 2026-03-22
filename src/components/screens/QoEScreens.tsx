@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { RotateCcw, Cable, Wrench, CheckCircle2, XCircle, AlertTriangle, Info, Loader2, Image } from "lucide-react";
+import { RotateCcw, Cable, Wrench, CheckCircle2, XCircle, AlertTriangle, Info, Loader2 } from "lucide-react";
+import modemCableImg from "@/assets/modem-cable-tighten.jpg";
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer";
 import { useTranslation } from "react-i18next";
 
@@ -119,8 +120,9 @@ const QoEDropcableScreen: React.FC = () => {
             <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0 text-muted-foreground"><Cable className="w-5 h-5" /></div>
             <div><p className="font-semibold text-foreground">{t("qoe.dropcable.tightenCable")}</p><p className="text-sm text-muted-foreground mt-1">{t("qoe.dropcable.tightenCableDesc")}</p></div>
           </div>
-          <div className="flex items-center justify-center p-6 rounded-xl bg-muted/30 border border-border">
-            <div className="flex flex-col items-center gap-2 text-muted-foreground"><Image className="w-10 h-10" /><p className="text-xs">{t("qoe.dropcable.visualGuide")}</p></div>
+          <div className="rounded-xl border border-border overflow-hidden">
+            <img src={modemCableImg} alt={t("qoe.dropcable.tightenCable")} className="w-full h-auto object-cover" />
+            <p className="text-xs text-muted-foreground text-center py-2 px-3">{t("qoe.dropcable.visualGuide")}</p>
           </div>
         </div>
         <div className="flex flex-col gap-3">
