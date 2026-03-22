@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Wifi } from "lucide-react";
+import { Wifi, X } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import type { Sentiment } from "@/types/diagnostic";
 
 interface ServiceMomentCardProps {
   variant?: "card" | "list-item";
+  onDismiss?: () => void;
 }
 
 const options: { sentiment: Sentiment; emoji: string }[] = [
@@ -14,7 +15,7 @@ const options: { sentiment: Sentiment; emoji: string }[] = [
   { sentiment: "positive", emoji: "😊" },
 ];
 
-const ServiceMomentCard: React.FC<ServiceMomentCardProps> = ({ variant = "card" }) => {
+const ServiceMomentCard: React.FC<ServiceMomentCardProps> = ({ variant = "card", onDismiss }) => {
   const { setSentiment, setCurrentState } = useDiagnostic();
 
   const handleSelect = (s: Sentiment) => {
@@ -67,6 +68,15 @@ const ServiceMomentCard: React.FC<ServiceMomentCardProps> = ({ variant = "card" 
         <div className="flex-1 min-w-0">
           <p className="text-xs font-semibold text-muted-foreground tracking-wide uppercase">My Internet Scan</p>
         </div>
+        {onDismiss && (
+          <button
+            onClick={onDismiss}
+            className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors active:scale-95"
+            aria-label="Dismiss"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
       </div>
       <div className="px-5 pb-2">
         <h2 className="text-base font-bold text-foreground tracking-tight">How is your WiFi at home?</h2>

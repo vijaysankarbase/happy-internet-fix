@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Wifi, ChevronRight } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { Progress } from "@/components/ui/progress";
@@ -8,6 +8,7 @@ import DiagnosticPanel from "@/components/DiagnosticPanel";
 
 const StartTab: React.FC = () => {
   const { setCurrentState } = useDiagnostic();
+  const [dismissed, setDismissed] = useState(false);
 
   return (
     <div className="flex flex-col gap-6 px-5 pt-6 pb-20">
@@ -24,13 +25,18 @@ const StartTab: React.FC = () => {
       </motion.div>
 
       {/* Service Moment Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <ServiceMomentCard variant="card" />
-      </motion.div>
+      <AnimatePresence>
+        {!dismissed && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0, overflow: "hidden" }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ServiceMomentCard variant="card" onDismiss={() => setDismissed(true)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Your Products */}
       <motion.div
