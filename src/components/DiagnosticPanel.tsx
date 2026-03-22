@@ -70,9 +70,9 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* ELT */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">{t("diagnosticPanel.elt")}</span>
+            <span className="text-sm font-medium text-foreground">ELT (Service Moment)</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? t("diagnosticPanel.on") : t("diagnosticPanel.off")}</span>
+              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? "On" : "Off"}</span>
               <Switch checked={panelInputs.eltEnabled} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, eltEnabled: v }))} />
             </div>
           </div>
