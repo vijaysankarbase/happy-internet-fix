@@ -61,6 +61,9 @@ export const evaluateDiagnostic = (
   }
 
   if (result.network.incident.active || result.network.change.active || result.network.problem.active) {
+    if (sentiment === "positive") {
+      return { state: "positive_mismatch", qoeSelected: null };
+    }
     return { state: "network_incident", qoeSelected: null };
   }
 
