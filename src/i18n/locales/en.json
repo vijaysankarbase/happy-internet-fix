@@ -9,7 +9,7 @@
     "hello": "Hello Vijay",
     "welcomeBack": "Welcome back",
     "yourProducts": "Your Products",
-    "limitedInternet": "Limited Internet",
+    "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB used",
     "quickActions": "Quick Actions"
   },
