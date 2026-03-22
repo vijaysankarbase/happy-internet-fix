@@ -7,7 +7,8 @@ import ServiceMomentCard from "@/components/ServiceMomentCard";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 
 const StartTab: React.FC = () => {
-  const { setCurrentState, serviceMomentDismissed, dismissServiceMoment } = useDiagnostic();
+  const { setCurrentState, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
+  const showCard = panelInputs.eltEnabled && !serviceMomentDismissed;
 
   return (
     <div className="flex flex-col gap-6 px-5 pt-6 pb-20">
@@ -25,7 +26,7 @@ const StartTab: React.FC = () => {
 
       {/* Service Moment Card */}
       <AnimatePresence>
-        {!serviceMomentDismissed && (
+        {showCard && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
