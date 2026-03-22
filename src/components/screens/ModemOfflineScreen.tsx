@@ -62,7 +62,7 @@ const ModemOfflineScreen: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <ActionButton onClick={redoDiagnosis} icon={<RotateCcw className="w-5 h-5" />}>
+          <ActionButton onClick={() => setCurrentState("retest_warning")} icon={<RotateCcw className="w-5 h-5" />}>
             Redo test
           </ActionButton>
           <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>
