@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Slechte of geen verbinding",
-    "subtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem waar we al van op de hoogte zijn en aan werken.",
+    "subtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem waar we al van op de hoogte zijn en aan werken.",
     "solutionsTitle": "Mogelijke oplossingen",
     "waitForTech": "Wacht tot de technici het oplossen",
     "waitForTechDesc": "Ons team is al op de hoogte en werkt aan het oplossen van dit probleem.",
