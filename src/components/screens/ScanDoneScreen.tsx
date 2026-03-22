@@ -17,7 +17,7 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const ScanDoneScreen: React.FC = () => {
-  const { panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
+  const { panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState, sentiment } = useDiagnostic();
 
   const handleSeeResult = () => {
     const apiResponse = {
