@@ -310,7 +310,7 @@
     },
     "brokenHardware": {
       "causeTitle": "Slechte of geen verbinding",
-      "causeSubtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem.",
+      "causeSubtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem.",
       "resolutionTitle": "Modemvervanging nodig",
       "resolutionSubtitle": "Je modem moet worden vervangen. Neem contact op met ons supportteam om een vervanging te regelen.",
       "scheduleReplacement": "Vervanging plannen"
