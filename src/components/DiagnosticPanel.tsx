@@ -79,9 +79,9 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* Modem */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">{t("diagnosticPanel.modemInService")}</span>
+            <span className="text-sm font-medium text-foreground">modem.inService</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? t("diagnosticPanel.modemOnline") : t("diagnosticPanel.modemOffline")}</span>
+              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? "Online" : "Offline"}</span>
               <Switch checked={panelInputs.modemInService} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemInService: v }))} />
             </div>
           </div>
