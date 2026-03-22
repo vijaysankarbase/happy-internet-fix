@@ -18,6 +18,10 @@ import AllClearScreen from "@/components/screens/AllClearScreen";
 import ClarificationScreen from "@/components/screens/ClarificationScreen";
 import { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen, QoEBrokenHardwareScreen } from "@/components/screens/QoEScreens";
 import MisalignmentScreen from "@/components/screens/MisalignmentScreen";
+import SentimentMismatchScreen from "@/components/screens/SentimentMismatchScreen";
+import MismatchActionsScreen from "@/components/screens/MismatchActionsScreen";
+import WifiHelpScreen from "@/components/screens/WifiHelpScreen";
+import ChatFlowScreen from "@/components/screens/ChatFlowScreen";
 import SupportScreen from "@/components/screens/SupportScreen";
 import SuccessScreen from "@/components/screens/SuccessScreen";
 import WifiFlowScreen from "@/components/screens/WifiFlowScreen";
@@ -64,6 +68,14 @@ const DiagnosticFlow: React.FC = () => {
         return <QoEBrokenHardwareScreen key="hardware" />;
       case "misalignment":
         return <MisalignmentScreen key="misalign" />;
+      case "sentiment_mismatch":
+        return <SentimentMismatchScreen key="mismatch" />;
+      case "mismatch_actions":
+        return <MismatchActionsScreen key="mismatch-actions" />;
+      case "wifi_help":
+        return <WifiHelpScreen key="wifi-help" />;
+      case "chat_flow":
+        return <ChatFlowScreen key="chat-flow" />;
       case "support":
         return <SupportScreen key="support" />;
       case "success":

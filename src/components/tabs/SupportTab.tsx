@@ -40,7 +40,7 @@ const SupportTab: React.FC = () => {
     };
 
     setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
+    const { state, qoeSelected } = evaluateDiagnostic(apiResponse, "negative");
     setQoeSelected(qoeSelected);
     setCurrentState(state);
   };
