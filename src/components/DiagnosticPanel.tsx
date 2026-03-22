@@ -40,7 +40,7 @@ const DiagnosticPanel: React.FC = () => {
     <Collapsible open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger asChild>
         <button className="w-full flex items-center justify-between px-4 py-2.5 bg-card border-b border-border text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-          <span>{t("diagnosticPanel.title")}</span>
+          <span>🛠 Diagnostic Input Panel</span>
           <ChevronDown
             className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           />
@@ -70,36 +70,36 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* ELT */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">{t("diagnosticPanel.elt")}</span>
+            <span className="text-sm font-medium text-foreground">ELT (Service Moment)</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? t("diagnosticPanel.on") : t("diagnosticPanel.off")}</span>
+              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? "On" : "Off"}</span>
               <Switch checked={panelInputs.eltEnabled} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, eltEnabled: v }))} />
             </div>
           </div>
 
           {/* Modem */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">{t("diagnosticPanel.modemInService")}</span>
+            <span className="text-sm font-medium text-foreground">modem.inService</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? t("diagnosticPanel.modemOnline") : t("diagnosticPanel.modemOffline")}</span>
+              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? "Online" : "Offline"}</span>
               <Switch checked={panelInputs.modemInService} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemInService: v }))} />
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">{t("diagnosticPanel.modemWifiOn")}</span>
+            <span className="text-sm font-medium text-foreground">modem.wifiOn</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.modemWifiOn ? t("diagnosticPanel.on") : t("diagnosticPanel.off")}</span>
+              <span className="text-xs text-muted-foreground">{panelInputs.modemWifiOn ? "On" : "Off"}</span>
               <Switch checked={panelInputs.modemWifiOn} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemWifiOn: v }))} />
             </div>
           </div>
 
           {/* Network toggles */}
           <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("diagnosticPanel.network")}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Network</p>
             {[
-              { label: t("diagnosticPanel.incidentActive"), key: "incidentActive" as const },
-              { label: t("diagnosticPanel.changeActive"), key: "changeActive" as const },
-              { label: t("diagnosticPanel.problemActive"), key: "problemActive" as const },
+              { label: "incident.active", key: "incidentActive" as const },
+              { label: "change.active", key: "changeActive" as const },
+              { label: "problem.active", key: "problemActive" as const },
             ].map((item) => (
               <div key={item.key} className="flex items-center justify-between">
                 <span className="text-sm text-foreground">{item.label}</span>
@@ -113,7 +113,7 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* QOE multi-select */}
           <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("diagnosticPanel.qoeTypes")}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">QOE Types</p>
             <div className="grid grid-cols-2 gap-2">
               {QOE_TYPES.map((qoe) => (
                 <label
@@ -130,7 +130,7 @@ const DiagnosticPanel: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-xs text-muted-foreground text-center">{t("diagnosticPanel.selectSentiment")}</p>
+          <p className="text-xs text-muted-foreground text-center">Select a sentiment below to run diagnosis</p>
         </div>
       </CollapsibleContent>
     </Collapsible>

@@ -9,7 +9,7 @@
     "hello": "Hello Vijay",
     "welcomeBack": "Welcome back",
     "yourProducts": "Your Products",
-    "limitedInternet": "Limited Internet",
+    "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB used",
     "quickActions": "Quick Actions"
   },
@@ -35,7 +35,7 @@
     "dismiss": "Dismiss"
   },
   "productDetail": {
-    "title": "Limited Internet",
+    "title": "Internet Limited",
     "dataUsage": "Data Usage",
     "currentPeriod": "Current period",
     "used": "{{used}} GB used",

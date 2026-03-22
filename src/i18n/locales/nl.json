@@ -2,14 +2,14 @@
   "nav": {
     "start": "Start",
     "bills": "Facturen",
-    "support": "Ondersteuning",
+    "support": "Support",
     "account": "Account"
   },
   "start": {
     "hello": "Hallo Vijay",
     "welcomeBack": "Welkom terug",
     "yourProducts": "Jouw Producten",
-    "limitedInternet": "Beperkt Internet",
+    "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB gebruikt",
     "quickActions": "Snelle Acties"
   },
@@ -35,7 +35,7 @@
     "dismiss": "Sluiten"
   },
   "productDetail": {
-    "title": "Beperkt Internet",
+    "title": "Internet Limited",
     "dataUsage": "Dataverbruik",
     "currentPeriod": "Huidige periode",
     "used": "{{used}} GB gebruikt",

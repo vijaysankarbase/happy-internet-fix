@@ -2,15 +2,15 @@
   "nav": {
     "start": "Accueil",
     "bills": "Factures",
-    "support": "Assistance",
+    "support": "Support",
     "account": "Compte"
   },
   "start": {
     "hello": "Bonjour Vijay",
     "welcomeBack": "Bienvenue",
     "yourProducts": "Vos Produits",
-    "limitedInternet": "Internet Limité",
-    "usageLabel": "{{used}} Go / {{total}} Go utilisés",
+    "limitedInternet": "Internet Limited",
+    "usageLabel": "{{used}} GB / {{total}} GB utilisés",
     "quickActions": "Actions Rapides"
   },
   "bills": {
@@ -35,11 +35,11 @@
     "dismiss": "Fermer"
   },
   "productDetail": {
-    "title": "Internet Limité",
+    "title": "Internet Limited",
     "dataUsage": "Utilisation des données",
     "currentPeriod": "Période en cours",
-    "used": "{{used}} Go utilisés",
-    "total": "{{total}} Go au total",
+    "used": "{{used}} GB utilisés",
+    "total": "{{total}} GB au total",
     "back": "Retour"
   },
   "intro": {
