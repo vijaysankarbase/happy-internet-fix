@@ -95,11 +95,11 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* Network toggles */}
           <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("diagnosticPanel.network")}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Network</p>
             {[
-              { label: t("diagnosticPanel.incidentActive"), key: "incidentActive" as const },
-              { label: t("diagnosticPanel.changeActive"), key: "changeActive" as const },
-              { label: t("diagnosticPanel.problemActive"), key: "problemActive" as const },
+              { label: "incident.active", key: "incidentActive" as const },
+              { label: "change.active", key: "changeActive" as const },
+              { label: "problem.active", key: "problemActive" as const },
             ].map((item) => (
               <div key={item.key} className="flex items-center justify-between">
                 <span className="text-sm text-foreground">{item.label}</span>
