@@ -18,7 +18,7 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const SupportTab: React.FC = () => {
-  const { panelInputs, setSentiment, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
+  const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
 
   const modemOnline = panelInputs.modemInService;
 
