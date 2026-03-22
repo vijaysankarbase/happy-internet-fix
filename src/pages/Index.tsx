@@ -62,7 +62,8 @@ const DiagnosticFlow: React.FC = () => {
       case "qoe_dropcable":
         return <QoEDropcableScreen key="dropcable" />;
       case "qoe_coverage":
-        return <QoECoverageScreen key="coverage" />;
+      case "qoe_coverage_booster":
+        return <QoECoverageBoosterScreen key="coverage" />;
       case "qoe_filter":
       case "qoe_filter_hp47":
       case "qoe_filter_tof":

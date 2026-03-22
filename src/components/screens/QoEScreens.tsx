@@ -284,4 +284,4 @@ const QoEBrokenHardwareScreen: React.FC = () => {
   );
 };
 
-export { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnicianScreen, QoEBrokenHardwareScreen };
+export { QoEModemDeregsScreen, QoEDropcableScreen, QoETechnicianScreen, QoEBrokenHardwareScreen };
