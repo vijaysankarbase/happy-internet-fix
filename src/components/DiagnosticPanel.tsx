@@ -113,7 +113,7 @@ const DiagnosticPanel: React.FC = () => {
 
           {/* QOE multi-select */}
           <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t("diagnosticPanel.qoeTypes")}</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">QOE Types</p>
             <div className="grid grid-cols-2 gap-2">
               {QOE_TYPES.map((qoe) => (
                 <label
