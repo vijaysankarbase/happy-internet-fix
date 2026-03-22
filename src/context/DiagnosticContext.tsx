@@ -3,6 +3,7 @@ import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabI
 
 export interface PanelInputs {
   modemInService: boolean;
+  modemWifiOn: boolean;
   incidentActive: boolean;
   changeActive: boolean;
   problemActive: boolean;
