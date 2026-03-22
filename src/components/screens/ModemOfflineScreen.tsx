@@ -5,18 +5,8 @@ import { useDiagnostic } from "@/context/DiagnosticContext";
 import { WifiOff, Plug, RotateCcw, XCircle, AlertTriangle, Info } from "lucide-react";
 import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
-
 const ModemOfflineScreen: React.FC = () => {
-  const { setCurrentState, setQoeSelected, panelInputs } = useDiagnostic();
+  const { setCurrentState } = useDiagnostic();
   const [step, setStep] = useState<"cause" | "solutions">("cause");
 
   const redoDiagnosis = () => {
