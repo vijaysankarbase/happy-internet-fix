@@ -24,6 +24,8 @@ interface DiagnosticContextType extends AppState {
   canGoBack: boolean;
   panelInputs: PanelInputs;
   setPanelInputs: React.Dispatch<React.SetStateAction<PanelInputs>>;
+  serviceMomentDismissed: boolean;
+  dismissServiceMoment: () => void;
 }
 
 const initialPanelInputs: PanelInputs = {
