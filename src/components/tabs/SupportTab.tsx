@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Router, AlertTriangle, CheckCircle, Search } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
+
 import ActionButton from "@/components/ActionButton";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import type { DiagnosticResult } from "@/types/diagnostic";
@@ -18,13 +18,13 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const SupportTab: React.FC = () => {
-  const { panelInputs, setSentiment, setDiagnosticResult, setQoeSelected, setCurrentState } = useDiagnostic();
+  const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
 
   const modemOnline = panelInputs.modemInService;
 
   const handleStartScan = () => {
-    // Support entry always assumes negative sentiment
     setSentiment("negative");
+    setEntryPoint("support");
 
     const apiResponse: DiagnosticResult = {
       modem: { inService: panelInputs.modemInService },
@@ -40,9 +40,7 @@ const SupportTab: React.FC = () => {
     };
 
     setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse, "negative");
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
+    setCurrentState("intro");
   };
 
   return (
@@ -88,7 +86,7 @@ const SupportTab: React.FC = () => {
         </div>
         <div className="px-5 pb-5">
           <ActionButton onClick={handleStartScan} icon={<Search className="w-5 h-5" />}>
-            Start my internet scan
+            Issue with your WiFi?
           </ActionButton>
         </div>
       </motion.div>
