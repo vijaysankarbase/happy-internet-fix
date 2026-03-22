@@ -14,10 +14,38 @@ import {
   DrawerClose,
 } from "@/components/ui/drawer";
 
-const PROMPT_TEXT = `Hi, I ran the internet self-diagnosis tool and it shows no issues on your end, but I'm still experiencing problems with my connection. My WiFi feels slow/unstable and doesn't match what your system reports. Could you please help me investigate further?`;
+const getIssueDescription = (qoeType: string | undefined): string => {
+  const map: Record<string, string> = {
+    broken_hardware_modem: "a defective modem",
+    filter: "a network issue",
+    filter_hp47: "a network issue",
+    filter_tof: "a network issue",
+    dropcable: "a cable connection issue",
+    dice: "a network issue",
+    modem_deregs: "a network or modem issue",
+    coverage: "a WiFi coverage issue",
+  };
+  return map[qoeType || ""] || "a connectivity issue";
+};
+
+const buildPrompt = (sentiment: string, qoeType: string | undefined): string => {
+  const issue = getIssueDescription(qoeType);
+
+  if (sentiment === "positive") {
+    return `Hi, I don't have an issue at the moment but your scan indicates I may have ${issue}. Can you help?`;
+  }
+
+  if (sentiment === "neutral") {
+    return `Hi, I ran the internet self-diagnosis tool and your scan detected ${issue}. I'm not sure if it's affecting me yet, but could you please look into it?`;
+  }
+
+  // negative
+  return `Hi, I'm experiencing problems with my internet. Your self-diagnosis tool detected ${issue}, which matches what I'm going through. Could you please help me resolve this?`;
+};
 
 const ChatFlowScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
+  const { setCurrentState, sentiment, qoeSelected } = useDiagnostic();
+  const PROMPT_TEXT = buildPrompt(sentiment, qoeSelected?.type);
   const [limitationSeen, setLimitationSeen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
