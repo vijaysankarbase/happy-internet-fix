@@ -111,8 +111,9 @@ const ModemRebootDrawer: React.FC<{
 
 /* ─── Modem Deregs ─── */
 const QoEModemDeregsScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "solutions">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "solutions">(fromExplainer ? "solutions" : "cause");
   const [rebootOpen, setRebootOpen] = useState(false);
 
   if (step === "solutions") {
@@ -163,8 +164,9 @@ const QoEModemDeregsScreen: React.FC = () => {
 
 /* ─── Dropcable ─── */
 const QoEDropcableScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "solutions" | "verify">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "solutions" | "verify">(fromExplainer ? "solutions" : "cause");
 
   if (step === "verify") {
     return (
@@ -279,8 +281,9 @@ const QoECoverageScreen: React.FC = () => {
 
 /* ─── Technician (filter / dice) ─── */
 const QoETechnicianScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "resolution">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "resolution">(fromExplainer ? "resolution" : "cause");
 
   if (step === "resolution") {
     return (
@@ -307,8 +310,9 @@ const QoETechnicianScreen: React.FC = () => {
 
 /* ─── Broken Hardware Modem ─── */
 const QoEBrokenHardwareScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "resolution">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "resolution">(fromExplainer ? "resolution" : "cause");
 
   if (step === "resolution") {
     return (

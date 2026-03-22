@@ -10,6 +10,7 @@ export interface PanelInputs {
 }
 
 interface DiagnosticContextType extends AppState {
+  previousState: ScreenState | null;
   setSentiment: (s: Sentiment) => void;
   setEntryPoint: (e: EntryPoint) => void;
   setCurrentState: (s: ScreenState) => void;
@@ -115,6 +116,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     <DiagnosticContext.Provider
       value={{
         ...state,
+        previousState: historyRef.current.length > 0 ? historyRef.current[historyRef.current.length - 1] : null,
         setSentiment,
         setEntryPoint,
         setCurrentState,
