@@ -9,8 +9,8 @@
     "hello": "Bonjour Vijay",
     "welcomeBack": "Bienvenue",
     "yourProducts": "Vos Produits",
-    "limitedInternet": "Internet Limité",
-    "usageLabel": "{{used}} Go / {{total}} Go utilisés",
+    "limitedInternet": "Internet Limited",
+    "usageLabel": "{{used}} GB / {{total}} GB utilisés",
     "quickActions": "Actions Rapides"
   },
   "bills": {
