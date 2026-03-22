@@ -20,6 +20,9 @@ import { QoEModemDeregsScreen, QoEDropcableScreen, QoECoverageScreen, QoETechnic
 import MisalignmentScreen from "@/components/screens/MisalignmentScreen";
 import SentimentMismatchScreen from "@/components/screens/SentimentMismatchScreen";
 import MismatchActionsScreen from "@/components/screens/MismatchActionsScreen";
+import PositiveMismatchScreen from "@/components/screens/PositiveMismatchScreen";
+import PositiveMismatchActionsScreen from "@/components/screens/PositiveMismatchActionsScreen";
+import QoEExplainerScreen from "@/components/screens/QoEExplainerScreen";
 import WifiHelpScreen from "@/components/screens/WifiHelpScreen";
 import ChatFlowScreen from "@/components/screens/ChatFlowScreen";
 import SupportScreen from "@/components/screens/SupportScreen";
@@ -72,6 +75,12 @@ const DiagnosticFlow: React.FC = () => {
         return <SentimentMismatchScreen key="mismatch" />;
       case "mismatch_actions":
         return <MismatchActionsScreen key="mismatch-actions" />;
+      case "positive_mismatch":
+        return <PositiveMismatchScreen key="positive-mismatch" />;
+      case "positive_mismatch_actions":
+        return <PositiveMismatchActionsScreen key="positive-mismatch-actions" />;
+      case "qoe_explainer":
+        return <QoEExplainerScreen key="qoe-explainer" />;
       case "wifi_help":
         return <WifiHelpScreen key="wifi-help" />;
       case "chat_flow":
