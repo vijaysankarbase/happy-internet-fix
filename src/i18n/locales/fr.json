@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Connectivité faible ou inexistante",
-    "subtitle": "Nous détectons que vous avez une connectivité faible ou inexistante. La cause la plus probable est un problème réseau dont nous sommes déjà informés et sur lequel nous travaillons.",
+    "subtitle": "Nous détectons que vous pourriez avoir une connectivité faible ou inexistante. La cause la plus probable est un problème réseau dont nous sommes déjà informés et sur lequel nous travaillons.",
     "solutionsTitle": "Solutions possibles",
     "waitForTech": "Attendre que les techniciens réparent",
     "waitForTechDesc": "Notre équipe est déjà informée et travaille à résoudre ce problème.",
@@ -310,7 +310,7 @@
     },
     "brokenHardware": {
       "causeTitle": "Connectivité faible ou inexistante",
-      "causeSubtitle": "Nous détectons que vous avez une connectivité faible ou inexistante. La cause la plus probable est un modem défectueux.",
+      "causeSubtitle": "Nous détectons que vous pourriez avoir une connectivité faible ou inexistante. La cause la plus probable est un modem défectueux.",
       "resolutionTitle": "Remplacement du modem nécessaire",
       "resolutionSubtitle": "Votre modem doit être remplacé. Veuillez contacter notre équipe de support pour organiser un remplacement.",
       "scheduleReplacement": "Planifier le remplacement"
@@ -318,11 +318,11 @@
     "explainer": {
       "modem_deregs": {
         "label": "Problème de réseau local",
-        "description": "Votre modem a connu des désenregistrements de signal — de brefs moments où il perd la synchronisation avec le réseau. Cela peut causer des coupures intermittentes ou des ralentissements."
+        "description": "Votre modem a peut-être connu des désenregistrements de signal — de brefs moments où il perd la synchronisation avec le réseau. Cela peut causer des coupures intermittentes ou des ralentissements."
       },
       "dropcable": {
         "label": "Problème de signal câble",
-        "description": "Nous avons détecté une dégradation du signal sur le câble connectant votre modem. Cela pourrait être causé par un câble coaxial lâche ou endommagé."
+        "description": "Nous avons remarqué des signes de dégradation du signal sur le câble connectant votre modem. Cela pourrait être causé par un câble coaxial lâche ou endommagé."
       },
       "coverage": {
         "label": "Problème de couverture WiFi",

@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Poor or no connectivity",
-    "subtitle": "We detect that you have poor or no connectivity. The most probable cause is a network issue that we are already aware of and working on.",
+    "subtitle": "We detect you may have poor or no connectivity. The most probable cause is a network issue that we are already aware of and working on.",
     "solutionsTitle": "Possible solutions",
     "waitForTech": "Wait until technicians fix it",
     "waitForTechDesc": "Our team is already aware and working on resolving this issue.",
@@ -310,7 +310,7 @@
     },
     "brokenHardware": {
       "causeTitle": "Poor or no connectivity",
-      "causeSubtitle": "We detect that you have poor or no connectivity. The most probable cause is a defective modem.",
+      "causeSubtitle": "We detect you may have poor or no connectivity. The most probable cause is a defective modem.",
       "resolutionTitle": "Modem replacement needed",
       "resolutionSubtitle": "Your modem needs to be replaced. Please contact our support team to arrange a replacement.",
       "scheduleReplacement": "Schedule replacement"
@@ -318,11 +318,11 @@
     "explainer": {
       "modem_deregs": {
         "label": "Local network issue",
-        "description": "Your modem has been experiencing signal deregistrations — brief moments where it loses sync with the network. This can cause intermittent drops or slowdowns."
+        "description": "Your modem may have been experiencing signal deregistrations — brief moments where it loses sync with the network. This can cause intermittent drops or slowdowns."
       },
       "dropcable": {
         "label": "Cable signal issue",
-        "description": "We've detected signal degradation on the cable connecting your modem. This could be caused by a loose or damaged coaxial cable."
+        "description": "We've noticed signs of signal degradation on the cable connecting your modem. This could be caused by a loose or damaged coaxial cable."
       },
       "coverage": {
         "label": "WiFi coverage issue",

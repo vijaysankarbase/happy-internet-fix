@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Slechte of geen verbinding",
-    "subtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem waar we al van op de hoogte zijn en aan werken.",
+    "subtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem waar we al van op de hoogte zijn en aan werken.",
     "solutionsTitle": "Mogelijke oplossingen",
     "waitForTech": "Wacht tot de technici het oplossen",
     "waitForTechDesc": "Ons team is al op de hoogte en werkt aan het oplossen van dit probleem.",
@@ -310,7 +310,7 @@
     },
     "brokenHardware": {
       "causeTitle": "Slechte of geen verbinding",
-      "causeSubtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem.",
+      "causeSubtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem.",
       "resolutionTitle": "Modemvervanging nodig",
       "resolutionSubtitle": "Je modem moet worden vervangen. Neem contact op met ons supportteam om een vervanging te regelen.",
       "scheduleReplacement": "Vervanging plannen"
@@ -318,11 +318,11 @@
     "explainer": {
       "modem_deregs": {
         "label": "Lokaal netwerkprobleem",
-        "description": "Je modem heeft signaalderegistraties ervaren — korte momenten waarop het de synchronisatie met het netwerk verliest. Dit kan intermitterende uitval of vertragingen veroorzaken."
+        "description": "Je modem heeft mogelijk signaalderegistraties ervaren — korte momenten waarop het de synchronisatie met het netwerk verliest. Dit kan intermitterende uitval of vertragingen veroorzaken."
       },
       "dropcable": {
         "label": "Kabelsignaalprobleem",
-        "description": "We hebben signaalverlies gedetecteerd op de kabel die je modem verbindt. Dit kan worden veroorzaakt door een losse of beschadigde coaxkabel."
+        "description": "We hebben mogelijke signaalverzwakking opgemerkt op de kabel die je modem verbindt. Dit kan worden veroorzaakt door een losse of beschadigde coaxkabel."
       },
       "coverage": {
         "label": "WiFi-dekkingsprobleem",
