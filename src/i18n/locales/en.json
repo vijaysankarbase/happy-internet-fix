@@ -322,7 +322,7 @@
       },
       "dropcable": {
         "label": "Cable signal issue",
-        "description": "We've detected signal degradation on the cable connecting your modem. This could be caused by a loose or damaged coaxial cable."
+        "description": "We've noticed signs of signal degradation on the cable connecting your modem. This could be caused by a loose or damaged coaxial cable."
       },
       "coverage": {
         "label": "WiFi coverage issue",

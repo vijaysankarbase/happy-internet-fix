@@ -322,7 +322,7 @@
       },
       "dropcable": {
         "label": "Problème de signal câble",
-        "description": "Nous avons détecté une dégradation du signal sur le câble connectant votre modem. Cela pourrait être causé par un câble coaxial lâche ou endommagé."
+        "description": "Nous avons remarqué des signes de dégradation du signal sur le câble connectant votre modem. Cela pourrait être causé par un câble coaxial lâche ou endommagé."
       },
       "coverage": {
         "label": "Problème de couverture WiFi",

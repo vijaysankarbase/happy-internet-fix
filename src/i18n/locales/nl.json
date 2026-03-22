@@ -322,7 +322,7 @@
       },
       "dropcable": {
         "label": "Kabelsignaalprobleem",
-        "description": "We hebben signaalverlies gedetecteerd op de kabel die je modem verbindt. Dit kan worden veroorzaakt door een losse of beschadigde coaxkabel."
+        "description": "We hebben mogelijke signaalverzwakking opgemerkt op de kabel die je modem verbindt. Dit kan worden veroorzaakt door een losse of beschadigde coaxkabel."
       },
       "coverage": {
         "label": "WiFi-dekkingsprobleem",
