@@ -3,39 +3,10 @@ import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { WifiOff, Plug, RotateCcw, XCircle, AlertTriangle, Info } from "lucide-react";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
-
-const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
-};
 
 const ModemOfflineScreen: React.FC = () => {
-  const { setCurrentState, setQoeSelected, panelInputs } = useDiagnostic();
+  const { setCurrentState } = useDiagnostic();
   const [step, setStep] = useState<"cause" | "solutions">("cause");
-
-  const redoDiagnosis = () => {
-    const apiResponse = {
-      modem: { inService: panelInputs.modemInService },
-      network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
-      },
-      qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
-  };
 
   if (step === "solutions") {
     return (
@@ -72,7 +43,7 @@ const ModemOfflineScreen: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <ActionButton onClick={redoDiagnosis} icon={<RotateCcw className="w-5 h-5" />}>
+          <ActionButton onClick={() => setCurrentState("retest_warning")} icon={<RotateCcw className="w-5 h-5" />}>
             Redo test
           </ActionButton>
           <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>
