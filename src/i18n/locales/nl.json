@@ -11,7 +11,14 @@
     "yourProducts": "Jouw Producten",
     "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB gebruikt",
-    "quickActions": "Snelle Acties"
+    "quickActions": "Snelle Acties",
+    "addProducts": "Producten toevoegen",
+    "addMobile": "Mobiel toevoegen of activeren",
+    "addInternet": "Internetabonnement toevoegen",
+    "addTV": "TV-abonnement toevoegen",
+    "moreThings": "Meer dingen die je kunt doen",
+    "topUp": "Opwaarderen voor iemand anders",
+    "inactive": "Inactief"
   },
   "bills": {
     "title": "Facturen",

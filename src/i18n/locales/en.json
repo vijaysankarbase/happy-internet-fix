@@ -11,7 +11,14 @@
     "yourProducts": "Your Products",
     "limitedInternet": "Internet Limited",
     "usageLabel": "{{used}} GB / {{total}} GB used",
-    "quickActions": "Quick Actions"
+    "quickActions": "Quick Actions",
+    "addProducts": "Add products",
+    "addMobile": "Add or activate mobile",
+    "addInternet": "Add Internet subscription",
+    "addTV": "Add TV subscription",
+    "moreThings": "More things you can do",
+    "topUp": "Top up for someone else",
+    "inactive": "Inactive"
   },
   "bills": {
     "title": "Bills",
