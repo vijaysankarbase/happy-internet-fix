@@ -1,21 +1,22 @@
 import React from "react";
 import { Home, FileText, Headphones, User } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
+import { useTranslation } from "react-i18next";
 import type { TabId } from "@/types/diagnostic";
-
-const tabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
-  { id: "start", label: "Start", icon: <Home className="w-5 h-5" /> },
-  { id: "bills", label: "Bills", icon: <FileText className="w-5 h-5" /> },
-  { id: "support", label: "Support", icon: <Headphones className="w-5 h-5" /> },
-  { id: "account", label: "Account", icon: <User className="w-5 h-5" /> },
-];
 
 const BottomNav: React.FC = () => {
   const { currentTab, setCurrentTab, setCurrentState } = useDiagnostic();
+  const { t } = useTranslation();
+
+  const tabs: { id: TabId; labelKey: string; icon: React.ReactNode }[] = [
+    { id: "start", labelKey: "nav.start", icon: <Home className="w-5 h-5" /> },
+    { id: "bills", labelKey: "nav.bills", icon: <FileText className="w-5 h-5" /> },
+    { id: "support", labelKey: "nav.support", icon: <Headphones className="w-5 h-5" /> },
+    { id: "account", labelKey: "nav.account", icon: <User className="w-5 h-5" /> },
+  ];
 
   const handleTabClick = (id: TabId) => {
     setCurrentTab(id);
-    // Reset to entry when switching tabs so we see tab content, not diagnostic flow
     setCurrentState("entry");
   };
 
@@ -33,7 +34,7 @@ const BottomNav: React.FC = () => {
               }`}
             >
               {tab.icon}
-              <span className="text-[10px] font-medium">{tab.label}</span>
+              <span className="text-[10px] font-medium">{t(tab.labelKey)}</span>
             </button>
           );
         })}

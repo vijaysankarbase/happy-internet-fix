@@ -2,30 +2,24 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Router, AlertTriangle, CheckCircle, Search } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-
 import ActionButton from "@/components/ActionButton";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
+import { useTranslation } from "react-i18next";
 import type { DiagnosticResult } from "@/types/diagnostic";
 
 const PRIORITY_MAP: Record<string, number> = {
-  filter_hp47: 0.0,
-  filter_tof: 0.0,
-  dropcable: 1.1,
-  dice: 1.2,
-  modem_deregs: 2.1,
-  broken_hardware_modem: 2.2,
-  coverage: 3.5,
+  filter_hp47: 0.0, filter_tof: 0.0, dropcable: 1.1, dice: 1.2,
+  modem_deregs: 2.1, broken_hardware_modem: 2.2, coverage: 3.5,
 };
 
 const SupportTab: React.FC = () => {
   const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
-
+  const { t } = useTranslation();
   const modemOnline = panelInputs.modemInService;
 
   const handleStartScan = () => {
     setSentiment("negative");
     setEntryPoint("support");
-
     const apiResponse: DiagnosticResult = {
       modem: { inService: panelInputs.modemInService },
       network: {
@@ -34,11 +28,9 @@ const SupportTab: React.FC = () => {
         problem: { active: panelInputs.problemActive },
       },
       qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
+        type, priority: PRIORITY_MAP[type] ?? 99,
       })),
     };
-
     setDiagnosticResult(apiResponse);
     setCurrentState("intro");
   };
@@ -46,17 +38,14 @@ const SupportTab: React.FC = () => {
   return (
     <div className="flex flex-col gap-6 px-5 pt-6 pb-20">
       <DiagnosticPanel />
-
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h1 className="text-2xl font-bold text-foreground tracking-tight">Support</h1>
-        <p className="text-sm text-muted-foreground mt-0.5">We're here to help</p>
+        <h1 className="text-2xl font-bold text-foreground tracking-tight">{t("support.title")}</h1>
+        <p className="text-sm text-muted-foreground mt-0.5">{t("support.subtitle")}</p>
       </motion.div>
-
-      {/* Modem status card */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -68,17 +57,17 @@ const SupportTab: React.FC = () => {
             <Router className={`w-6 h-6 ${modemOnline ? "text-success" : "text-destructive"}`} />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground">Modem Status</p>
+            <p className="text-sm font-semibold text-foreground">{t("support.modemStatus")}</p>
             <div className="flex items-center gap-1.5 mt-0.5">
               {modemOnline ? (
                 <>
                   <CheckCircle className="w-3.5 h-3.5 text-success" />
-                  <span className="text-xs font-medium text-success">Online</span>
+                  <span className="text-xs font-medium text-success">{t("support.online")}</span>
                 </>
               ) : (
                 <>
                   <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
-                  <span className="text-xs font-medium text-destructive">Offline</span>
+                  <span className="text-xs font-medium text-destructive">{t("support.offline")}</span>
                 </>
               )}
             </div>
@@ -86,7 +75,7 @@ const SupportTab: React.FC = () => {
         </div>
         <div className="px-5 pb-5">
           <ActionButton onClick={handleStartScan} icon={<Search className="w-5 h-5" />}>
-            Issue with your WiFi?
+            {t("support.wifiIssue")}
           </ActionButton>
         </div>
       </motion.div>
