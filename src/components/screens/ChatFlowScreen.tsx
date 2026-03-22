@@ -28,24 +28,43 @@ const getIssueDescription = (qoeType: string | undefined): string => {
   return map[qoeType || ""] || "a connectivity issue";
 };
 
-const buildPrompt = (sentiment: string, qoeType: string | undefined): string => {
+const buildPrompt = (sentiment: string, qoeType: string | undefined, isModemOffline: boolean): string => {
+  // Handle modem offline scenario
+  if (isModemOffline) {
+    if (sentiment === "positive") {
+      return `Hi, I don't have an issue at the moment but your scan indicates my modem may be offline. Can you help?`;
+    }
+    if (sentiment === "neutral") {
+      return `Hi, I ran the internet self-diagnosis tool and it detected that my modem appears to be offline. Could you please help me get back online?`;
+    }
+    return `Hi, I'm experiencing problems with my internet. Your self-diagnosis tool confirms that my modem is offline, which matches what I'm going through. Could you please help me resolve this?`;
+  }
+
   const issue = getIssueDescription(qoeType);
+  const hasIssue = !!qoeType;
 
   if (sentiment === "positive") {
     return `Hi, I don't have an issue at the moment but your scan indicates I may have ${issue}. Can you help?`;
   }
 
   if (sentiment === "neutral") {
-    return `Hi, I ran the internet self-diagnosis tool and your scan detected ${issue}. I'm not sure if it's affecting me yet, but could you please look into it?`;
+    if (hasIssue) {
+      return `Hi, I ran the internet self-diagnosis tool and your scan detected ${issue}. Could you please help me look into it?`;
+    }
+    return `Hi, I ran the internet self-diagnosis tool and no issues were detected, but I'm not sure if everything is working as expected. Could you please look into it?`;
   }
 
   // negative
-  return `Hi, I'm experiencing problems with my internet. Your self-diagnosis tool detected ${issue}, which matches what I'm going through. Could you please help me resolve this?`;
+  if (hasIssue) {
+    return `Hi, I'm experiencing problems with my internet. Your self-diagnosis tool detected ${issue}, which matches what I'm going through. Could you please help me resolve this?`;
+  }
+  return `Hi, I'm experiencing problems with my internet but your self-diagnosis tool didn't detect any issues. Could you please help me troubleshoot further?`;
 };
 
 const ChatFlowScreen: React.FC = () => {
-  const { setCurrentState, sentiment, qoeSelected } = useDiagnostic();
-  const PROMPT_TEXT = buildPrompt(sentiment, qoeSelected?.type);
+  const { setCurrentState, sentiment, qoeSelected, diagnosticResult } = useDiagnostic();
+  const isModemOffline = diagnosticResult ? !diagnosticResult.modem.inService : false;
+  const PROMPT_TEXT = buildPrompt(sentiment, qoeSelected?.type, isModemOffline);
   const [limitationSeen, setLimitationSeen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
