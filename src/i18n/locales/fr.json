@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Connectivité faible ou inexistante",
-    "subtitle": "Nous détectons que vous avez une connectivité faible ou inexistante. La cause la plus probable est un problème réseau dont nous sommes déjà informés et sur lequel nous travaillons.",
+    "subtitle": "Nous détectons que vous pourriez avoir une connectivité faible ou inexistante. La cause la plus probable est un problème réseau dont nous sommes déjà informés et sur lequel nous travaillons.",
     "solutionsTitle": "Solutions possibles",
     "waitForTech": "Attendre que les techniciens réparent",
     "waitForTechDesc": "Notre équipe est déjà informée et travaille à résoudre ce problème.",
