@@ -3,29 +3,10 @@ import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import { WifiOff, Plug, RotateCcw, XCircle, AlertTriangle, Info } from "lucide-react";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 
 const ModemOfflineScreen: React.FC = () => {
   const { setCurrentState } = useDiagnostic();
   const [step, setStep] = useState<"cause" | "solutions">("cause");
-
-  const redoDiagnosis = () => {
-    const apiResponse = {
-      modem: { inService: panelInputs.modemInService },
-      network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
-      },
-      qoe: panelInputs.selectedQoe.map((type) => ({
-        type,
-        priority: PRIORITY_MAP[type] ?? 99,
-      })),
-    };
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
-  };
 
   if (step === "solutions") {
     return (
