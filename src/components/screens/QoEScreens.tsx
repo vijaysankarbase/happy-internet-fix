@@ -111,8 +111,9 @@ const ModemRebootDrawer: React.FC<{
 
 /* ─── Modem Deregs ─── */
 const QoEModemDeregsScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "solutions">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "solutions">(fromExplainer ? "solutions" : "cause");
   const [rebootOpen, setRebootOpen] = useState(false);
 
   if (step === "solutions") {
