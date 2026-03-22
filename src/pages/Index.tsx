@@ -68,6 +68,14 @@ const DiagnosticFlow: React.FC = () => {
         return <QoEBrokenHardwareScreen key="hardware" />;
       case "misalignment":
         return <MisalignmentScreen key="misalign" />;
+      case "sentiment_mismatch":
+        return <SentimentMismatchScreen key="mismatch" />;
+      case "mismatch_actions":
+        return <MismatchActionsScreen key="mismatch-actions" />;
+      case "wifi_help":
+        return <WifiHelpScreen key="wifi-help" />;
+      case "chat_flow":
+        return <ChatFlowScreen key="chat-flow" />;
       case "support":
         return <SupportScreen key="support" />;
       case "success":

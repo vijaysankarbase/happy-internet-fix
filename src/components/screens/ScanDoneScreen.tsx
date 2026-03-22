@@ -34,7 +34,7 @@ const ScanDoneScreen: React.FC = () => {
     };
 
     setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse);
+    const { state, qoeSelected } = evaluateDiagnostic(apiResponse, sentiment);
     setQoeSelected(qoeSelected);
     setCurrentState(state);
   };

@@ -53,7 +53,8 @@ export const fetchDiagnosticData = (): Promise<DiagnosticResult> => {
 };
 
 export const evaluateDiagnostic = (
-  result: DiagnosticResult
+  result: DiagnosticResult,
+  sentiment?: "positive" | "neutral" | "negative"
 ): { state: ScreenState; qoeSelected: QoEItem | null } => {
   if (!result.modem.inService) {
     return { state: "modem_offline", qoeSelected: null };
@@ -64,6 +65,10 @@ export const evaluateDiagnostic = (
   }
 
   if (result.qoe.length === 0) {
+    // Negative sentiment + no issues = sentiment mismatch
+    if (sentiment === "negative" || sentiment === "neutral") {
+      return { state: "sentiment_mismatch", qoeSelected: null };
+    }
     return { state: "all_clear", qoeSelected: null };
   }
 
