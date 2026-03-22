@@ -94,7 +94,7 @@ const ChatFlowScreen: React.FC = () => {
         {botTyping && (<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start"><div className="bg-secondary rounded-2xl rounded-bl-md px-4 py-3 text-sm text-muted-foreground"><span className="flex gap-1"><span className="animate-bounce" style={{ animationDelay: "0ms" }}>·</span><span className="animate-bounce" style={{ animationDelay: "150ms" }}>·</span><span className="animate-bounce" style={{ animationDelay: "300ms" }}>·</span></span></div></motion.div>)}
         <div ref={chatEndRef} />
       </div>
-      <div className="sticky bottom-0 bg-background border-t border-border px-4 py-3">
+      <div className="sticky bottom-0 bg-background border-t border-border px-4 py-3 mb-20">
         <div className="flex items-end gap-2">
           <textarea value={inputText} onChange={(e) => setInputText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }} placeholder={t("chatFlow.placeholder")} rows={1} className="flex-1 resize-none rounded-xl border border-border bg-card px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 placeholder:text-muted-foreground" />
           <button onClick={handleSend} disabled={!inputText.trim()} className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground disabled:opacity-40 transition-opacity active:scale-95 shrink-0"><Send className="w-4 h-4" /></button>
