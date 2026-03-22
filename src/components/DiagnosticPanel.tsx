@@ -40,7 +40,7 @@ const DiagnosticPanel: React.FC = () => {
     <Collapsible open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger asChild>
         <button className="w-full flex items-center justify-between px-4 py-2.5 bg-card border-b border-border text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-          <span>{t("diagnosticPanel.title")}</span>
+          <span>🛠 Diagnostic Input Panel</span>
           <ChevronDown
             className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           />
