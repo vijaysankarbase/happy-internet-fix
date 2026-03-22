@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
@@ -25,8 +26,15 @@ const MisalignmentScreen: React.FC = () => {
       subtitle={t("misalignment.subtitle")}
     >
       <div className="flex flex-col gap-3">
-        {options.map((opt) => (
-          <ActionButton key={opt.label} variant="outline" onClick={() => setCurrentState(opt.target)} icon={opt.icon}>{opt.label}</ActionButton>
+        {options.map((opt, i) => (
+          <motion.div
+            key={opt.label}
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 + i * 0.08, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ActionButton variant="outline" onClick={() => setCurrentState(opt.target)} icon={opt.icon}>{opt.label}</ActionButton>
+          </motion.div>
         ))}
       </div>
     </ScreenShell>
