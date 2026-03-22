@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wifi, ChevronRight } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
@@ -7,8 +7,7 @@ import ServiceMomentCard from "@/components/ServiceMomentCard";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 
 const StartTab: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [dismissed, setDismissed] = useState(false);
+  const { setCurrentState, serviceMomentDismissed, dismissServiceMoment } = useDiagnostic();
 
   return (
     <div className="flex flex-col gap-6 px-5 pt-6 pb-20">
@@ -26,14 +25,14 @@ const StartTab: React.FC = () => {
 
       {/* Service Moment Card */}
       <AnimatePresence>
-        {!dismissed && (
+        {!serviceMomentDismissed && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, height: 0, marginTop: 0, overflow: "hidden" }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ServiceMomentCard variant="card" onDismiss={() => setDismissed(true)} />
+            <ServiceMomentCard variant="card" onDismiss={dismissServiceMoment} />
           </motion.div>
         )}
       </AnimatePresence>

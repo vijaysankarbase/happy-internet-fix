@@ -24,6 +24,8 @@ interface DiagnosticContextType extends AppState {
   canGoBack: boolean;
   panelInputs: PanelInputs;
   setPanelInputs: React.Dispatch<React.SetStateAction<PanelInputs>>;
+  serviceMomentDismissed: boolean;
+  dismissServiceMoment: () => void;
 }
 
 const initialPanelInputs: PanelInputs = {
@@ -56,6 +58,7 @@ export const useDiagnostic = () => {
 export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<AppState>(initialState);
   const [panelInputs, setPanelInputs] = useState<PanelInputs>(initialPanelInputs);
+  const [serviceMomentDismissed, setServiceMomentDismissed] = useState(false);
   const historyRef = useRef<ScreenState[]>([]);
 
   const setSentiment = useCallback((sentiment: Sentiment) => {
@@ -131,6 +134,8 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         canGoBack: historyRef.current.length > 0,
         panelInputs,
         setPanelInputs,
+        serviceMomentDismissed,
+        dismissServiceMoment: () => setServiceMomentDismissed(true),
       }}
     >
       {children}
