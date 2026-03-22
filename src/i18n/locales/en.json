@@ -318,7 +318,7 @@
     "explainer": {
       "modem_deregs": {
         "label": "Local network issue",
-        "description": "Your modem has been experiencing signal deregistrations — brief moments where it loses sync with the network. This can cause intermittent drops or slowdowns."
+        "description": "Your modem may have been experiencing signal deregistrations — brief moments where it loses sync with the network. This can cause intermittent drops or slowdowns."
       },
       "dropcable": {
         "label": "Cable signal issue",
