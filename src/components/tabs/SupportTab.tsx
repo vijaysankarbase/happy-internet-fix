@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Router, AlertTriangle, CheckCircle, Search } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
+
 import ActionButton from "@/components/ActionButton";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import type { DiagnosticResult } from "@/types/diagnostic";
