@@ -172,7 +172,7 @@
   },
   "networkIncident": {
     "title": "Poor or no connectivity",
-    "subtitle": "We detect that you have poor or no connectivity. The most probable cause is a network issue that we are already aware of and working on.",
+    "subtitle": "We detect you may have poor or no connectivity. The most probable cause is a network issue that we are already aware of and working on.",
     "solutionsTitle": "Possible solutions",
     "waitForTech": "Wait until technicians fix it",
     "waitForTechDesc": "Our team is already aware and working on resolving this issue.",
