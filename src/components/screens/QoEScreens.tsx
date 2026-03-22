@@ -164,8 +164,9 @@ const QoEModemDeregsScreen: React.FC = () => {
 
 /* ─── Dropcable ─── */
 const QoEDropcableScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "solutions" | "verify">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "solutions" | "verify">(fromExplainer ? "solutions" : "cause");
 
   if (step === "verify") {
     return (
