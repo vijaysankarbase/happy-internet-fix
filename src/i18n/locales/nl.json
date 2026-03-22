@@ -318,7 +318,7 @@
     "explainer": {
       "modem_deregs": {
         "label": "Lokaal netwerkprobleem",
-        "description": "Je modem heeft signaalderegistraties ervaren — korte momenten waarop het de synchronisatie met het netwerk verliest. Dit kan intermitterende uitval of vertragingen veroorzaken."
+        "description": "Je modem heeft mogelijk signaalderegistraties ervaren — korte momenten waarop het de synchronisatie met het netwerk verliest. Dit kan intermitterende uitval of vertragingen veroorzaken."
       },
       "dropcable": {
         "label": "Kabelsignaalprobleem",
