@@ -318,7 +318,7 @@
     "explainer": {
       "modem_deregs": {
         "label": "Problème de réseau local",
-        "description": "Votre modem a connu des désenregistrements de signal — de brefs moments où il perd la synchronisation avec le réseau. Cela peut causer des coupures intermittentes ou des ralentissements."
+        "description": "Votre modem a peut-être connu des désenregistrements de signal — de brefs moments où il perd la synchronisation avec le réseau. Cela peut causer des coupures intermittentes ou des ralentissements."
       },
       "dropcable": {
         "label": "Problème de signal câble",
