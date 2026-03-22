@@ -1,0 +1,416 @@
+{
+  "nav": {
+    "start": "Start",
+    "bills": "Facturen",
+    "support": "Ondersteuning",
+    "account": "Account"
+  },
+  "start": {
+    "hello": "Hallo Vijay",
+    "welcomeBack": "Welkom terug",
+    "yourProducts": "Jouw Producten",
+    "limitedInternet": "Beperkt Internet",
+    "usageLabel": "{{used}} GB / {{total}} GB gebruikt",
+    "quickActions": "Snelle Acties"
+  },
+  "bills": {
+    "title": "Facturen",
+    "empty": "Geen facturen beschikbaar"
+  },
+  "account": {
+    "title": "Account",
+    "subtitle": "Vijay's account"
+  },
+  "support": {
+    "title": "Ondersteuning",
+    "subtitle": "Wij helpen je graag",
+    "modemStatus": "Modemstatus",
+    "online": "Online",
+    "offline": "Offline",
+    "wifiIssue": "Problemen met je WiFi?"
+  },
+  "serviceMoment": {
+    "title": "Mijn Internet Scan",
+    "subtitle": "Hoe is je WiFi thuis?",
+    "dismiss": "Sluiten"
+  },
+  "productDetail": {
+    "title": "Beperkt Internet",
+    "dataUsage": "Dataverbruik",
+    "currentPeriod": "Huidige periode",
+    "used": "{{used}} GB gebruikt",
+    "total": "{{total}} GB totaal",
+    "back": "Terug"
+  },
+  "intro": {
+    "positiveTitle": "Fijn om te horen dat het goed gaat!",
+    "positiveSubtitle": "Als je ooit een probleem tegenkomt, kun je altijd hier terugkomen en dan helpen we je.",
+    "negativeTitle": "Dat is vervelend om te horen",
+    "negativeSubtitle": "Laten we eens kijken wat er aan de hand is met je verbinding.",
+    "startDiagnosis": "Start diagnose",
+    "exit": "Afsluiten"
+  },
+  "preScan": {
+    "title": "Wat we controleren",
+    "subtitle": "De scan duurt een paar seconden en analyseert drie belangrijke gebieden van je verbinding.",
+    "modemStatus": "Modemstatus",
+    "networkStatus": "Netwerkstatus",
+    "connectionQuality": "Verbindingskwaliteit",
+    "startNewScan": "Start nieuwe scan",
+    "retestAfterFix": "Opnieuw testen na reparatie"
+  },
+  "scanning": {
+    "title": "Je verbinding scannen",
+    "modem": "Modem",
+    "network": "Netwerk",
+    "connection": "Verbinding",
+    "didYouKnow": "Wist je dat?",
+    "facts": [
+      "De eerste WiFi-standaard werd uitgebracht in 1997 met een maximale snelheid van 2 Mbps.",
+      "WiFi-signalen reizen met de snelheid van het licht — ongeveer 300.000 km/s.",
+      "Het gemiddelde huishouden heeft meer dan 25 verbonden apparaten.",
+      "Je magnetron werkt op dezelfde frequentie als je WiFi-router.",
+      "De naam 'WiFi' staat eigenlijk nergens voor!",
+      "Eén WiFi-router kan theoretisch ongeveer 50 meter binnenshuis bereiken.",
+      "Het streamen van een 4K-film verbruikt ongeveer 7 GB per uur.",
+      "Het wereldrecord voor de langste WiFi-verbinding is meer dan 380 km."
+    ]
+  },
+  "scanDone": {
+    "title": "Scan voltooid",
+    "subtitle": "We zijn klaar met het analyseren van je verbinding.",
+    "seeResult": "Bekijk resultaat"
+  },
+  "retestWarning": {
+    "title": "Voordat je opnieuw test",
+    "subtitle": "Onze diagnostische gegevens worden niet in realtime bijgewerkt. Na een reparatie kan het tot <strong>één week</strong> duren voordat nieuwe resultaten verschijnen.",
+    "warning": "Een scan nu uitvoeren kan verouderde informatie tonen en een onjuist resultaat geven.",
+    "continueAnyway": "Toch doorgaan",
+    "comeBackLater": "Later terugkomen"
+  },
+  "allClear": {
+    "positiveTitle": "Je WiFi werkt zoals verwacht",
+    "supercharged": "Supersnelle WiFi",
+    "celebrate": "Laten we vieren!",
+    "woohoo": "🎉 Hoera!",
+    "enjoySupercharged": "Geniet van je supersnelle verbinding.",
+    "noIssuesTitle": "Geen problemen gedetecteerd",
+    "noIssuesSubtitle": "Je verbinding ziet er gezond uit van onze kant.",
+    "stillProblems": "Ervaar je nog steeds problemen?",
+    "noEverythingFine": "Nee, alles is in orde",
+    "yesStillIssues": "Ja, ik heb nog problemen"
+  },
+  "mismatch": {
+    "title": "We horen je",
+    "subtitle": "Je ervaring komt niet overeen met wat onze systemen laten zien. We begrijpen hoe frustrerend dat kan zijn, en we willen helpen.",
+    "ourData": "Onze gegevens",
+    "yourExperience": "Jouw ervaring",
+    "superchargedWifi": "Supersnelle WiFi",
+    "negative": "Negatief",
+    "whatsTheReason": "Wat is de reden?",
+    "whatShouldIDo": "Wat moet ik doen?",
+    "reasonTitle": "Helaas zijn we niet foutloos",
+    "reasonBody": "Onze diagnostische systemen monitoren je verbinding op afstand, maar kunnen niet altijd het volledige beeld vastleggen van wat er in je huis gebeurt.",
+    "whyTitle": "Waarom dit kan gebeuren:",
+    "whyReasons": [
+      "WiFi-storing van nabijgelegen apparaten of buren",
+      "Fysieke obstakels (muren, vloeren) die het signaal verzwakken",
+      "Problemen met specifieke apparaten die onze systemen niet kunnen detecteren",
+      "Tijdelijke vertragingen die verdwijnen voordat onze controles draaien"
+    ],
+    "suggestion": "Wat we aanraden:",
+    "suggestionBody": "Probeer de stappen op het volgende scherm, of neem contact op met ons supportteam voor persoonlijke hulp.",
+    "close": "Sluiten"
+  },
+  "mismatchActions": {
+    "title": "Laten we het oplossen",
+    "subtitle": "Hier zijn enkele dingen die je kunt proberen om je ervaring te verbeteren.",
+    "generalWifiHelp": "Algemene WiFi-hulp",
+    "contactUs": "Neem contact op"
+  },
+  "positiveMismatch": {
+    "title": "Fijn om te horen — maar we hebben iets opgemerkt",
+    "subtitle": "Je bent tevreden met je WiFi, maar onze systemen hebben een mogelijk probleem gedetecteerd. Het beïnvloedt je misschien nog niet — maar het is goed om te weten.",
+    "possiblyWobbly": "Mogelijk wankelende WiFi",
+    "positive": "Positief",
+    "whyReasons": [
+      "Vroege tekenen van verslechtering die nog niet merkbaar zijn",
+      "Intermitterende signaalinstabiliteit tijdens daluren",
+      "Hardware-indicatoren die toekomstige problemen suggereren",
+      "Patronen op netwerkniveau die in de loop van de tijd kunnen verslechteren"
+    ],
+    "suggestion": "Ons advies:",
+    "suggestionBody": "Je kunt dit voorlopig negeren, of het probleem bekijken om problemen in de toekomst te voorkomen."
+  },
+  "positiveMismatchActions": {
+    "title": "Mogelijke acties",
+    "subtitle": "Aangezien alles goed voelt aan jouw kant, kun je het volgende doen.",
+    "doNothing": "Niets doen & later terugkomen",
+    "diveIn": "Het probleem onderzoeken"
+  },
+  "modemOffline": {
+    "title": "Geen internetverbinding",
+    "subtitle": "We detecteren dat je geen internetverbinding hebt.",
+    "cause": "Meest waarschijnlijke oorzaak:",
+    "causeValue": "modem offline",
+    "whatCanIDo": "Wat kan ik doen?",
+    "solutionsTitle": "Mogelijke oplossingen",
+    "turnOn": "Zet de modem aan",
+    "turnOnDesc": "Zorg ervoor dat je modem is ingeschakeld en het aan-lampje brandt.",
+    "restart": "Herstart de modem",
+    "restartDesc": "Haal de stekker uit je modem, wacht 10 seconden en steek hem er weer in.",
+    "waitInfo": "Wacht minstens 5 minuten voordat je je verbinding opnieuw test.",
+    "redoTest": "Test opnieuw",
+    "notHelpful": "Deze suggestie is niet nuttig"
+  },
+  "networkIncident": {
+    "title": "Slechte of geen verbinding",
+    "subtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem waar we al van op de hoogte zijn en aan werken.",
+    "solutionsTitle": "Mogelijke oplossingen",
+    "waitForTech": "Wacht tot de technici het oplossen",
+    "waitForTechDesc": "Ons team is al op de hoogte en werkt aan het oplossen van dit probleem.",
+    "estimatedFix": "Geschatte hersteltijd:",
+    "gotIt": "Begrepen, bedankt"
+  },
+  "wifiHelp": {
+    "title": "WiFi probleemoplossing",
+    "subtitle": "Probeer een van deze opties om je verbinding te verbeteren.",
+    "modemRestart": "Modem herstarten",
+    "modemRestartDesc": "Herstart je modem op afstand",
+    "diyTips": "Doe-het-zelf tips",
+    "diyTipsDesc": "Leer hoe je veelvoorkomende WiFi-problemen oplost",
+    "orderBooster": "Bestel WiFi Booster",
+    "orderBoosterDesc": "Vergroot je bereik met een booster",
+    "notHelpful": "Deze tips helpen niet",
+    "notHelpfulDesc": "Praat met ons supportteam"
+  },
+  "modemReboot": {
+    "title": "Herstart je modem",
+    "restartingTitle": "Modem herstarten…",
+    "restartedTitle": "Modem herstart",
+    "beforeStart": "Voordat je begint",
+    "rebootInfo": "De herstart duurt ongeveer <strong>5 minuten</strong> en herstelt de verbinding. Je <strong>verliest je internetverbinding</strong> tijdens deze tijd.",
+    "rebootWait": "Even geduld terwijl we je modem herstarten…",
+    "start": "Start",
+    "back": "Terug",
+    "didItImprove": "Is je ervaring verbeterd?",
+    "yesBetter": "Ja, het is beter!",
+    "noStillNeed": "Nee, ik heb nog hulp nodig"
+  },
+  "supportScreen": {
+    "title": "Wij helpen je graag",
+    "subtitlePositive": "Kies hoe je contact wilt opnemen met ons supportteam.",
+    "subtitleNegative": "Neem contact op.",
+    "chatWithUs": "Chat met ons",
+    "callSupport": "Bel ondersteuning"
+  },
+  "chatFlow": {
+    "title": "Chat met ondersteuning",
+    "subtitle": "Voordat je begint, dit kun je verwachten.",
+    "notLiveChat": "Onze chat is <strong>geen live chat</strong> — antwoorden kunnen vertraging hebben. Een adviseur zal zo snel mogelijk reageren.",
+    "speedUp": "Om het te versnellen hebben we een samenvatting van je probleem voorbereid die je in de chat kunt plakken.",
+    "promptLabel": "Je samenvatting:",
+    "copyToClipboard": "Kopieer naar klembord",
+    "copied": "Gekopieerd!",
+    "openChat": "Open chat",
+    "close": "Sluiten",
+    "baseSupportChat": "BASE Ondersteuning",
+    "chat": "Chat",
+    "greeting": "Hallo Vijay 👋 Hoe kan BASE je vandaag helpen?",
+    "botReply": "Bedankt voor je bericht. Ik verbind je met de eerstvolgende beschikbare adviseur. Even geduld alsjeblieft. 🙏",
+    "placeholder": "Typ een bericht…"
+  },
+  "chatPrompt": {
+    "positiveNoIssue": "Hallo, ik heb momenteel geen probleem maar je scan geeft aan dat mijn modem mogelijk offline is. Kun je helpen?",
+    "neutralModemOffline": "Hallo, ik heb de internet zelfdiagnose tool gebruikt en die detecteerde dat mijn modem offline lijkt te zijn. Kun je me alsjeblieft helpen om weer online te komen?",
+    "negativeModemOffline": "Hallo, ik ervaar problemen met mijn internet. Je zelfdiagnose tool bevestigt dat mijn modem offline is, wat overeenkomt met wat ik ervaar. Kun je me alsjeblieft helpen dit op te lossen?",
+    "positiveWithIssue": "Hallo, ik heb momenteel geen probleem maar je scan geeft aan dat ik mogelijk {{issue}} heb. Kun je helpen?",
+    "neutralWithIssue": "Hallo, ik heb de internet zelfdiagnose tool gebruikt en je scan detecteerde {{issue}}. Kun je me alsjeblieft helpen om dit te onderzoeken?",
+    "neutralNoIssue": "Hallo, ik heb de internet zelfdiagnose tool gebruikt en er zijn geen problemen gedetecteerd, maar ik ben niet zeker of alles werkt zoals verwacht. Kun je er alsjeblieft naar kijken?",
+    "negativeWithIssue": "Hallo, ik ervaar problemen met mijn internet. Je zelfdiagnose tool detecteerde {{issue}}, wat overeenkomt met wat ik ervaar. Kun je me alsjeblieft helpen dit op te lossen?",
+    "negativeNoIssue": "Hallo, ik ervaar problemen met mijn internet maar je zelfdiagnose tool heeft geen problemen gedetecteerd. Kun je me alsjeblieft helpen bij het verder oplossen?",
+    "issues": {
+      "broken_hardware_modem": "een defecte modem",
+      "filter": "een netwerkprobleem",
+      "filter_hp47": "een netwerkprobleem",
+      "filter_tof": "een netwerkprobleem",
+      "dropcable": "een kabelverbindingsprobleem",
+      "dice": "een netwerkprobleem",
+      "modem_deregs": "een netwerk- of modemprobleem",
+      "coverage": "een WiFi-dekkingsprobleem",
+      "default": "een verbindingsprobleem"
+    }
+  },
+  "success": {
+    "title": "Je bent helemaal klaar!",
+    "subtitle": "Je probleem is opgelost. Geniet van je internet!",
+    "done": "Klaar"
+  },
+  "clarification": {
+    "title": "Wat voor soort probleem?",
+    "subtitle": "Help ons het probleem te beperken.",
+    "wifiIssues": "WiFi-problemen",
+    "somethingElse": "Iets anders"
+  },
+  "misalignment": {
+    "title": "Laten we het opnieuw proberen",
+    "subtitle": "We hebben mogelijk niet het juiste probleem geïdentificeerd. Wat beschrijft je probleem het best?",
+    "noInternet": "Helemaal geen internet",
+    "slowSpeeds": "Trage snelheden",
+    "wifiCoverage": "WiFi-dekking",
+    "intermittentDrops": "Af en toe uitval",
+    "somethingElse": "Iets anders"
+  },
+  "wifiFlow": {
+    "title": "WiFi probleemoplossing",
+    "subtitlePositive": "Laten we een paar dingen proberen om je WiFi te verbeteren:",
+    "subtitleNegative": "Snelle WiFi-oplossingen:",
+    "tip1": "Herstart je WiFi-router",
+    "tip2": "Ga dichter bij de router staan",
+    "tip3": "Ontkoppel ongebruikte apparaten",
+    "triedThese": "Ik heb deze geprobeerd",
+    "isBetter": "Is je WiFi nu beter?",
+    "yes": "Ja!",
+    "noNeedHelp": "Nee, ik heb hulp nodig"
+  },
+  "qoe": {
+    "modemDeregs": {
+      "title": "Slechte of geen verbinding",
+      "subtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem veroorzaakt door een signaalprobleem.",
+      "solutionsTitle": "Mogelijke oplossingen",
+      "restartModem": "Herstart je modem",
+      "restartModemDesc": "Een herstart kan vaak signaalproblemen met je modem oplossen.",
+      "initiateReboot": "Start modem herstart",
+      "notHelpful": "Deze suggestie is niet nuttig"
+    },
+    "dropcable": {
+      "title": "Slechte of geen verbinding",
+      "subtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een kabelprobleem.",
+      "solutionsTitle": "Mogelijke oplossingen",
+      "tightenCable": "Kabel vastzetten aan je modem",
+      "tightenCableDesc": "Zorg ervoor dat de coaxkabel stevig is vastgeschroefd aan de achterkant van je modem.",
+      "visualGuide": "Visuele gids: kabelverbinding vastzetten",
+      "done": "Klaar",
+      "notHelpful": "Deze suggestie is niet nuttig",
+      "didItImprove": "Is je ervaring verbeterd?"
+    },
+    "technician": {
+      "causeTitle": "Slechte of geen verbinding",
+      "causeSubtitle": "We detecteren dat je mogelijk slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een netwerkprobleem buiten je huis.",
+      "resolutionTitle": "Een technicus bezoek is nodig",
+      "resolutionSubtitle": "Dit probleem vereist een inspectie ter plaatse door een van onze technici. Neem contact met ons op om een bezoek te plannen.",
+      "contactSupport": "Neem contact op"
+    },
+    "brokenHardware": {
+      "causeTitle": "Slechte of geen verbinding",
+      "causeSubtitle": "We detecteren dat je slechte of geen verbinding hebt. De meest waarschijnlijke oorzaak is een defecte modem.",
+      "resolutionTitle": "Modemvervanging nodig",
+      "resolutionSubtitle": "Je modem moet worden vervangen. Neem contact op met ons supportteam om een vervanging te regelen.",
+      "scheduleReplacement": "Vervanging plannen"
+    },
+    "explainer": {
+      "modem_deregs": {
+        "label": "Lokaal netwerkprobleem",
+        "description": "Je modem heeft signaalderegistraties ervaren — korte momenten waarop het de synchronisatie met het netwerk verliest. Dit kan intermitterende uitval of vertragingen veroorzaken."
+      },
+      "dropcable": {
+        "label": "Kabelsignaalprobleem",
+        "description": "We hebben signaalverlies gedetecteerd op de kabel die je modem verbindt. Dit kan worden veroorzaakt door een losse of beschadigde coaxkabel."
+      },
+      "coverage": {
+        "label": "WiFi-dekkingsprobleem",
+        "description": "Delen van je huis hebben mogelijk een zwak WiFi-signaal. Dit wordt meestal veroorzaakt door afstand tot de router, muren of storing van andere apparaten."
+      },
+      "filter": {
+        "label": "Technisch probleem",
+        "description": "Een filtercomponent in je verbinding heeft aandacht nodig. Dit vereist een technicus bezoek om op te lossen."
+      },
+      "filter_hp47": {
+        "label": "Technisch probleem",
+        "description": "Een specifiek filtercomponent (HP47) is gemarkeerd. Een technicus bezoek is nodig om het te inspecteren en te vervangen."
+      },
+      "filter_tof": {
+        "label": "Technisch probleem",
+        "description": "Een filterprobleem (TOF) is gedetecteerd in je lijn. Dit heeft een technicus ter plaatse nodig om op te lossen."
+      },
+      "dice": {
+        "label": "Technisch probleem",
+        "description": "Een netwerkcomponentprobleem is geïdentificeerd dat professionele aandacht van een technicus vereist."
+      },
+      "broken_hardware_modem": {
+        "label": "Defecte modem",
+        "description": "Onze diagnostiek geeft aan dat je modem mogelijk een hardwarefout heeft. Het moet mogelijk worden vervangen om een stabiele verbinding te garanderen."
+      },
+      "whatCanIDo": "Wat kan ik doen?"
+    }
+  },
+  "coverage": {
+    "boosterQuestion": "Heb je een WiFi-booster geïnstalleerd in je huis?",
+    "quickQuestion": "Even een vraagje",
+    "yes": "Ja",
+    "no": "Nee",
+    "iDontKnow": "Ik weet het niet",
+    "wobblyDetected": "Wankelende WiFi gedetecteerd",
+    "interference": {
+      "subtitle": "De meest waarschijnlijke oorzaak is strijdende WiFi-signalen — je modem en booster zenden allebei uit, wat storing kan veroorzaken.",
+      "solutionsTitle": "Mogelijke oplossingen",
+      "solutionsSubtitle": "Je modem-WiFi en booster kunnen concurreren om signaal. Het uitschakelen van de modem-WiFi laat je booster alles afhandelen — waardoor storing afneemt.",
+      "turnOff": "Modem WiFi uitschakelen",
+      "turnOffDesc": "Laat je booster het draadloze signaal beheren om storing te voorkomen.",
+      "turnOffRemotely": "Modem WiFi op afstand uitschakelen",
+      "notHelpful": "Deze suggestie is niet nuttig",
+      "turningOff": "Modem WiFi uitschakelen",
+      "turningOffWait": "Even geduld terwijl we de WiFi-radio van je modem uitschakelen…",
+      "verifyTitle": "Controleer of het werkte",
+      "verifySubtitle": "Is je ervaring verbeterd door het uitschakelen van de modem-WiFi?"
+    },
+    "poorBooster": {
+      "subtitle": "De meest waarschijnlijke oorzaak is een slechte boosterplaatsing — je modem-WiFi staat uit, dus de dekking hangt volledig af van het bereik van je booster.",
+      "solutionsTitle": "Mogelijke oplossingen",
+      "solutionsSubtitle": "Je booster staat misschien te ver van de modem, of is niet sterk genoeg om je hele huis te dekken.",
+      "reposition": "Verplaats je booster",
+      "repositionDesc": "Zet hem dichter bij je modem of op een centrale locatie in je huis.",
+      "buyBooster": "Koop een booster",
+      "tipsAndTricks": "Tips en trucs",
+      "notHelpful": "Deze suggestie is niet nuttig"
+    },
+    "general": {
+      "subtitle": "De meest waarschijnlijke oorzaak is een WiFi-dekkingsprobleem — het signaal van je modem bereikt mogelijk niet alle delen van je huis.",
+      "solutionsTitle": "Mogelijke oplossingen",
+      "solutionsSubtitle": "Het WiFi-signaal van je modem is mogelijk niet sterk genoeg om elke kamer te bereiken. Dit kan helpen.",
+      "reposition": "Verplaats je modem",
+      "repositionDesc": "Zet hem op een centrale, verhoogde plek weg van muren en elektronica.",
+      "orderBooster": "Bestel een WiFi Booster",
+      "diyTips": "Doe-het-zelf tips",
+      "notHelpful": "Deze suggesties helpen niet"
+    }
+  },
+  "common": {
+    "whatCanIDo": "Wat kan ik doen?",
+    "yesBetter": "Ja, het is beter!",
+    "noStillNeed": "Nee, ik heb nog hulp nodig",
+    "close": "Sluiten"
+  },
+  "debug": {
+    "state": "status",
+    "qoe": "qoe",
+    "mode": "modus",
+    "none": "geen"
+  },
+  "diagnosticPanel": {
+    "title": "🛠 Diagnostisch Invoerpaneel",
+    "elt": "ELT (Servicemoment)",
+    "on": "Aan",
+    "off": "Uit",
+    "modemInService": "modem.inService",
+    "modemOnline": "Online",
+    "modemOffline": "Offline",
+    "modemWifiOn": "modem.wifiOn",
+    "network": "Netwerk",
+    "incidentActive": "incident.active",
+    "changeActive": "change.active",
+    "problemActive": "problem.active",
+    "qoeTypes": "QOE Types",
+    "selectSentiment": "Selecteer hieronder een sentiment om de diagnose te starten"
+  }
+}
