@@ -6,8 +6,22 @@ import { Clock, Search, Lightbulb } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const PositiveMismatchActionsScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
+  const { setCurrentState, diagnosticResult, qoeSelected } = useDiagnostic();
   const { t } = useTranslation();
+
+  const isNetworkIssue = diagnosticResult && (
+    diagnosticResult.network.incident.active ||
+    diagnosticResult.network.change.active ||
+    diagnosticResult.network.problem.active
+  );
+
+  const handleDiveIn = () => {
+    if (isNetworkIssue && !qoeSelected) {
+      setCurrentState("network_incident");
+    } else {
+      setCurrentState("qoe_explainer");
+    }
+  };
 
   return (
     <ScreenShell
@@ -17,7 +31,7 @@ const PositiveMismatchActionsScreen: React.FC = () => {
     >
       <div className="flex flex-col gap-3">
         <ActionButton variant="outline" onClick={() => setCurrentState("entry")} icon={<Clock className="w-5 h-5" />}>{t("positiveMismatchActions.doNothing")}</ActionButton>
-        <ActionButton onClick={() => setCurrentState("qoe_explainer")} icon={<Search className="w-5 h-5" />}>{t("positiveMismatchActions.diveIn")}</ActionButton>
+        <ActionButton onClick={handleDiveIn} icon={<Search className="w-5 h-5" />}>{t("positiveMismatchActions.diveIn")}</ActionButton>
       </div>
     </ScreenShell>
   );
