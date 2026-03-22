@@ -281,8 +281,9 @@ const QoECoverageScreen: React.FC = () => {
 
 /* ─── Technician (filter / dice) ─── */
 const QoETechnicianScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
-  const [step, setStep] = useState<"cause" | "resolution">("cause");
+  const { setCurrentState, previousState } = useDiagnostic();
+  const fromExplainer = previousState === "qoe_explainer";
+  const [step, setStep] = useState<"cause" | "resolution">(fromExplainer ? "resolution" : "cause");
 
   if (step === "resolution") {
     return (
