@@ -1,0 +1,416 @@
+{
+  "nav": {
+    "start": "Start",
+    "bills": "Bills",
+    "support": "Support",
+    "account": "Account"
+  },
+  "start": {
+    "hello": "Hello Vijay",
+    "welcomeBack": "Welcome back",
+    "yourProducts": "Your Products",
+    "limitedInternet": "Limited Internet",
+    "usageLabel": "{{used}} GB / {{total}} GB used",
+    "quickActions": "Quick Actions"
+  },
+  "bills": {
+    "title": "Bills",
+    "empty": "No bills to display"
+  },
+  "account": {
+    "title": "Account",
+    "subtitle": "Vijay's account"
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "We're here to help",
+    "modemStatus": "Modem Status",
+    "online": "Online",
+    "offline": "Offline",
+    "wifiIssue": "Issue with your WiFi?"
+  },
+  "serviceMoment": {
+    "title": "My Internet Scan",
+    "subtitle": "How is your WiFi at home?",
+    "dismiss": "Dismiss"
+  },
+  "productDetail": {
+    "title": "Limited Internet",
+    "dataUsage": "Data Usage",
+    "currentPeriod": "Current period",
+    "used": "{{used}} GB used",
+    "total": "{{total}} GB total",
+    "back": "Back"
+  },
+  "intro": {
+    "positiveTitle": "Great to hear things are going well!",
+    "positiveSubtitle": "If you ever run into an issue, you can always come back here and we'll help sort it out.",
+    "negativeTitle": "We're sorry to hear that",
+    "negativeSubtitle": "Let's take a look and see what might be going on with your connection.",
+    "startDiagnosis": "Start Diagnosis",
+    "exit": "Exit"
+  },
+  "preScan": {
+    "title": "What we'll check",
+    "subtitle": "The scan takes a few seconds and will analyse three key areas of your connection.",
+    "modemStatus": "Modem status",
+    "networkStatus": "Network status",
+    "connectionQuality": "Connection quality",
+    "startNewScan": "Start new scan",
+    "retestAfterFix": "Retest after a fix"
+  },
+  "scanning": {
+    "title": "Scanning your connection",
+    "modem": "Modem",
+    "network": "Network",
+    "connection": "Connection",
+    "didYouKnow": "Did you know?",
+    "facts": [
+      "The first WiFi standard was released in 1997 and had a max speed of 2 Mbps.",
+      "WiFi signals travel at the speed of light — about 300,000 km/s.",
+      "The average household has over 25 connected devices.",
+      "Your microwave oven operates on the same frequency as your WiFi router.",
+      "The name 'WiFi' doesn't actually stand for anything!",
+      "A single WiFi router can theoretically cover about 50 metres indoors.",
+      "Streaming a 4K movie uses about 7 GB per hour.",
+      "The world record for the longest WiFi connection is over 380 km."
+    ]
+  },
+  "scanDone": {
+    "title": "Scan complete",
+    "subtitle": "We've finished analysing your connection.",
+    "seeResult": "See result"
+  },
+  "retestWarning": {
+    "title": "Before you retest",
+    "subtitle": "Our diagnostic data is not updated in real time. After a fix has been applied, it can take up to <strong>one week</strong> for new results to appear.",
+    "warning": "Running a scan now may show outdated information and give an incorrect result.",
+    "continueAnyway": "Continue anyway",
+    "comeBackLater": "Come back later"
+  },
+  "allClear": {
+    "positiveTitle": "Your WiFi works as expected",
+    "supercharged": "Supercharged WiFi",
+    "celebrate": "Let's celebrate",
+    "woohoo": "🎉 Woohoo!",
+    "enjoySupercharged": "Enjoy your supercharged connection.",
+    "noIssuesTitle": "No issues detected",
+    "noIssuesSubtitle": "Your connection looks healthy from our end.",
+    "stillProblems": "Are you still experiencing problems?",
+    "noEverythingFine": "No, everything's fine",
+    "yesStillIssues": "Yes, I still have issues"
+  },
+  "mismatch": {
+    "title": "We hear you",
+    "subtitle": "Your experience doesn't match what our systems are showing. We understand how frustrating that can be, and we want to help.",
+    "ourData": "Our data",
+    "yourExperience": "Your experience",
+    "superchargedWifi": "Supercharged WiFi",
+    "negative": "Negative",
+    "whatsTheReason": "What's the reason?",
+    "whatShouldIDo": "What should I do?",
+    "reasonTitle": "Sadly, we're not flawless",
+    "reasonBody": "Our diagnostic systems monitor your connection remotely, but they can't always capture the full picture of what happens inside your home.",
+    "whyTitle": "Why this can happen:",
+    "whyReasons": [
+      "WiFi interference from nearby devices or neighbours",
+      "Physical obstacles (walls, floors) weakening the signal",
+      "Issues with specific devices that our systems can't detect",
+      "Temporary slowdowns that resolve before our checks run"
+    ],
+    "suggestion": "What we suggest:",
+    "suggestionBody": "Try the troubleshooting steps on the next screen, or contact our support team for personalised help.",
+    "close": "Close"
+  },
+  "mismatchActions": {
+    "title": "Let's make it right",
+    "subtitle": "Here are some things you can try to improve your experience.",
+    "generalWifiHelp": "General WiFi help",
+    "contactUs": "Contact us"
+  },
+  "positiveMismatch": {
+    "title": "Good to hear — but we noticed something",
+    "subtitle": "You're happy with your WiFi, but our systems have picked up a potential issue. It may not affect you yet — but it's worth knowing about.",
+    "possiblyWobbly": "Possibly wobbly WiFi",
+    "positive": "Positive",
+    "whyReasons": [
+      "Early signs of degradation that haven't become noticeable",
+      "Intermittent signal instability during off-peak hours",
+      "Hardware indicators that suggest future problems",
+      "Network-level patterns that may worsen over time"
+    ],
+    "suggestion": "Our suggestion:",
+    "suggestionBody": "You can ignore this for now, or take a look at the issue to prevent problems down the road."
+  },
+  "positiveMismatchActions": {
+    "title": "Possible actions",
+    "subtitle": "Since everything feels fine on your end, here's what you can do.",
+    "doNothing": "Do nothing & come back later",
+    "diveIn": "Dive into the problem"
+  },
+  "modemOffline": {
+    "title": "No internet connection",
+    "subtitle": "We detect that you have no internet connection.",
+    "cause": "Most probable cause:",
+    "causeValue": "modem offline",
+    "whatCanIDo": "What can I do?",
+    "solutionsTitle": "Possible solutions",
+    "turnOn": "Turn on the modem",
+    "turnOnDesc": "Make sure your modem is powered on and the power light is solid.",
+    "restart": "Restart the modem",
+    "restartDesc": "Unplug your modem, wait 10 seconds, then plug it back in.",
+    "waitInfo": "Wait at least 5 minutes before retesting your connection.",
+    "redoTest": "Redo test",
+    "notHelpful": "This suggestion is not helpful"
+  },
+  "networkIncident": {
+    "title": "Poor or no connectivity",
+    "subtitle": "We detect that you have poor or no connectivity. The most probable cause is a network issue that we are already aware of and working on.",
+    "solutionsTitle": "Possible solutions",
+    "waitForTech": "Wait until technicians fix it",
+    "waitForTechDesc": "Our team is already aware and working on resolving this issue.",
+    "estimatedFix": "Estimated fix time:",
+    "gotIt": "Got it, thanks"
+  },
+  "wifiHelp": {
+    "title": "WiFi troubleshooting",
+    "subtitle": "Try one of these options to improve your connection.",
+    "modemRestart": "Initiate modem restart",
+    "modemRestartDesc": "Remotely reboot your modem",
+    "diyTips": "DIY tips and tricks",
+    "diyTipsDesc": "Learn how to fix common WiFi issues",
+    "orderBooster": "Order WiFi Booster",
+    "orderBoosterDesc": "Extend your coverage with a booster",
+    "notHelpful": "These tips are not helpful",
+    "notHelpfulDesc": "Talk to our support team"
+  },
+  "modemReboot": {
+    "title": "Restart your modem",
+    "restartingTitle": "Restarting modem…",
+    "restartedTitle": "Modem restarted",
+    "beforeStart": "Before you start",
+    "rebootInfo": "The reboot will take approximately <strong>5 minutes</strong> to complete and re-establish connectivity. You will <strong>lose your internet connection</strong> during this time.",
+    "rebootWait": "Please wait while we restart your modem…",
+    "start": "Start",
+    "back": "Back",
+    "didItImprove": "Did your experience improve?",
+    "yesBetter": "Yes, it's better!",
+    "noStillNeed": "No, I still need help"
+  },
+  "supportScreen": {
+    "title": "We're here to help",
+    "subtitlePositive": "Choose how you'd like to get in touch with our support team.",
+    "subtitleNegative": "Get in touch.",
+    "chatWithUs": "Chat with us",
+    "callSupport": "Call support"
+  },
+  "chatFlow": {
+    "title": "Chat with support",
+    "subtitle": "Before you start, here's what to expect.",
+    "notLiveChat": "Our chat is <strong>not a live chat</strong> — responses may be delayed. An advisor will reply as soon as possible.",
+    "speedUp": "To speed things up, we've prepared a summary of your issue that you can paste into the chat.",
+    "promptLabel": "Your summary prompt:",
+    "copyToClipboard": "Copy to clipboard",
+    "copied": "Copied!",
+    "openChat": "Open chat",
+    "close": "Close",
+    "baseSupportChat": "BASE Support",
+    "chat": "Chat",
+    "greeting": "Hello Vijay 👋 How can BASE help you today?",
+    "botReply": "Thank you for reaching out. I'll assign you to the next available advisor who can help resolve this. Please hold on for a moment. 🙏",
+    "placeholder": "Type a message…"
+  },
+  "chatPrompt": {
+    "positiveNoIssue": "Hi, I don't have an issue at the moment but your scan indicates my modem may be offline. Can you help?",
+    "neutralModemOffline": "Hi, I ran the internet self-diagnosis tool and it detected that my modem appears to be offline. Could you please help me get back online?",
+    "negativeModemOffline": "Hi, I'm experiencing problems with my internet. Your self-diagnosis tool confirms that my modem is offline, which matches what I'm going through. Could you please help me resolve this?",
+    "positiveWithIssue": "Hi, I don't have an issue at the moment but your scan indicates I may have {{issue}}. Can you help?",
+    "neutralWithIssue": "Hi, I ran the internet self-diagnosis tool and your scan detected {{issue}}. Could you please help me look into it?",
+    "neutralNoIssue": "Hi, I ran the internet self-diagnosis tool and no issues were detected, but I'm not sure if everything is working as expected. Could you please look into it?",
+    "negativeWithIssue": "Hi, I'm experiencing problems with my internet. Your self-diagnosis tool detected {{issue}}, which matches what I'm going through. Could you please help me resolve this?",
+    "negativeNoIssue": "Hi, I'm experiencing problems with my internet but your self-diagnosis tool didn't detect any issues. Could you please help me troubleshoot further?",
+    "issues": {
+      "broken_hardware_modem": "a defective modem",
+      "filter": "a network issue",
+      "filter_hp47": "a network issue",
+      "filter_tof": "a network issue",
+      "dropcable": "a cable connection issue",
+      "dice": "a network issue",
+      "modem_deregs": "a network or modem issue",
+      "coverage": "a WiFi coverage issue",
+      "default": "a connectivity issue"
+    }
+  },
+  "success": {
+    "title": "You're all set!",
+    "subtitle": "Your issue has been resolved. Enjoy your internet!",
+    "done": "Done"
+  },
+  "clarification": {
+    "title": "What kind of issue?",
+    "subtitle": "Help us narrow down the problem.",
+    "wifiIssues": "WiFi issues",
+    "somethingElse": "Something else"
+  },
+  "misalignment": {
+    "title": "Let's try again",
+    "subtitle": "We may not have identified the right issue. What best describes your problem?",
+    "noInternet": "No internet at all",
+    "slowSpeeds": "Slow speeds",
+    "wifiCoverage": "WiFi coverage",
+    "intermittentDrops": "Intermittent drops",
+    "somethingElse": "Something else"
+  },
+  "wifiFlow": {
+    "title": "WiFi troubleshooting",
+    "subtitlePositive": "Let's try a few things to improve your WiFi:",
+    "subtitleNegative": "Quick WiFi fixes:",
+    "tip1": "Restart your WiFi router",
+    "tip2": "Move closer to the router",
+    "tip3": "Disconnect unused devices",
+    "triedThese": "I've tried these",
+    "isBetter": "Is your WiFi better now?",
+    "yes": "Yes!",
+    "noNeedHelp": "No, I need help"
+  },
+  "qoe": {
+    "modemDeregs": {
+      "title": "Poor or no connectivity",
+      "subtitle": "We detect that you may have poor or no connectivity. The most probable cause is a malfunctioning modem caused by a signal issue.",
+      "solutionsTitle": "Possible solutions",
+      "restartModem": "Restart your modem",
+      "restartModemDesc": "A reboot can often resolve signal issues with your modem.",
+      "initiateReboot": "Initiate modem reboot",
+      "notHelpful": "This suggestion is not helpful"
+    },
+    "dropcable": {
+      "title": "Poor or no connectivity",
+      "subtitle": "We detect that you may have poor or no connectivity. The most probable cause is a cabling issue.",
+      "solutionsTitle": "Possible solutions",
+      "tightenCable": "Tighten cable at your modem",
+      "tightenCableDesc": "Make sure the coax cable is firmly screwed into the back of your modem.",
+      "visualGuide": "Visual guide: tighten cable connection",
+      "done": "Done",
+      "notHelpful": "This suggestion is not helpful",
+      "didItImprove": "Did it improve your experience?"
+    },
+    "technician": {
+      "causeTitle": "Poor or no connectivity",
+      "causeSubtitle": "We detect that you may have poor or no connectivity. The most probable cause is a network issue outside your home.",
+      "resolutionTitle": "A technician visit is required",
+      "resolutionSubtitle": "This issue requires an on-site inspection by one of our technicians. Please contact us to schedule a visit.",
+      "contactSupport": "Contact support"
+    },
+    "brokenHardware": {
+      "causeTitle": "Poor or no connectivity",
+      "causeSubtitle": "We detect that you have poor or no connectivity. The most probable cause is a defective modem.",
+      "resolutionTitle": "Modem replacement needed",
+      "resolutionSubtitle": "Your modem needs to be replaced. Please contact our support team to arrange a replacement.",
+      "scheduleReplacement": "Schedule replacement"
+    },
+    "explainer": {
+      "modem_deregs": {
+        "label": "Local network issue",
+        "description": "Your modem has been experiencing signal deregistrations — brief moments where it loses sync with the network. This can cause intermittent drops or slowdowns."
+      },
+      "dropcable": {
+        "label": "Cable signal issue",
+        "description": "We've detected signal degradation on the cable connecting your modem. This could be caused by a loose or damaged coaxial cable."
+      },
+      "coverage": {
+        "label": "WiFi coverage issue",
+        "description": "Parts of your home may have weak WiFi signal. This is usually caused by distance from the router, walls, or interference from other devices."
+      },
+      "filter": {
+        "label": "Technical issue",
+        "description": "A filter component in your connection needs attention. This requires a technician visit to resolve."
+      },
+      "filter_hp47": {
+        "label": "Technical issue",
+        "description": "A specific filter component (HP47) has been flagged. A technician visit is required to inspect and replace it."
+      },
+      "filter_tof": {
+        "label": "Technical issue",
+        "description": "A filter issue (TOF) has been detected in your line. This needs an on-site technician to resolve."
+      },
+      "dice": {
+        "label": "Technical issue",
+        "description": "A network component issue has been identified that requires professional attention from a technician."
+      },
+      "broken_hardware_modem": {
+        "label": "Defective modem",
+        "description": "Our diagnostics indicate your modem may have a hardware fault. It might need to be replaced to ensure stable connectivity."
+      },
+      "whatCanIDo": "What can I do?"
+    }
+  },
+  "coverage": {
+    "boosterQuestion": "Do you have a WiFi booster installed in your home?",
+    "quickQuestion": "Quick question",
+    "yes": "Yes",
+    "no": "No",
+    "iDontKnow": "I don't know",
+    "wobblyDetected": "Wobbly WiFi detected",
+    "interference": {
+      "subtitle": "The most probable cause is battling WiFi signals — your modem and booster are both broadcasting, which can create interference.",
+      "solutionsTitle": "Possible solutions",
+      "solutionsSubtitle": "Your modem WiFi and booster may be competing for signal. Turning off the modem's WiFi lets your booster handle everything — reducing interference.",
+      "turnOff": "Turn off modem WiFi",
+      "turnOffDesc": "Let your booster manage the wireless signal to avoid interference.",
+      "turnOffRemotely": "Turn off modem WiFi remotely",
+      "notHelpful": "This suggestion is not helpful",
+      "turningOff": "Turning off modem WiFi",
+      "turningOffWait": "Please wait while we turn off your modem's WiFi radio…",
+      "verifyTitle": "Verify if it worked",
+      "verifySubtitle": "Did turning off the modem WiFi improve your experience?"
+    },
+    "poorBooster": {
+      "subtitle": "The most probable cause is poor booster placement — your modem WiFi is off, so coverage depends entirely on your booster's reach.",
+      "solutionsTitle": "Possible solutions",
+      "solutionsSubtitle": "Your booster might be too far from the modem, or it may not be strong enough to cover your whole home.",
+      "reposition": "Reposition your booster",
+      "repositionDesc": "Move it closer to your modem or to a central location in your home.",
+      "buyBooster": "Buy a booster",
+      "tipsAndTricks": "Tips and tricks",
+      "notHelpful": "This suggestion is not helpful"
+    },
+    "general": {
+      "subtitle": "The most probable cause is a WiFi coverage issue — your modem's signal may not reach all areas of your home.",
+      "solutionsTitle": "Possible solutions",
+      "solutionsSubtitle": "Your modem's WiFi signal may not be strong enough to reach every room. Here's what can help.",
+      "reposition": "Reposition your modem",
+      "repositionDesc": "Move it to a central, elevated spot away from walls and electronics.",
+      "orderBooster": "Order a WiFi Booster",
+      "diyTips": "DIY tips and tricks",
+      "notHelpful": "These suggestions are not helpful"
+    }
+  },
+  "common": {
+    "whatCanIDo": "What can I do?",
+    "yesBetter": "Yes, it's better!",
+    "noStillNeed": "No, I still need help",
+    "close": "Close"
+  },
+  "debug": {
+    "state": "state",
+    "qoe": "qoe",
+    "mode": "mode",
+    "none": "none"
+  },
+  "diagnosticPanel": {
+    "title": "🛠 Diagnostic Input Panel",
+    "elt": "ELT (Service Moment)",
+    "on": "On",
+    "off": "Off",
+    "modemInService": "modem.inService",
+    "modemOnline": "Online",
+    "modemOffline": "Offline",
+    "modemWifiOn": "modem.wifiOn",
+    "network": "Network",
+    "incidentActive": "incident.active",
+    "changeActive": "change.active",
+    "problemActive": "problem.active",
+    "qoeTypes": "QOE Types",
+    "selectSentiment": "Select a sentiment below to run diagnosis"
+  }
+}
