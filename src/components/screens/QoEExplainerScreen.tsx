@@ -10,15 +10,14 @@ import type { ScreenState } from "@/types/diagnostic";
 const QoEExplainerScreen: React.FC = () => {
   const { qoeSelected, setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
+  const qoeType = qoeSelected?.type;
 
-  // Structural guard: if no QoE item is selected, redirect to support
-  // instead of silently defaulting to modem_deregs
-  if (!qoeSelected) {
-    React.useEffect(() => { setCurrentState("support"); }, []);
-    return null;
-  }
+  // Structural guard: redirect to support if no QoE item is selected
+  React.useEffect(() => {
+    if (!qoeType) setCurrentState("support");
+  }, [qoeType, setCurrentState]);
 
-  const qoeType = qoeSelected.type;
+  if (!qoeType) return null;
 
   const iconMap: Record<string, React.ReactNode> = {
     modem_deregs: <RotateCcw className="w-8 h-8 text-warning" />,
