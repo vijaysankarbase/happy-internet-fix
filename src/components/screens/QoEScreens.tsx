@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic } from "@/context/DiagnosticContext";
-import { RotateCcw, Cable, Wrench, CheckCircle2, XCircle, AlertTriangle, Info, Loader2, Image } from "lucide-react";
+import { RotateCcw, Cable, Wrench, CheckCircle2, XCircle, AlertTriangle, Info, Loader2 } from "lucide-react";
+import modemCableImg from "@/assets/modem-cable-tighten.jpg";
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerClose } from "@/components/ui/drawer";
 import { useTranslation } from "react-i18next";
 
