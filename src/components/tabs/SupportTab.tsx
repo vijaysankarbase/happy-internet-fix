@@ -23,8 +23,8 @@ const SupportTab: React.FC = () => {
   const modemOnline = panelInputs.modemInService;
 
   const handleStartScan = () => {
-    // Support entry always assumes negative sentiment
     setSentiment("negative");
+    setEntryPoint("support");
 
     const apiResponse: DiagnosticResult = {
       modem: { inService: panelInputs.modemInService },
@@ -40,9 +40,7 @@ const SupportTab: React.FC = () => {
     };
 
     setDiagnosticResult(apiResponse);
-    const { state, qoeSelected } = evaluateDiagnostic(apiResponse, "negative");
-    setQoeSelected(qoeSelected);
-    setCurrentState(state);
+    setCurrentState("intro");
   };
 
   return (
