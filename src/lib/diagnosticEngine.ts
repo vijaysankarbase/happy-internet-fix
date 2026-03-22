@@ -74,6 +74,12 @@ export const evaluateDiagnostic = (
 
   const sorted = [...result.qoe].sort((a, b) => a.priority - b.priority);
   const selected = sorted[0];
+
+  // Positive sentiment + QoE issues = positive mismatch
+  if (sentiment === "positive") {
+    return { state: "positive_mismatch", qoeSelected: selected };
+  }
+
   const stateMap: Record<string, ScreenState> = {
     modem_deregs: "qoe_modem_deregs",
     dropcable: "qoe_dropcable",

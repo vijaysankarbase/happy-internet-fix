@@ -75,6 +75,12 @@ const DiagnosticFlow: React.FC = () => {
         return <SentimentMismatchScreen key="mismatch" />;
       case "mismatch_actions":
         return <MismatchActionsScreen key="mismatch-actions" />;
+      case "positive_mismatch":
+        return <PositiveMismatchScreen key="positive-mismatch" />;
+      case "positive_mismatch_actions":
+        return <PositiveMismatchActionsScreen key="positive-mismatch-actions" />;
+      case "qoe_explainer":
+        return <QoEExplainerScreen key="qoe-explainer" />;
       case "wifi_help":
         return <WifiHelpScreen key="wifi-help" />;
       case "chat_flow":
