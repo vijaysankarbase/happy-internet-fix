@@ -60,7 +60,7 @@ const ModemOfflineScreen: React.FC = () => {
           transition={{ delay: 0.55, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col gap-3"
         >
-          <ActionButton onClick={() => setCurrentState("retest_warning")} icon={<RotateCcw className="w-5 h-5" />}>{t("modemOffline.redoTest")}</ActionButton>
+          <ActionButton onClick={() => setCurrentState("scanning")} icon={<RotateCcw className="w-5 h-5" />}>{t("modemOffline.redoTest")}</ActionButton>
           <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("modemOffline.notHelpful")}</ActionButton>
         </motion.div>
       </ScreenShell>
