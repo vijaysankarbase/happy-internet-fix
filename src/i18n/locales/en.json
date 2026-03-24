@@ -10,6 +10,7 @@
     "welcomeBack": "Welcome back",
     "yourProducts": "Your Products",
     "limitedInternet": "Internet Limited",
+    "unlimitedInternet": "Internet Unlimited",
     "usageLabel": "{{used}} GB / {{total}} GB used",
     "quickActions": "Quick Actions",
     "addProducts": "Add products",
