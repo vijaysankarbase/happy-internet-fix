@@ -130,6 +130,15 @@ const DiagnosticPanel: React.FC = () => {
             </div>
           </div>
 
+          {/* Multiple Homes */}
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-foreground">Multiple Homes</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">{panelInputs.multipleHomes ? "On" : "Off"}</span>
+              <Switch checked={panelInputs.multipleHomes} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, multipleHomes: v }))} />
+            </div>
+          </div>
+
           <p className="text-xs text-muted-foreground text-center">Select a sentiment below to run diagnosis</p>
         </div>
       </CollapsibleContent>

@@ -9,6 +9,7 @@ export interface PanelInputs {
   changeActive: boolean;
   problemActive: boolean;
   selectedQoe: string[];
+  multipleHomes: boolean;
 }
 
 interface DiagnosticContextType extends AppState {
@@ -37,6 +38,7 @@ const initialPanelInputs: PanelInputs = {
   changeActive: false,
   problemActive: false,
   selectedQoe: [],
+  multipleHomes: false,
 };
 
 const initialState: AppState = {
