@@ -20,6 +20,7 @@ interface DiagnosticContextType extends AppState {
   setCurrentTab: (t: TabId) => void;
   setDiagnosticResult: (r: DiagnosticResult) => void;
   setQoeSelected: (q: QoEItem | null) => void;
+  setSelectedProduct: (p: SelectedProduct) => void;
   isPositive: boolean;
   reset: () => void;
   goBack: () => void;
