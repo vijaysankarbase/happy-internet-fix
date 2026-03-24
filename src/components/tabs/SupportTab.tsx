@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Router, AlertTriangle, CheckCircle, Search } from "lucide-react";
+import { Router, AlertTriangle, CheckCircle, Search, MapPin } from "lucide-react";
 import { useDiagnostic } from "@/context/DiagnosticContext";
 import ActionButton from "@/components/ActionButton";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
@@ -12,10 +12,16 @@ const PRIORITY_MAP: Record<string, number> = {
   modem_deregs: 2.1, broken_hardware_modem: 2.2, coverage: 3.5,
 };
 
+const addresses = [
+  { id: "1", product: "Internet Limited", address: "Liersesteenweg 4, Mechelen", online: true },
+  { id: "2", product: "Internet Unlimited", address: "Winketkaai 20, Mechelen", online: false },
+];
+
 const SupportTab: React.FC = () => {
   const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
   const modemOnline = panelInputs.modemInService;
+  const multipleHomes = panelInputs.multipleHomes;
 
   const handleStartScan = () => {
     setSentiment("negative");
@@ -35,6 +41,37 @@ const SupportTab: React.FC = () => {
     setCurrentState("intro");
   };
 
+  const ModemStatusCard = ({ online, product, address }: { online: boolean; product?: string; address?: string }) => (
+    <div className="px-5 pt-5 pb-4 flex items-center gap-4">
+      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${online ? "bg-success/10" : "bg-destructive/10"}`}>
+        <Router className={`w-6 h-6 ${online ? "text-success" : "text-destructive"}`} />
+      </div>
+      <div className="flex-1">
+        {product && <p className="text-sm font-semibold text-foreground">{product}</p>}
+        {!product && <p className="text-sm font-semibold text-foreground">{t("support.modemStatus")}</p>}
+        {address && (
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <MapPin className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+            <span className="text-xs text-muted-foreground truncate">{address}</span>
+          </div>
+        )}
+        <div className="flex items-center gap-1.5 mt-0.5">
+          {online ? (
+            <>
+              <CheckCircle className="w-3.5 h-3.5 text-success" />
+              <span className="text-xs font-medium text-success">{t("support.online")}</span>
+            </>
+          ) : (
+            <>
+              <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
+              <span className="text-xs font-medium text-destructive">{t("support.offline")}</span>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex flex-col gap-6 px-5 pt-6 pb-20">
       <DiagnosticPanel />
@@ -52,27 +89,18 @@ const SupportTab: React.FC = () => {
         transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden"
       >
-        <div className="px-5 pt-5 pb-4 flex items-center gap-4">
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${modemOnline ? "bg-success/10" : "bg-destructive/10"}`}>
-            <Router className={`w-6 h-6 ${modemOnline ? "text-success" : "text-destructive"}`} />
-          </div>
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground">{t("support.modemStatus")}</p>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              {modemOnline ? (
-                <>
-                  <CheckCircle className="w-3.5 h-3.5 text-success" />
-                  <span className="text-xs font-medium text-success">{t("support.online")}</span>
-                </>
-              ) : (
-                <>
-                  <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
-                  <span className="text-xs font-medium text-destructive">{t("support.offline")}</span>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+        {multipleHomes ? (
+          <>
+            {addresses.map((addr, idx) => (
+              <React.Fragment key={addr.id}>
+                {idx > 0 && <div className="mx-5 border-t border-border" />}
+                <ModemStatusCard online={addr.online} product={addr.product} address={addr.address} />
+              </React.Fragment>
+            ))}
+          </>
+        ) : (
+          <ModemStatusCard online={modemOnline} />
+        )}
         <div className="px-5 pb-5">
           <ActionButton onClick={handleStartScan} icon={<Search className="w-5 h-5" />}>
             {t("support.wifiIssue")}
