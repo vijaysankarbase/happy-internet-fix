@@ -117,6 +117,10 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setState((s) => ({ ...s, qoeSelected }));
   }, []);
 
+  const setSelectedProduct = useCallback((selectedProduct: SelectedProduct) => {
+    setState((s) => ({ ...s, selectedProduct }));
+  }, []);
+
   const reset = useCallback(() => {
     setState(initialState);
     setPanelInputs(initialPanelInputs);
