@@ -38,6 +38,7 @@ const initialPanelInputs: PanelInputs = {
   changeActive: false,
   problemActive: false,
   selectedQoe: [],
+  multipleHomes: false,
 };
 
 const initialState: AppState = {
