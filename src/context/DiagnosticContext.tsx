@@ -50,6 +50,7 @@ const initialState: AppState = {
   currentTab: "start",
   qoeSelected: null,
   diagnosticResult: null,
+  selectedProduct: "limited",
 };
 
 const DiagnosticContext = createContext<DiagnosticContextType | null>(null);
