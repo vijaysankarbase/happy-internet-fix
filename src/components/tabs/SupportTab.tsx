@@ -12,11 +12,6 @@ const PRIORITY_MAP: Record<string, number> = {
   modem_deregs: 2.1, broken_hardware_modem: 2.2, coverage: 3.5,
 };
 
-const addresses = [
-  { id: "1", product: "Internet Limited", address: "Liersesteenweg 4, Mechelen", online: true },
-  { id: "2", product: "Internet Unlimited", address: "Winketkaai 20, Mechelen", online: false },
-];
-
 const SupportTab: React.FC = () => {
   const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
@@ -40,6 +35,11 @@ const SupportTab: React.FC = () => {
     setDiagnosticResult(apiResponse);
     setCurrentState("intro");
   };
+
+  const addresses = [
+    { id: "1", product: "Internet Limited", address: "Liersesteenweg 4, Mechelen", online: panelInputs.modemInService },
+    { id: "2", product: "Internet Unlimited", address: "Winketkaai 20, Mechelen", online: panelInputs.home2.modemInService },
+  ];
 
   const ModemStatusCard = ({ online, product, address }: { online: boolean; product?: string; address?: string }) => (
     <div className="px-5 pt-5 pb-4 flex items-center gap-4">

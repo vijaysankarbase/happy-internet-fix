@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useRef } from "react";
 import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult, SelectedProduct } from "@/types/diagnostic";
 
-export interface PanelInputs {
+export interface HomeInputs {
   eltEnabled: boolean;
   modemInService: boolean;
   modemWifiOn: boolean;
@@ -9,8 +9,28 @@ export interface PanelInputs {
   changeActive: boolean;
   problemActive: boolean;
   selectedQoe: string[];
-  multipleHomes: boolean;
 }
+
+export interface PanelInputs extends HomeInputs {
+  multipleHomes: boolean;
+  home2: HomeInputs;
+}
+
+/** Get the effective inputs for a given product selection */
+export const getHomeInputs = (panelInputs: PanelInputs, product: SelectedProduct): HomeInputs => {
+  if (product === "unlimited" && panelInputs.multipleHomes) {
+    return panelInputs.home2;
+  }
+  return {
+    eltEnabled: panelInputs.eltEnabled,
+    modemInService: panelInputs.modemInService,
+    modemWifiOn: panelInputs.modemWifiOn,
+    incidentActive: panelInputs.incidentActive,
+    changeActive: panelInputs.changeActive,
+    problemActive: panelInputs.problemActive,
+    selectedQoe: panelInputs.selectedQoe,
+  };
+};
 
 interface DiagnosticContextType extends AppState {
   previousState: ScreenState | null;
@@ -31,7 +51,7 @@ interface DiagnosticContextType extends AppState {
   dismissServiceMoment: () => void;
 }
 
-const initialPanelInputs: PanelInputs = {
+const initialHomeInputs: HomeInputs = {
   eltEnabled: true,
   modemInService: true,
   modemWifiOn: true,
@@ -39,7 +59,12 @@ const initialPanelInputs: PanelInputs = {
   changeActive: false,
   problemActive: false,
   selectedQoe: [],
+};
+
+const initialPanelInputs: PanelInputs = {
+  ...initialHomeInputs,
   multipleHomes: false,
+  home2: { ...initialHomeInputs },
 };
 
 const initialState: AppState = {
@@ -82,11 +107,9 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const setCurrentState = useCallback((currentState: ScreenState) => {
     setState((s) => {
-      // Push previous state to history (don't push "entry" as it's the home)
       if (s.currentState !== "entry") {
         historyRef.current = [...historyRef.current, s.currentState];
       }
-      // If navigating to entry, clear history
       if (currentState === "entry") {
         historyRef.current = [];
       }
