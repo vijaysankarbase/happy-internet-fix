@@ -10,6 +10,7 @@
     "welcomeBack": "Bienvenue",
     "yourProducts": "Vos Produits",
     "limitedInternet": "Internet Limited",
+    "unlimitedInternet": "Internet Unlimited",
     "usageLabel": "{{used}} GB / {{total}} GB utilisés",
     "quickActions": "Actions Rapides",
     "addProducts": "Ajouter des produits",
@@ -43,6 +44,7 @@
   },
   "productDetail": {
     "title": "Internet Limited",
+    "titleUnlimited": "Internet Unlimited",
     "dataUsage": "Utilisation des données",
     "currentPeriod": "Période en cours",
     "used": "{{used}} GB utilisés",

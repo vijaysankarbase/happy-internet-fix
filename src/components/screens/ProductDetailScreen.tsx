@@ -7,8 +7,14 @@ import ServiceMomentCard from "@/components/ServiceMomentCard";
 import { useTranslation } from "react-i18next";
 
 const ProductDetailScreen: React.FC = () => {
-  const { setCurrentState } = useDiagnostic();
+  const { setCurrentState, selectedProduct } = useDiagnostic();
   const { t } = useTranslation();
+
+  const isUnlimited = selectedProduct === "unlimited";
+  const productTitle = isUnlimited ? t("productDetail.titleUnlimited") : t("productDetail.title");
+  const used = isUnlimited ? 450 : 100;
+  const total = isUnlimited ? 1000 : 300;
+  const progressValue = Math.round((used / total) * 100);
 
   return (
     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }} className="flex flex-col gap-6 px-5 pt-2 pb-20">
@@ -16,7 +22,7 @@ const ProductDetailScreen: React.FC = () => {
         <button onClick={() => setCurrentState("entry")} className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors active:scale-95" aria-label={t("productDetail.back")}>
           <ArrowLeft className="w-5 h-5" />
         </button>
-        <h1 className="text-lg font-bold text-foreground tracking-tight">{t("productDetail.title")}</h1>
+        <h1 className="text-lg font-bold text-foreground tracking-tight">{productTitle}</h1>
       </div>
       <div className="bg-card rounded-xl border border-border p-5 space-y-3">
         <div className="flex items-center gap-3">
@@ -28,10 +34,10 @@ const ProductDetailScreen: React.FC = () => {
         </div>
         <div className="space-y-1.5">
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>{t("productDetail.used", { used: 100 })}</span>
-            <span>{t("productDetail.total", { total: 300 })}</span>
+            <span>{t("productDetail.used", { used })}</span>
+            <span>{t("productDetail.total", { total })}</span>
           </div>
-          <Progress value={33} className="h-2" />
+          <Progress value={progressValue} className="h-2" />
         </div>
       </div>
       <div className="space-y-2">

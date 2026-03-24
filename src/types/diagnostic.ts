@@ -56,6 +56,8 @@ export interface DiagnosticResult {
   qoe: QoEItem[];
 }
 
+export type SelectedProduct = "limited" | "unlimited";
+
 export interface AppState {
   experienceMode: ExperienceMode;
   sentiment: Sentiment;
@@ -64,4 +66,5 @@ export interface AppState {
   currentTab: TabId;
   qoeSelected: QoEItem | null;
   diagnosticResult: DiagnosticResult | null;
+  selectedProduct: SelectedProduct;
 }

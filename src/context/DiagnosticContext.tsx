@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, useRef } from "react";
-import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult } from "@/types/diagnostic";
+import type { AppState, ExperienceMode, Sentiment, EntryPoint, ScreenState, TabId, QoEItem, DiagnosticResult, SelectedProduct } from "@/types/diagnostic";
 
 export interface PanelInputs {
   eltEnabled: boolean;
@@ -20,6 +20,7 @@ interface DiagnosticContextType extends AppState {
   setCurrentTab: (t: TabId) => void;
   setDiagnosticResult: (r: DiagnosticResult) => void;
   setQoeSelected: (q: QoEItem | null) => void;
+  setSelectedProduct: (p: SelectedProduct) => void;
   isPositive: boolean;
   reset: () => void;
   goBack: () => void;
@@ -49,6 +50,7 @@ const initialState: AppState = {
   currentTab: "start",
   qoeSelected: null,
   diagnosticResult: null,
+  selectedProduct: "limited",
 };
 
 const DiagnosticContext = createContext<DiagnosticContextType | null>(null);
@@ -115,6 +117,10 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setState((s) => ({ ...s, qoeSelected }));
   }, []);
 
+  const setSelectedProduct = useCallback((selectedProduct: SelectedProduct) => {
+    setState((s) => ({ ...s, selectedProduct }));
+  }, []);
+
   const reset = useCallback(() => {
     setState(initialState);
     setPanelInputs(initialPanelInputs);
@@ -132,6 +138,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setCurrentTab,
         setDiagnosticResult,
         setQoeSelected,
+        setSelectedProduct,
         isPositive: state.experienceMode === "positive",
         reset,
         goBack,

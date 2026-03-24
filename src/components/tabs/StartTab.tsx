@@ -46,7 +46,7 @@ const InactiveRow: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon,
 };
 
 const StartTab: React.FC = () => {
-  const { setCurrentState, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
+  const { setCurrentState, setSelectedProduct, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
   const showCard = panelInputs.eltEnabled && !serviceMomentDismissed;
   const { t } = useTranslation();
 
@@ -84,7 +84,7 @@ const StartTab: React.FC = () => {
       >
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{t("start.yourProducts")}</h2>
         <button
-          onClick={() => setCurrentState("product_detail")}
+          onClick={() => { setSelectedProduct("limited"); setCurrentState("product_detail"); }}
           className="w-full bg-card rounded-xl border border-border p-4 flex items-center gap-4 hover:bg-secondary/40 transition-colors active:scale-[0.98] text-left"
         >
           <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -101,6 +101,26 @@ const StartTab: React.FC = () => {
           </div>
           <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
         </button>
+        {panelInputs.multipleHomes && (
+          <button
+            onClick={() => { setSelectedProduct("unlimited"); setCurrentState("product_detail"); }}
+            className="w-full bg-card rounded-xl border border-border p-4 flex items-center gap-4 hover:bg-secondary/40 transition-colors active:scale-[0.98] text-left"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <Wifi className="w-5 h-5 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0 space-y-2">
+              <p className="text-sm font-semibold text-foreground">{t("start.unlimitedInternet")}</p>
+              <div className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] text-muted-foreground">{t("start.usageLabel", { used: 450, total: 1000 })}</span>
+                </div>
+                <Progress value={45} className="h-1.5" />
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
+          </button>
+        )}
       </motion.div>
 
       <motion.div
