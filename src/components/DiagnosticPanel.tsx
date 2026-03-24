@@ -4,6 +4,7 @@ import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useDiagnostic } from "@/context/DiagnosticContext";
+import type { HomeInputs, PanelInputs } from "@/context/DiagnosticContext";
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
@@ -22,12 +23,98 @@ const QOE_TYPES = [
   { value: "coverage", label: "coverage" },
 ] as const;
 
+type HomeKey = "home1" | "home2";
+
+const HOME_LABELS: Record<HomeKey, string> = {
+  home1: "Liersesteenweg 4",
+  home2: "Winketkaai 20",
+};
+
+/** Renders the per-home inputs (ELT, modem, network, QoE) */
+const HomeInputsSection: React.FC<{
+  inputs: HomeInputs;
+  onChange: (partial: Partial<HomeInputs>) => void;
+  toggleQoe: (type: string) => void;
+}> = ({ inputs, onChange, toggleQoe }) => (
+  <div className="space-y-4">
+    {/* ELT */}
+    <div className="flex items-center justify-between">
+      <span className="text-sm font-medium text-foreground">ELT (Service Moment)</span>
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-muted-foreground">{inputs.eltEnabled ? "On" : "Off"}</span>
+        <Switch checked={inputs.eltEnabled} onCheckedChange={(v) => onChange({ eltEnabled: v })} />
+      </div>
+    </div>
+
+    {/* Modem */}
+    <div className="flex items-center justify-between">
+      <span className="text-sm font-medium text-foreground">modem.inService</span>
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-muted-foreground">{inputs.modemInService ? "Online" : "Offline"}</span>
+        <Switch checked={inputs.modemInService} onCheckedChange={(v) => onChange({ modemInService: v })} />
+      </div>
+    </div>
+    <div className="flex items-center justify-between">
+      <span className="text-sm font-medium text-foreground">modem.wifiOn</span>
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-muted-foreground">{inputs.modemWifiOn ? "On" : "Off"}</span>
+        <Switch checked={inputs.modemWifiOn} onCheckedChange={(v) => onChange({ modemWifiOn: v })} />
+      </div>
+    </div>
+
+    {/* Network toggles */}
+    <div className="space-y-2.5">
+      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Network</p>
+      {([
+        { label: "incident.active", key: "incidentActive" as const },
+        { label: "change.active", key: "changeActive" as const },
+        { label: "problem.active", key: "problemActive" as const },
+      ]).map((item) => (
+        <div key={item.key} className="flex items-center justify-between">
+          <span className="text-sm text-foreground">{item.label}</span>
+          <Switch
+            checked={inputs[item.key]}
+            onCheckedChange={(v) => onChange({ [item.key]: v })}
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* QOE multi-select */}
+    <div className="space-y-2.5">
+      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">QOE Types</p>
+      <div className="grid grid-cols-2 gap-2">
+        {QOE_TYPES.map((qoe) => (
+          <label
+            key={qoe.value}
+            className="flex items-center gap-2 p-2 rounded-lg border border-border bg-background cursor-pointer hover:bg-secondary/50 transition-colors"
+          >
+            <Checkbox
+              checked={inputs.selectedQoe.includes(qoe.value)}
+              onCheckedChange={() => toggleQoe(qoe.value)}
+            />
+            <span className="text-xs font-medium text-foreground">{qoe.label}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 const DiagnosticPanel: React.FC = () => {
   const { panelInputs, setPanelInputs } = useDiagnostic();
   const [open, setOpen] = React.useState(false);
+  const [activeHome, setActiveHome] = React.useState<HomeKey>("home1");
   const { t, i18n } = useTranslation();
 
-  const toggleQoe = (type: string) => {
+  const multipleHomes = panelInputs.multipleHomes;
+
+  // Helper to update home1 (top-level) fields
+  const updateHome1 = (partial: Partial<HomeInputs>) => {
+    setPanelInputs((prev) => ({ ...prev, ...partial }));
+  };
+
+  const toggleQoeHome1 = (type: string) => {
     setPanelInputs((prev) => ({
       ...prev,
       selectedQoe: prev.selectedQoe.includes(type)
@@ -35,6 +122,41 @@ const DiagnosticPanel: React.FC = () => {
         : [...prev.selectedQoe, type],
     }));
   };
+
+  // Helper to update home2 fields
+  const updateHome2 = (partial: Partial<HomeInputs>) => {
+    setPanelInputs((prev) => ({
+      ...prev,
+      home2: { ...prev.home2, ...partial },
+    }));
+  };
+
+  const toggleQoeHome2 = (type: string) => {
+    setPanelInputs((prev) => ({
+      ...prev,
+      home2: {
+        ...prev.home2,
+        selectedQoe: prev.home2.selectedQoe.includes(type)
+          ? prev.home2.selectedQoe.filter((t) => t !== type)
+          : [...prev.home2.selectedQoe, type],
+      },
+    }));
+  };
+
+  const currentInputs: HomeInputs = activeHome === "home1"
+    ? {
+        eltEnabled: panelInputs.eltEnabled,
+        modemInService: panelInputs.modemInService,
+        modemWifiOn: panelInputs.modemWifiOn,
+        incidentActive: panelInputs.incidentActive,
+        changeActive: panelInputs.changeActive,
+        problemActive: panelInputs.problemActive,
+        selectedQoe: panelInputs.selectedQoe,
+      }
+    : panelInputs.home2;
+
+  const currentOnChange = activeHome === "home1" ? updateHome1 : updateHome2;
+  const currentToggleQoe = activeHome === "home1" ? toggleQoeHome1 : toggleQoeHome2;
 
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
@@ -68,69 +190,7 @@ const DiagnosticPanel: React.FC = () => {
             </div>
           </div>
 
-          {/* ELT */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">ELT (Service Moment)</span>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.eltEnabled ? "On" : "Off"}</span>
-              <Switch checked={panelInputs.eltEnabled} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, eltEnabled: v }))} />
-            </div>
-          </div>
-
-          {/* Modem */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">modem.inService</span>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.modemInService ? "Online" : "Offline"}</span>
-              <Switch checked={panelInputs.modemInService} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemInService: v }))} />
-            </div>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">modem.wifiOn</span>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">{panelInputs.modemWifiOn ? "On" : "Off"}</span>
-              <Switch checked={panelInputs.modemWifiOn} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, modemWifiOn: v }))} />
-            </div>
-          </div>
-
-          {/* Network toggles */}
-          <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Network</p>
-            {[
-              { label: "incident.active", key: "incidentActive" as const },
-              { label: "change.active", key: "changeActive" as const },
-              { label: "problem.active", key: "problemActive" as const },
-            ].map((item) => (
-              <div key={item.key} className="flex items-center justify-between">
-                <span className="text-sm text-foreground">{item.label}</span>
-                <Switch
-                  checked={panelInputs[item.key]}
-                  onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, [item.key]: v }))}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* QOE multi-select */}
-          <div className="space-y-2.5">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">QOE Types</p>
-            <div className="grid grid-cols-2 gap-2">
-              {QOE_TYPES.map((qoe) => (
-                <label
-                  key={qoe.value}
-                  className="flex items-center gap-2 p-2 rounded-lg border border-border bg-background cursor-pointer hover:bg-secondary/50 transition-colors"
-                >
-                  <Checkbox
-                    checked={panelInputs.selectedQoe.includes(qoe.value)}
-                    onCheckedChange={() => toggleQoe(qoe.value)}
-                  />
-                  <span className="text-xs font-medium text-foreground">{qoe.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Multiple Homes */}
+          {/* Multiple Homes — at the top */}
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-foreground">Multiple Homes</span>
             <div className="flex items-center gap-2">
@@ -138,6 +198,32 @@ const DiagnosticPanel: React.FC = () => {
               <Switch checked={panelInputs.multipleHomes} onCheckedChange={(v) => setPanelInputs((p) => ({ ...p, multipleHomes: v }))} />
             </div>
           </div>
+
+          {/* Tab switcher when multiple homes is on */}
+          {multipleHomes && (
+            <div className="flex gap-1 p-1 bg-secondary rounded-lg">
+              {(["home1", "home2"] as HomeKey[]).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveHome(key)}
+                  className={`flex-1 px-3 py-2 rounded-md text-xs font-semibold transition-colors ${
+                    activeHome === key
+                      ? "bg-card text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {HOME_LABELS[key]}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Home inputs */}
+          <HomeInputsSection
+            inputs={currentInputs}
+            onChange={currentOnChange}
+            toggleQoe={currentToggleQoe}
+          />
 
           <p className="text-xs text-muted-foreground text-center">Select a sentiment below to run diagnosis</p>
         </div>
