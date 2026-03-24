@@ -138,6 +138,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setCurrentTab,
         setDiagnosticResult,
         setQoeSelected,
+        setSelectedProduct,
         isPositive: state.experienceMode === "positive",
         reset,
         goBack,
