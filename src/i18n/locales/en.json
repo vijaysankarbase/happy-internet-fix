@@ -44,6 +44,7 @@
   },
   "productDetail": {
     "title": "Internet Limited",
+    "titleUnlimited": "Internet Unlimited",
     "dataUsage": "Data Usage",
     "currentPeriod": "Current period",
     "used": "{{used}} GB used",
