@@ -9,6 +9,7 @@ export interface PanelInputs {
   changeActive: boolean;
   problemActive: boolean;
   selectedQoe: string[];
+  multipleHomes: boolean;
 }
 
 interface DiagnosticContextType extends AppState {
