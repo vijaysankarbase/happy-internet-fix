@@ -46,7 +46,7 @@ const InactiveRow: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon,
 };
 
 const StartTab: React.FC = () => {
-  const { setCurrentState, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
+  const { setCurrentState, setSelectedProduct, serviceMomentDismissed, dismissServiceMoment, panelInputs } = useDiagnostic();
   const showCard = panelInputs.eltEnabled && !serviceMomentDismissed;
   const { t } = useTranslation();
 
