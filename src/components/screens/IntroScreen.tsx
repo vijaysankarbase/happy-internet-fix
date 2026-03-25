@@ -72,12 +72,12 @@ const AddressSheet: React.FC<{ open: boolean; onClose: () => void; onSelect: (id
 };
 
 const IntroScreen: React.FC = () => {
-  const { isPositive, setCurrentState, panelInputs, selectedProduct, setSelectedProduct } = useDiagnostic();
+  const { isPositive, setCurrentState, panelInputs, selectedProduct, setSelectedProduct, previousState } = useDiagnostic();
   const { t } = useTranslation();
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleStartDiagnosis = () => {
-    if (panelInputs.multipleHomes) {
+    if (panelInputs.multipleHomes && previousState !== "product_detail") {
       setSheetOpen(true);
     } else {
       setCurrentState("pre_scan");
