@@ -118,11 +118,12 @@ const CoverageGeneral: React.FC = () => {
 };
 
 const QoECoverageBoosterScreen: React.FC = () => {
-  const { panelInputs } = useDiagnostic();
+  const { panelInputs, selectedProduct } = useDiagnostic();
   const [boosterAnswer, setBoosterAnswer] = useState<"yes" | "no" | "unknown" | null>(null);
+  const homeInputs = getHomeInputs(panelInputs, selectedProduct);
 
   if (!boosterAnswer) return <BoosterQuestion onAnswer={setBoosterAnswer} />;
-  if (boosterAnswer === "yes") return panelInputs.modemWifiOn ? <CoverageInterference /> : <CoveragePoorBooster />;
+  if (boosterAnswer === "yes") return homeInputs.modemWifiOn ? <CoverageInterference /> : <CoveragePoorBooster />;
   return <CoverageGeneral />;
 };
 

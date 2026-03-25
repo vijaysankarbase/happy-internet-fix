@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Router, AlertTriangle, CheckCircle, Search, MapPin } from "lucide-react";
-import { useDiagnostic } from "@/context/DiagnosticContext";
+import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import ActionButton from "@/components/ActionButton";
 import DiagnosticPanel from "@/components/DiagnosticPanel";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const SupportTab: React.FC = () => {
-  const { panelInputs, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
+  const { panelInputs, selectedProduct, setSentiment, setEntryPoint, setDiagnosticResult, setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
   const modemOnline = panelInputs.modemInService;
   const multipleHomes = panelInputs.multipleHomes;
@@ -21,14 +21,15 @@ const SupportTab: React.FC = () => {
   const handleStartScan = () => {
     setSentiment("negative");
     setEntryPoint("support");
+    const homeInputs = getHomeInputs(panelInputs, selectedProduct);
     const apiResponse: DiagnosticResult = {
-      modem: { inService: panelInputs.modemInService },
+      modem: { inService: homeInputs.modemInService },
       network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
+        incident: { active: homeInputs.incidentActive },
+        change: { active: homeInputs.changeActive },
+        problem: { active: homeInputs.problemActive },
       },
-      qoe: panelInputs.selectedQoe.map((type) => ({
+      qoe: homeInputs.selectedQoe.map((type) => ({
         type, priority: PRIORITY_MAP[type] ?? 99,
       })),
     };
