@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
-import { useDiagnostic } from "@/context/DiagnosticContext";
+import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import { Wifi, WifiOff, MapPin, ShoppingCart, ExternalLink, XCircle, CheckCircle2, Loader2, HelpCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -118,11 +118,12 @@ const CoverageGeneral: React.FC = () => {
 };
 
 const QoECoverageBoosterScreen: React.FC = () => {
-  const { panelInputs } = useDiagnostic();
+  const { panelInputs, selectedProduct } = useDiagnostic();
   const [boosterAnswer, setBoosterAnswer] = useState<"yes" | "no" | "unknown" | null>(null);
+  const homeInputs = getHomeInputs(panelInputs, selectedProduct);
 
   if (!boosterAnswer) return <BoosterQuestion onAnswer={setBoosterAnswer} />;
-  if (boosterAnswer === "yes") return panelInputs.modemWifiOn ? <CoverageInterference /> : <CoveragePoorBooster />;
+  if (boosterAnswer === "yes") return homeInputs.modemWifiOn ? <CoverageInterference /> : <CoveragePoorBooster />;
   return <CoverageGeneral />;
 };
 
