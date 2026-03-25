@@ -72,7 +72,7 @@ const AddressSheet: React.FC<{ open: boolean; onClose: () => void; onSelect: (id
 };
 
 const IntroScreen: React.FC = () => {
-  const { isPositive, setCurrentState, panelInputs, selectedProduct, setSelectedProduct } = useDiagnostic();
+  const { isPositive, setCurrentState, panelInputs, selectedProduct, setSelectedProduct, previousState } = useDiagnostic();
   const { t } = useTranslation();
   const [sheetOpen, setSheetOpen] = useState(false);
 
