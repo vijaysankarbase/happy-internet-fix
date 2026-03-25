@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
 import ActionButton from "@/components/ActionButton";
-import { useDiagnostic } from "@/context/DiagnosticContext";
+import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -13,18 +13,19 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const ScanDoneScreen: React.FC = () => {
-  const { panelInputs, setDiagnosticResult, setQoeSelected, setCurrentState, sentiment } = useDiagnostic();
+  const { panelInputs, selectedProduct, setDiagnosticResult, setQoeSelected, setCurrentState, sentiment } = useDiagnostic();
   const { t } = useTranslation();
 
   const handleSeeResult = () => {
+    const homeInputs = getHomeInputs(panelInputs, selectedProduct);
     const apiResponse = {
-      modem: { inService: panelInputs.modemInService },
+      modem: { inService: homeInputs.modemInService },
       network: {
-        incident: { active: panelInputs.incidentActive },
-        change: { active: panelInputs.changeActive },
-        problem: { active: panelInputs.problemActive },
+        incident: { active: homeInputs.incidentActive },
+        change: { active: homeInputs.changeActive },
+        problem: { active: homeInputs.problemActive },
       },
-      qoe: panelInputs.selectedQoe.map((type) => ({
+      qoe: homeInputs.selectedQoe.map((type) => ({
         type, priority: PRIORITY_MAP[type] ?? 99,
       })),
     };
