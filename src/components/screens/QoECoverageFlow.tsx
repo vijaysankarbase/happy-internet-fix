@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
-import { useDiagnostic } from "@/context/DiagnosticContext";
+import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import { Wifi, WifiOff, MapPin, ShoppingCart, ExternalLink, XCircle, CheckCircle2, Loader2, HelpCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
