@@ -7,8 +7,8 @@ import { Sparkles, Heart, Search, LogOut, Wifi, MapPin, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const addresses = [
-  { id: "1", product: "Internet Limited", address: "Liersesteenweg 4, Mechelen" },
-  { id: "2", product: "Internet Unlimited", address: "Winketkaai 20, Mechelen" },
+  { id: "1", product: "Internet Limited", address: "Liersesteenweg 4, Mechelen", selectedProduct: "limited" as const },
+  { id: "2", product: "Internet Unlimited", address: "Winketkaai 20, Mechelen", selectedProduct: "unlimited" as const },
 ];
 
 const AddressSheet: React.FC<{ open: boolean; onClose: () => void; onSelect: (id: string) => void }> = ({ open, onClose, onSelect }) => {
@@ -72,7 +72,7 @@ const AddressSheet: React.FC<{ open: boolean; onClose: () => void; onSelect: (id
 };
 
 const IntroScreen: React.FC = () => {
-  const { isPositive, setCurrentState, panelInputs, selectedProduct } = useDiagnostic();
+  const { isPositive, setCurrentState, panelInputs, selectedProduct, setSelectedProduct } = useDiagnostic();
   const { t } = useTranslation();
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -86,7 +86,11 @@ const IntroScreen: React.FC = () => {
     }
   };
 
-  const handleAddressSelect = (_id: string) => {
+  const handleAddressSelect = (id: string) => {
+    const selectedAddress = addresses.find((address) => address.id === id);
+    if (selectedAddress) {
+      setSelectedProduct(selectedAddress.selectedProduct);
+    }
     setSheetOpen(false);
     setCurrentState("pre_scan");
   };
