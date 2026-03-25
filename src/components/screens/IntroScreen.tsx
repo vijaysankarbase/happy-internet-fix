@@ -77,9 +77,7 @@ const IntroScreen: React.FC = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleStartDiagnosis = () => {
-    // If user already selected a specific product (e.g. Internet Unlimited from Start),
-    // skip the address sheet even if multipleHomes is on
-    if (panelInputs.multipleHomes && selectedProduct === "limited") {
+    if (panelInputs.multipleHomes) {
       setSheetOpen(true);
     } else {
       setCurrentState("pre_scan");
