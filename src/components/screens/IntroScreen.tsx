@@ -77,7 +77,7 @@ const IntroScreen: React.FC = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleStartDiagnosis = () => {
-    if (panelInputs.multipleHomes) {
+    if (panelInputs.multipleHomes && previousState !== "product_detail") {
       setSheetOpen(true);
     } else {
       setCurrentState("pre_scan");
