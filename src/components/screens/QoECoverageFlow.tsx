@@ -49,7 +49,7 @@ const CoverageInterference: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => setStep("turning_off")} icon={<WifiOff className="w-5 h-5" />}>{t("coverage.interference.turnOffRemotely")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );
