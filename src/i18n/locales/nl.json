@@ -372,7 +372,12 @@
       "turningOff": "Modem WiFi uitschakelen",
       "turningOffWait": "Even geduld terwijl we de WiFi-radio van je modem uitschakelen…",
       "verifyTitle": "Controleer of het werkte",
-      "verifySubtitle": "Is je ervaring verbeterd door het uitschakelen van de modem-WiFi?"
+      "verifySubtitle": "Is je ervaring verbeterd door het uitschakelen van de modem-WiFi?",
+      "boosterInstallTitle": "Controleer of je booster correct is geïnstalleerd",
+      "boosterInstallSubtitle": "Het is mogelijk dat je booster niet correct is geïnstalleerd. Klik hier om de installatieprocedures te lezen.",
+      "boosterInstallLink": "Lees de installatie-instructies",
+      "yesHelpful": "Ja, dit was nuttig",
+      "noNotHelpful": "Nee, deze suggestie is niet nuttig"
     },
     "poorBooster": {
       "subtitle": "De meest waarschijnlijke oorzaak is een slechte boosterplaatsing — je modem-WiFi staat uit, dus de dekking hangt volledig af van het bereik van je booster.",

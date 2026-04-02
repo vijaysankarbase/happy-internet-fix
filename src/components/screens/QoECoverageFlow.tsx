@@ -19,18 +19,39 @@ const BoosterQuestion: React.FC<{ onAnswer: (answer: "yes" | "no" | "unknown") =
   );
 };
 
+const BoosterInstallVerify: React.FC = () => {
+  const { setCurrentState } = useDiagnostic();
+  const { t } = useTranslation();
+
+  return (
+    <ScreenShell
+      icon={<div className="w-16 h-16 rounded-full bg-warning/10 flex items-center justify-center"><Wifi className="w-8 h-8 text-warning" /></div>}
+      title={t("coverage.interference.boosterInstallTitle")}
+      subtitle={t("coverage.interference.boosterInstallSubtitle")}
+    >
+      <div className="flex flex-col gap-3">
+        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.interference.boosterInstallLink")}</ActionButton>
+        <ActionButton onClick={() => setCurrentState("success")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.interference.yesHelpful")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.noNotHelpful")}</ActionButton>
+      </div>
+    </ScreenShell>
+  );
+};
+
 const CoverageInterference: React.FC = () => {
   const { setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
-  const [step, setStep] = useState<"cause" | "solutions" | "turning_off" | "verify">("cause");
+  const [step, setStep] = useState<"cause" | "solutions" | "turning_off" | "verify" | "booster_install">("cause");
 
   useEffect(() => { if (step !== "turning_off") return; const timer = setTimeout(() => setStep("verify"), 5000); return () => clearTimeout(timer); }, [step]);
+
+  if (step === "booster_install") return <BoosterInstallVerify />;
 
   if (step === "verify") return (
     <ScreenShell icon={<div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center"><CheckCircle2 className="w-8 h-8 text-primary" /></div>} title={t("coverage.interference.verifyTitle")} subtitle={t("coverage.interference.verifySubtitle")}>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => setCurrentState("success")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("common.yesBetter")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("common.noStillNeed")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => setStep("booster_install")} icon={<XCircle className="w-5 h-5" />}>{t("common.noStillNeed")}</ActionButton>
       </div>
     </ScreenShell>
   );
@@ -49,8 +70,7 @@ const CoverageInterference: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => setStep("turning_off")} icon={<WifiOff className="w-5 h-5" />}>{t("coverage.interference.turnOffRemotely")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.checkInstallation")}</ActionButton>
-        <ActionButton variant="ghost" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setStep("booster_install")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );

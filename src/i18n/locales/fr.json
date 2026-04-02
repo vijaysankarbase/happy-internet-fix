@@ -372,7 +372,12 @@
       "turningOff": "Désactivation du WiFi du modem",
       "turningOffWait": "Veuillez patienter pendant que nous désactivons la radio WiFi de votre modem…",
       "verifyTitle": "Vérifier si cela a fonctionné",
-      "verifySubtitle": "La désactivation du WiFi du modem a-t-elle amélioré votre expérience ?"
+      "verifySubtitle": "La désactivation du WiFi du modem a-t-elle amélioré votre expérience ?",
+      "boosterInstallTitle": "Vérifiez si votre booster est correctement installé",
+      "boosterInstallSubtitle": "Il est possible que votre booster soit mal installé. Cliquez ici pour lire les procédures d'installation.",
+      "boosterInstallLink": "Lire les instructions d'installation",
+      "yesHelpful": "Oui, c'était utile",
+      "noNotHelpful": "Non, cette suggestion n'est pas utile"
     },
     "poorBooster": {
       "subtitle": "La cause la plus probable est un mauvais placement du booster — le WiFi de votre modem est désactivé, donc la couverture dépend entièrement de la portée de votre booster.",
