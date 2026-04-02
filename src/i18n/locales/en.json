@@ -372,7 +372,12 @@
       "turningOff": "Turning off modem WiFi",
       "turningOffWait": "Please wait while we turn off your modem's WiFi radio…",
       "verifyTitle": "Verify if it worked",
-      "verifySubtitle": "Did turning off the modem WiFi improve your experience?"
+      "verifySubtitle": "Did turning off the modem WiFi improve your experience?",
+      "boosterInstallTitle": "Verify if your booster is installed correctly",
+      "boosterInstallSubtitle": "It's possible that your booster may be incorrectly installed. Click here to read about the installation procedures.",
+      "boosterInstallLink": "Read installation instructions",
+      "yesHelpful": "Yes, this was helpful",
+      "noNotHelpful": "No, this suggestion is not helpful"
     },
     "poorBooster": {
       "subtitle": "The most probable cause is poor booster placement — your modem WiFi is off, so coverage depends entirely on your booster's reach.",
