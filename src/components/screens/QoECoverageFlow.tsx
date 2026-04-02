@@ -10,15 +10,6 @@ const BoosterQuestion: React.FC<{ onAnswer: (answer: "yes" | "no" | "unknown") =
   const { t } = useTranslation();
   return (
     <ScreenShell icon={<div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"><Wifi className="w-10 h-10 text-primary" /></div>} title={t("coverage.quickQuestion")} subtitle={t("coverage.boosterQuestion")}>
-      <a
-        href="https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-primary underline flex items-center gap-1 mb-2"
-      >
-        <ExternalLink className="w-4 h-4" />
-        {t("coverage.checkInstallation")}
-      </a>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => onAnswer("yes")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.yes")}</ActionButton>
         <ActionButton variant="outline" onClick={() => onAnswer("no")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.no")}</ActionButton>
@@ -58,7 +49,8 @@ const CoverageInterference: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => setStep("turning_off")} icon={<WifiOff className="w-5 h-5" />}>{t("coverage.interference.turnOffRemotely")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.checkInstallation")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );
@@ -85,8 +77,9 @@ const CoveragePoorBooster: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => window.open("https://www.base.be/en/internet/wifi-booster.html", "_blank")} icon={<ShoppingCart className="w-5 h-5" />}>{t("coverage.poorBooster.buyBooster")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.checkInstallation")}</ActionButton>
         <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/problem-with-internet-or-wifi/my-deco-wifi-booster-is-not-working-well.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.poorBooster.tipsAndTricks")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.poorBooster.notHelpful")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.poorBooster.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );
