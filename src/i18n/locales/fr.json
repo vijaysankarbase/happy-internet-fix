@@ -354,7 +354,8 @@
     }
   },
   "coverage": {
-    "boosterQuestion": "Avez-vous un WiFi booster installé chez vous ?",
+    "boosterQuestion": "Avez-vous un BASE TP-Link Deco booster installé chez vous ?",
+    "checkInstallation": "Cliquez ici pour consulter les instructions d'installation",
     "quickQuestion": "Petite question",
     "yes": "Oui",
     "no": "Non",

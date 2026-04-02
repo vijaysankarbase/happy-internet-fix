@@ -354,7 +354,8 @@
     }
   },
   "coverage": {
-    "boosterQuestion": "Heb je een WiFi-booster geïnstalleerd in je huis?",
+    "boosterQuestion": "Heb je een BASE TP-Link Deco booster geïnstalleerd in je huis?",
+    "checkInstallation": "Klik hier om de installatie-instructies te bekijken",
     "quickQuestion": "Even een vraagje",
     "yes": "Ja",
     "no": "Nee",
