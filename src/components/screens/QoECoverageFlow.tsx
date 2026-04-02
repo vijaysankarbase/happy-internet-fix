@@ -77,8 +77,9 @@ const CoveragePoorBooster: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => window.open("https://www.base.be/en/internet/wifi-booster.html", "_blank")} icon={<ShoppingCart className="w-5 h-5" />}>{t("coverage.poorBooster.buyBooster")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.checkInstallation")}</ActionButton>
         <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/problem-with-internet-or-wifi/my-deco-wifi-booster-is-not-working-well.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.poorBooster.tipsAndTricks")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.poorBooster.notHelpful")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.poorBooster.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );
