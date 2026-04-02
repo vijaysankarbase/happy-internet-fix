@@ -49,7 +49,8 @@ const CoverageInterference: React.FC = () => {
       </div>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => setStep("turning_off")} icon={<WifiOff className="w-5 h-5" />}>{t("coverage.interference.turnOffRemotely")}</ActionButton>
-        <ActionButton variant="outline" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.checkInstallation")}</ActionButton>
+        <ActionButton variant="ghost" onClick={() => setCurrentState("wifi_help")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.interference.notHelpful")}</ActionButton>
       </div>
     </ScreenShell>
   );
