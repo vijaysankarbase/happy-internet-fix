@@ -10,6 +10,15 @@ const BoosterQuestion: React.FC<{ onAnswer: (answer: "yes" | "no" | "unknown") =
   const { t } = useTranslation();
   return (
     <ScreenShell icon={<div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"><Wifi className="w-10 h-10 text-primary" /></div>} title={t("coverage.quickQuestion")} subtitle={t("coverage.boosterQuestion")}>
+      <a
+        href="https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm text-primary underline flex items-center gap-1 mb-2"
+      >
+        <ExternalLink className="w-4 h-4" />
+        {t("coverage.checkInstallation")}
+      </a>
       <div className="flex flex-col gap-3">
         <ActionButton onClick={() => onAnswer("yes")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.yes")}</ActionButton>
         <ActionButton variant="outline" onClick={() => onAnswer("no")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.no")}</ActionButton>
