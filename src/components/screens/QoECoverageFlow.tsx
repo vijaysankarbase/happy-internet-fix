@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ScreenShell from "../ScreenShell";
 import ActionButton from "../ActionButton";
 import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
-import { Wifi, WifiOff, MapPin, ShoppingCart, ExternalLink, XCircle, CheckCircle2, Loader2, HelpCircle } from "lucide-react";
+import { Wifi, WifiOff, MapPin, ShoppingCart, ExternalLink, XCircle, CheckCircle2, Loader2, HelpCircle, Play } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const BoosterQuestion: React.FC<{ onAnswer: (answer: "yes" | "no" | "unknown") => void }> = ({ onAnswer }) => {
@@ -29,6 +29,26 @@ const BoosterInstallVerify: React.FC = () => {
       title={t("coverage.interference.boosterInstallTitle")}
       subtitle={t("coverage.interference.boosterInstallSubtitle")}
     >
+      {/* Video guide */}
+      <div className="rounded-xl overflow-hidden border border-border bg-card mb-4">
+        <div className="relative">
+          <video
+            className="w-full aspect-video object-cover"
+            controls
+            preload="metadata"
+            poster=""
+          >
+            <source src="https://base.pingvp.com/a_02_05_2339_interactieve_installatievideo_internet_tv_en/a_02_05_2339_intro_en_1080p.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="px-4 py-3">
+          <p className="font-semibold text-foreground text-sm flex items-center gap-2">
+            <Play className="w-4 h-4 text-primary" />
+            {t("coverage.interference.videoTitle")}
+          </p>
+        </div>
+      </div>
+
       <div className="flex flex-col gap-3">
         <ActionButton variant="outline" onClick={() => window.open("https://www.base.be/en/support/internet/your-base-modem-and-wifi-booster/how-to-install-wifi-boosters.html", "_blank")} icon={<ExternalLink className="w-5 h-5" />}>{t("coverage.interference.boosterInstallLink")}</ActionButton>
         <ActionButton onClick={() => setCurrentState("success")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.interference.yesHelpful")}</ActionButton>
