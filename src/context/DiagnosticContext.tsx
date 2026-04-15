@@ -32,6 +32,8 @@ export const getHomeInputs = (panelInputs: PanelInputs, product: SelectedProduct
   };
 };
 
+export type BoosterAnswer = "yes" | "no" | "unknown" | null;
+
 interface DiagnosticContextType extends AppState {
   previousState: ScreenState | null;
   setSentiment: (s: Sentiment) => void;
@@ -49,6 +51,8 @@ interface DiagnosticContextType extends AppState {
   setPanelInputs: React.Dispatch<React.SetStateAction<PanelInputs>>;
   serviceMomentDismissed: boolean;
   dismissServiceMoment: () => void;
+  boosterAnswer: BoosterAnswer;
+  setBoosterAnswer: (a: BoosterAnswer) => void;
 }
 
 const initialHomeInputs: HomeInputs = {
@@ -90,6 +94,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [state, setState] = useState<AppState>(initialState);
   const [panelInputs, setPanelInputs] = useState<PanelInputs>(initialPanelInputs);
   const [serviceMomentDismissed, setServiceMomentDismissed] = useState(false);
+  const [boosterAnswer, setBoosterAnswer] = useState<BoosterAnswer>(null);
   const historyRef = useRef<ScreenState[]>([]);
 
   const setSentiment = useCallback((sentiment: Sentiment) => {
@@ -147,6 +152,7 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const reset = useCallback(() => {
     setState(initialState);
     setPanelInputs(initialPanelInputs);
+    setBoosterAnswer(null);
     historyRef.current = [];
   }, []);
 
@@ -170,6 +176,8 @@ export const DiagnosticProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         setPanelInputs,
         serviceMomentDismissed,
         dismissServiceMoment: () => setServiceMomentDismissed(true),
+        boosterAnswer,
+        setBoosterAnswer,
       }}
     >
       {children}
