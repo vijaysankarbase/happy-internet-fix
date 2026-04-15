@@ -6,6 +6,19 @@ import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import { Wifi, WifiOff, MapPin, ShoppingCart, ExternalLink, XCircle, CheckCircle2, Loader2, HelpCircle, Play } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const BoosterQuestion: React.FC<{ onAnswer: (answer: "yes" | "no" | "unknown") => void }> = ({ onAnswer }) => {
+  const { t } = useTranslation();
+  return (
+    <ScreenShell icon={<div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center"><Wifi className="w-10 h-10 text-primary" /></div>} title={t("coverage.quickQuestion")} subtitle={t("coverage.boosterQuestion")}>
+      <div className="flex flex-col gap-3">
+        <ActionButton onClick={() => onAnswer("yes")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.yes")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => onAnswer("no")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.no")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => onAnswer("unknown")} icon={<HelpCircle className="w-5 h-5" />}>{t("coverage.iDontKnow")}</ActionButton>
+      </div>
+    </ScreenShell>
+  );
+};
+
 const BoosterInstallVerify: React.FC = () => {
   const { setCurrentState } = useDiagnostic();
   const { t } = useTranslation();
@@ -146,11 +159,11 @@ const CoverageGeneral: React.FC = () => {
 };
 
 const QoECoverageBoosterScreen: React.FC = () => {
-  const { panelInputs, selectedProduct, boosterAnswer } = useDiagnostic();
+  const { panelInputs, selectedProduct } = useDiagnostic();
+  const [boosterAnswer, setBoosterAnswer] = useState<"yes" | "no" | "unknown" | null>(null);
   const homeInputs = getHomeInputs(panelInputs, selectedProduct);
 
-  // Use the pre-collected booster answer from ScanDone
-  if (!boosterAnswer || boosterAnswer === "no" || boosterAnswer === "unknown") return <CoverageGeneral />;
+  if (!boosterAnswer) return <BoosterQuestion onAnswer={setBoosterAnswer} />;
   if (boosterAnswer === "yes") return homeInputs.modemWifiOn ? <CoverageInterference /> : <CoveragePoorBooster />;
   return <CoverageGeneral />;
 };

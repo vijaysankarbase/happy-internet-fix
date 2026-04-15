@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import ScreenShell from "@/components/ScreenShell";
 import ActionButton from "@/components/ActionButton";
-import { useDiagnostic, getHomeInputs, type BoosterAnswer } from "@/context/DiagnosticContext";
+import { useDiagnostic, getHomeInputs } from "@/context/DiagnosticContext";
 import { evaluateDiagnostic } from "@/lib/diagnosticEngine";
-import { CheckCircle2, ChevronRight, Wifi, XCircle, HelpCircle } from "lucide-react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const PRIORITY_MAP: Record<string, number> = {
@@ -13,12 +13,10 @@ const PRIORITY_MAP: Record<string, number> = {
 };
 
 const ScanDoneScreen: React.FC = () => {
-  const { panelInputs, selectedProduct, setDiagnosticResult, setQoeSelected, setCurrentState, sentiment, setBoosterAnswer } = useDiagnostic();
+  const { panelInputs, selectedProduct, setDiagnosticResult, setQoeSelected, setCurrentState, sentiment } = useDiagnostic();
   const { t } = useTranslation();
-  const [showBoosterQuestion, setShowBoosterQuestion] = useState(false);
 
-  // Pre-compute the diagnostic result to check if coverage is top QoE
-  const preComputedResult = useMemo(() => {
+  const handleSeeResult = () => {
     const homeInputs = getHomeInputs(panelInputs, selectedProduct);
     const apiResponse = {
       modem: { inService: homeInputs.modemInService },
@@ -31,51 +29,13 @@ const ScanDoneScreen: React.FC = () => {
         type, priority: PRIORITY_MAP[type] ?? 99,
       })),
     };
+    setDiagnosticResult(apiResponse);
     const { state, qoeSelected } = evaluateDiagnostic(apiResponse, sentiment);
-    return { apiResponse, state, qoeSelected };
-  }, [panelInputs, selectedProduct, sentiment]);
-
-  const isCoverageQoE = preComputedResult.qoeSelected?.type === "coverage" ||
-    (preComputedResult.state === "positive_mismatch" && preComputedResult.qoeSelected?.type === "coverage");
-
-  const handleSeeResult = () => {
-    if (isCoverageQoE && !showBoosterQuestion) {
-      setShowBoosterQuestion(true);
-      return;
-    }
-    setDiagnosticResult(preComputedResult.apiResponse);
-    setQoeSelected(preComputedResult.qoeSelected);
-    setCurrentState(preComputedResult.state);
-  };
-
-  const handleBoosterAnswer = (answer: BoosterAnswer) => {
-    setBoosterAnswer(answer);
-    setDiagnosticResult(preComputedResult.apiResponse);
-    setQoeSelected(preComputedResult.qoeSelected);
-    setCurrentState(preComputedResult.state);
+    setQoeSelected(qoeSelected);
+    setCurrentState(state);
   };
 
   const steps = [t("scanning.modem"), t("scanning.network"), t("scanning.connection")];
-
-  if (showBoosterQuestion) {
-    return (
-      <ScreenShell
-        icon={
-          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-            <Wifi className="w-10 h-10 text-primary" />
-          </div>
-        }
-        title={t("coverage.quickQuestion")}
-        subtitle={t("coverage.boosterQuestion")}
-      >
-        <div className="flex flex-col gap-3">
-          <ActionButton onClick={() => handleBoosterAnswer("yes")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("coverage.yes")}</ActionButton>
-          <ActionButton variant="outline" onClick={() => handleBoosterAnswer("no")} icon={<XCircle className="w-5 h-5" />}>{t("coverage.no")}</ActionButton>
-          <ActionButton variant="outline" onClick={() => handleBoosterAnswer("unknown")} icon={<HelpCircle className="w-5 h-5" />}>{t("coverage.iDontKnow")}</ActionButton>
-        </div>
-      </ScreenShell>
-    );
-  }
 
   return (
     <ScreenShell>
@@ -87,6 +47,7 @@ const ScanDoneScreen: React.FC = () => {
         className="mb-6"
       >
         <div className="relative w-20 h-20 mx-auto">
+          {/* Celebration ring */}
           <motion.div
             className="absolute inset-0 rounded-full border-2 border-success/40"
             initial={{ scale: 0.6, opacity: 0 }}
@@ -124,6 +85,7 @@ const ScanDoneScreen: React.FC = () => {
         {t("scanDone.subtitle")}
       </motion.p>
 
+      {/* Step completion chain */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -137,7 +99,12 @@ const ScanDoneScreen: React.FC = () => {
                 <motion.div
                   initial={{ scale: 0, rotate: -30 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.6 + i * 0.15, type: "spring", stiffness: 250, damping: 14 }}
+                  transition={{
+                    delay: 0.6 + i * 0.15,
+                    type: "spring",
+                    stiffness: 250,
+                    damping: 14,
+                  }}
                   className="w-10 h-10 rounded-full bg-success/15 flex items-center justify-center"
                 >
                   <CheckCircle2 className="w-5 h-5 text-success" />
@@ -155,7 +122,11 @@ const ScanDoneScreen: React.FC = () => {
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.65 + i * 0.15, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{
+                    delay: 0.65 + i * 0.15,
+                    duration: 0.4,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   className="flex-1 h-0.5 bg-success/30 mx-2 mb-5 origin-left"
                 />
               )}
@@ -164,6 +135,7 @@ const ScanDoneScreen: React.FC = () => {
         </div>
       </motion.div>
 
+      {/* CTA with delayed entrance */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
