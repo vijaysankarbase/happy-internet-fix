@@ -190,8 +190,8 @@
     "diyTipsDesc": "Leer hoe je veelvoorkomende WiFi-problemen oplost",
     "orderBooster": "Bestel WiFi Booster",
     "orderBoosterDesc": "Vergroot je bereik met een booster",
-    "notHelpful": "Deze tips helpen niet",
-    "notHelpfulDesc": "Praat met ons supportteam"
+    "thisHelped": "Dit hielp, bedankt",
+    "stillNotWorking": "Werkt nog steeds niet"
   },
   "modemReboot": {
     "title": "Herstart je modem",
