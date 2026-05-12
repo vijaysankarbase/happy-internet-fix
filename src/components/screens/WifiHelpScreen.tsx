@@ -25,11 +25,16 @@ const WifiHelpScreen: React.FC = () => {
 
   const handleStartRestart = () => { setRestarting(true); setProgress(0); setRestartDone(false); };
 
+  const closeDrawer = () => {
+    setRestartOpen(false);
+    setRestartDone(false);
+    setProgress(0);
+  };
+
   const options = [
     { icon: <RotateCcw className="w-5 h-5" />, label: t("wifiHelp.modemRestart"), desc: t("wifiHelp.modemRestartDesc"), onClick: () => setRestartOpen(true) },
     { icon: <ExternalLink className="w-5 h-5" />, label: t("wifiHelp.diyTips"), desc: t("wifiHelp.diyTipsDesc"), onClick: () => window.open("https://www.base.be/en/support/internet/problem-with-internet-or-wifi/problem-with-wi-fi-at-home.html", "_blank") },
     { icon: <Wifi className="w-5 h-5" />, label: t("wifiHelp.orderBooster"), desc: t("wifiHelp.orderBoosterDesc"), onClick: () => window.open("https://www.base.be/en/internet/wifi-booster.html", "_blank") },
-    { icon: <XCircle className="w-5 h-5" />, label: t("wifiHelp.notHelpful"), desc: t("wifiHelp.notHelpfulDesc"), onClick: () => setCurrentState("support") },
   ];
 
   return (
@@ -42,7 +47,13 @@ const WifiHelpScreen: React.FC = () => {
           </motion.button>
         ))}
       </div>
-      <Drawer open={restartOpen} onOpenChange={(open) => { if (!restarting) setRestartOpen(open); }}>
+
+      <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-border">
+        <ActionButton onClick={() => setCurrentState("success")} icon={<CheckCircle2 className="w-5 h-5" />}>{t("wifiHelp.thisHelped")}</ActionButton>
+        <ActionButton variant="outline" onClick={() => setCurrentState("support")} icon={<XCircle className="w-5 h-5" />}>{t("wifiHelp.stillNotWorking")}</ActionButton>
+      </div>
+
+      <Drawer open={restartOpen} onOpenChange={(open) => { if (!restarting) { if (!open) closeDrawer(); else setRestartOpen(true); } }}>
         <DrawerContent>
           <DrawerHeader className="text-left px-6 pt-6">
             <DrawerTitle className="text-xl font-bold">{restartDone ? t("modemReboot.restartedTitle") : restarting ? t("modemReboot.restartingTitle") : t("modemReboot.title")}</DrawerTitle>
@@ -52,11 +63,7 @@ const WifiHelpScreen: React.FC = () => {
             {restartDone ? (
               <div className="space-y-4">
                 <div className="flex items-center justify-center"><div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center"><CheckCircle2 className="w-8 h-8 text-success" /></div></div>
-                <p className="text-sm text-foreground font-medium text-center">{t("modemReboot.didItImprove")}</p>
-                <div className="flex flex-col gap-3">
-                  <ActionButton onClick={() => { setRestartOpen(false); setCurrentState("success"); }} icon={<CheckCircle2 className="w-5 h-5" />}>{t("modemReboot.yesBetter")}</ActionButton>
-                  <ActionButton variant="outline" onClick={() => { setRestartOpen(false); setCurrentState("support"); }} icon={<XCircle className="w-5 h-5" />}>{t("modemReboot.noStillNeed")}</ActionButton>
-                </div>
+                <p className="text-sm text-foreground font-medium text-center">{t("modemReboot.restartedTitle")}</p>
               </div>
             ) : restarting ? (
               <div className="space-y-4">
@@ -76,10 +83,16 @@ const WifiHelpScreen: React.FC = () => {
               </div>
             )}
           </div>
-          {!restarting && !restartDone && (
+          {!restarting && (
             <DrawerFooter className="px-6 pb-6 flex flex-col gap-3">
-              <ActionButton onClick={handleStartRestart} icon={<RotateCcw className="w-5 h-5" />}>{t("modemReboot.start")}</ActionButton>
-              <DrawerClose asChild><ActionButton variant="outline" onClick={() => setRestartOpen(false)}>{t("common.close")}</ActionButton></DrawerClose>
+              {restartDone ? (
+                <ActionButton onClick={closeDrawer}>{t("common.close")}</ActionButton>
+              ) : (
+                <>
+                  <ActionButton onClick={handleStartRestart} icon={<RotateCcw className="w-5 h-5" />}>{t("modemReboot.start")}</ActionButton>
+                  <DrawerClose asChild><ActionButton variant="outline" onClick={closeDrawer}>{t("common.close")}</ActionButton></DrawerClose>
+                </>
+              )}
             </DrawerFooter>
           )}
         </DrawerContent>

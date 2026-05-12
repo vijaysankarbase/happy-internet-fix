@@ -190,8 +190,8 @@
     "diyTipsDesc": "Learn how to fix common WiFi issues",
     "orderBooster": "Order WiFi Booster",
     "orderBoosterDesc": "Extend your coverage with a booster",
-    "notHelpful": "These tips are not helpful",
-    "notHelpfulDesc": "Talk to our support team"
+    "thisHelped": "This helped, thanks",
+    "stillNotWorking": "Still not working"
   },
   "modemReboot": {
     "title": "Restart your modem",

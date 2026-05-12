@@ -190,8 +190,8 @@
     "diyTipsDesc": "Apprenez à résoudre les problèmes WiFi courants",
     "orderBooster": "Commander un WiFi Booster",
     "orderBoosterDesc": "Étendez votre couverture avec un booster",
-    "notHelpful": "Ces conseils ne m'aident pas",
-    "notHelpfulDesc": "Parler à notre équipe de support"
+    "thisHelped": "Cela m'a aidé, merci",
+    "stillNotWorking": "Ne fonctionne toujours pas"
   },
   "modemReboot": {
     "title": "Redémarrez votre modem",
