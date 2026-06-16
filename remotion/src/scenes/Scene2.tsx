@@ -5,7 +5,7 @@ export const Scene2 = () => (
     zoomFrom={1.0}
     zoomTo={1.18}
     panY={-15}
-    caption="A figure on the horizon"
+    caption="A man tasked with unimaginable burdens"
     timecode="00:03:21"
     durationInFrames={270}
   />
