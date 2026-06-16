@@ -5,7 +5,7 @@ import { loadFont as loadRajdhani } from "@remotion/google-fonts/Rajdhani";
 const { fontFamily: orbitron } = loadFont("normal", { weights: ["700", "900"], subsets: ["latin"] });
 const { fontFamily: rajdhani } = loadRajdhani("normal", { weights: ["500"], subsets: ["latin"] });
 
-export const Scene5 = () => {
+export const Scene7 = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -13,7 +13,7 @@ export const Scene5 = () => {
   const y = interpolate(enter, [0, 1], [120, 0]);
   const opacity = interpolate(enter, [0, 0.5], [0, 1], { extrapolateRight: "clamp" });
 
-  const lineExpand = interpolate(frame, [12, 50], [0, 400], { extrapolateRight: "clamp" });
+  const lineExpand = interpolate(frame, [12, 50], [0, 500], { extrapolateRight: "clamp" });
   const blink = Math.sin(frame * 0.25) > 0 ? 1 : 0.25;
   const ab = Math.sin(frame * 0.1) * 2 + 3;
 
@@ -29,13 +29,7 @@ export const Scene5 = () => {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          transform: `translateY(${y}px)`,
-          opacity,
-          textAlign: "center",
-        }}
-      >
+      <div style={{ transform: `translateY(${y}px)`, opacity, textAlign: "center" }}>
         <div
           style={{
             width: lineExpand,
@@ -53,7 +47,7 @@ export const Scene5 = () => {
               inset: 0,
               color: "#ec4899",
               fontFamily: orbitron,
-              fontSize: 78,
+              fontSize: 84,
               fontWeight: 900,
               letterSpacing: 10,
               textTransform: "uppercase",
@@ -71,7 +65,7 @@ export const Scene5 = () => {
               inset: 0,
               color: "#06b6d4",
               fontFamily: orbitron,
-              fontSize: 78,
+              fontSize: 84,
               fontWeight: 900,
               letterSpacing: 10,
               textTransform: "uppercase",
@@ -88,7 +82,7 @@ export const Scene5 = () => {
               position: "relative",
               color: "#ffffff",
               fontFamily: orbitron,
-              fontSize: 78,
+              fontSize: 84,
               fontWeight: 900,
               letterSpacing: 10,
               textTransform: "uppercase",
