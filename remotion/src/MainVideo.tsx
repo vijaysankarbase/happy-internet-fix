@@ -2,6 +2,7 @@ import { AbsoluteFill } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
+import { wipe } from "@remotion/transitions/wipe";
 import { PersistentBackground } from "./components/PersistentBackground";
 import { Scene1 } from "./scenes/Scene1";
 import { Scene2 } from "./scenes/Scene2";
@@ -11,43 +12,38 @@ import { Scene5 } from "./scenes/Scene5";
 
 export const MainVideo = () => {
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: "#020617",
-        overflow: "hidden",
-      }}
-    >
+    <AbsoluteFill style={{ backgroundColor: "#020617", overflow: "hidden" }}>
       <PersistentBackground />
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={75}>
+        <TransitionSeries.Sequence durationInFrames={105}>
           <Scene1 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 15 })}
         />
-        <TransitionSeries.Sequence durationInFrames={120}>
+        <TransitionSeries.Sequence durationInFrames={195}>
           <Scene2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={linearTiming({ durationInFrames: 15 })}
+          presentation={wipe({ direction: "from-left" })}
+          timing={linearTiming({ durationInFrames: 18 })}
         />
-        <TransitionSeries.Sequence durationInFrames={195}>
+        <TransitionSeries.Sequence durationInFrames={240}>
           <Scene3 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 15 })}
         />
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={240}>
           <Scene4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={slide({ direction: "from-left" })}
-          timing={linearTiming({ durationInFrames: 15 })}
+          presentation={slide({ direction: "from-bottom" })}
+          timing={linearTiming({ durationInFrames: 18 })}
         />
-        <TransitionSeries.Sequence durationInFrames={120}>
+        <TransitionSeries.Sequence durationInFrames={186}>
           <Scene5 />
         </TransitionSeries.Sequence>
       </TransitionSeries>
