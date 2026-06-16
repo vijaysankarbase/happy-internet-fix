@@ -22,28 +22,28 @@ export const MainVideo = () => {
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 15 })}
         />
-        <TransitionSeries.Sequence durationInFrames={180}>
+        <TransitionSeries.Sequence durationInFrames={195}>
           <Scene2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={wipe({ direction: "from-left" })}
           timing={linearTiming({ durationInFrames: 18 })}
         />
-        <TransitionSeries.Sequence durationInFrames={225}>
+        <TransitionSeries.Sequence durationInFrames={240}>
           <Scene3 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={fade()}
           timing={linearTiming({ durationInFrames: 15 })}
         />
-        <TransitionSeries.Sequence durationInFrames={210}>
+        <TransitionSeries.Sequence durationInFrames={240}>
           <Scene4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={slide({ direction: "from-bottom" })}
           timing={linearTiming({ durationInFrames: 18 })}
         />
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={186}>
           <Scene5 />
         </TransitionSeries.Sequence>
       </TransitionSeries>
