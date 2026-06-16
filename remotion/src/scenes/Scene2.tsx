@@ -21,7 +21,6 @@ export const Scene2 = () => {
 
   const cornerSize = 30;
   const cornerColor = "#06b6d4";
-      };
 
   return (
     <div
